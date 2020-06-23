@@ -168,10 +168,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2020-06-22 22:20:50 / Modified: 22:20:51" itemprop="dateCreated datePublished" datetime="2020-06-22T22:20:50+08:00">2020-06-22</time>
+              <time title="Created: 2020-06-22 22:20:50" itemprop="dateCreated datePublished" datetime="2020-06-22T22:20:50+08:00">2020-06-22</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-06-23 09:56:37" itemprop="dateModified" datetime="2020-06-23T09:56:37+08:00">2020-06-23</time>
+              </span>
 
           
 
@@ -188,11 +194,11 @@
 <h3 id="基本数据类型"><a href="#基本数据类型" class="headerlink" title="基本数据类型"></a>基本数据类型</h3><p>​         整型、浮点型、指针、聚合类型（数组和结构）</p>
 <h4 id="指针"><a href="#指针" class="headerlink" title="指针"></a>指针</h4><ol>
 <li><p>指针的声明：<code>int *a;</code></p>
-<p>此时<strong>a</strong>是一个指向<strong>int</strong>型的指针, <strong>*a</strong>产生的结果是<strong>int</strong> </p>
-<p>注：此时*要写在<strong>int</strong>空格之后，尤其是在声明多个指针变量时 <code>int* b,c,d;</code>并不是声明了三个指针变量而是只声明了b一个指针。正确语句如下：<code>int *b,*c,*d;</code></p>
+<p>此时a是一个指向int型的指针, *a产生的结果是int</p>
+<p>注：此时*要写在int空格之后，尤其是在声明多个指针变量时 <code>int* b,c,d;</code>并不是声明了三个指针变量而是只声明了b一个指针。正确语句如下：<code>int *b,*c,*d;</code></p>
 </li>
 <li><p>在声明时为指针赋值</p>
-<figure class="highlight plain"><figcaption><span>*message </span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">注：这里的初始值并不是赋给表达式***message** ，而是赋给**message**本身，也就是说，该声明相当于：</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;cpp</span><br><span class="line">char *message;</span><br><span class="line">message &#x3D; &quot;Hello world!&quot;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><figcaption><span>*message </span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">注：这里的初始值并不是赋给表达式\*message ，而是赋给message本身，也就是说，该声明相当于：</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;cpp</span><br><span class="line">char *message;</span><br><span class="line">message &#x3D; &quot;Hello world!&quot;;</span><br></pre></td></tr></table></figure>
 
 
 
