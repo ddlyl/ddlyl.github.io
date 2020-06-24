@@ -20,19 +20,19 @@
     var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="C和指针02    基础之语句空语句1; 神秘的留白 do语句123do&amp;#123;    statement&amp;#125;while(expression); switch语句1234567891011swich( command ):&amp;#123;    case &#39;A&#39;:        add_entry();        break;    case &#39;D&#39;:        delete_e">
+  <meta name="description" content="C和指针04 指针内存和地址 内存中的每个位置都由一个独一无二的地址标识 内存中的每个位置都包含一个值 硬件通过地址访问内存位置指针变量的内容以下为地址内内容的对应关系100|104|108|112|116  -|-|-|-|-|112|-1|1078523331|100|108对地址名字代替a|b|c|d|e-|-|-|-|-|112|-1|1078523331|100|108声明方式如下 12">
 <meta property="og:type" content="article">
-<meta property="og:title" content="C和指针02 基础之语句">
-<meta property="og:url" content="http://yoursite.com/2020/06/23/C%E5%92%8C%E6%8C%87%E9%92%8802%20%E5%9F%BA%E7%A1%80%E4%B9%8B%E8%AF%AD%E5%8F%A5/index.html">
+<meta property="og:title" content="C和指针04 指针">
+<meta property="og:url" content="http://yoursite.com/2020/06/24/C%E5%92%8C%E6%8C%87%E9%92%8804%20%E6%8C%87%E9%92%88/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="C和指针02    基础之语句空语句1; 神秘的留白 do语句123do&amp;#123;    statement&amp;#125;while(expression); switch语句1234567891011swich( command ):&amp;#123;    case &#39;A&#39;:        add_entry();        break;    case &#39;D&#39;:        delete_e">
+<meta property="og:description" content="C和指针04 指针内存和地址 内存中的每个位置都由一个独一无二的地址标识 内存中的每个位置都包含一个值 硬件通过地址访问内存位置指针变量的内容以下为地址内内容的对应关系100|104|108|112|116  -|-|-|-|-|112|-1|1078523331|100|108对地址名字代替a|b|c|d|e-|-|-|-|-|112|-1|1078523331|100|108声明方式如下 12">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-06-23T08:03:55.297Z">
-<meta property="article:modified_time" content="2020-06-23T08:59:45.681Z">
+<meta property="article:published_time" content="2020-06-24T01:52:53.890Z">
+<meta property="article:modified_time" content="2020-06-24T02:27:04.118Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://yoursite.com/2020/06/23/C%E5%92%8C%E6%8C%87%E9%92%8802%20%E5%9F%BA%E7%A1%80%E4%B9%8B%E8%AF%AD%E5%8F%A5/">
+<link rel="canonical" href="http://yoursite.com/2020/06/24/C%E5%92%8C%E6%8C%87%E9%92%8804%20%E6%8C%87%E9%92%88/">
 
 
 <script id="page-configurations">
@@ -45,7 +45,7 @@
   };
 </script>
 
-  <title>C和指针02 基础之语句 | Hexo</title>
+  <title>C和指针04 指针 | Hexo</title>
   
 
 
@@ -150,7 +150,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/23/C%E5%92%8C%E6%8C%87%E9%92%8802%20%E5%9F%BA%E7%A1%80%E4%B9%8B%E8%AF%AD%E5%8F%A5/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/24/C%E5%92%8C%E6%8C%87%E9%92%8804%20%E6%8C%87%E9%92%88/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -163,7 +163,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          C和指针02 基础之语句
+          C和指针04 指针
         </h1>
 
         <div class="post-meta">
@@ -174,7 +174,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2020-06-23 16:03:55 / Modified: 16:59:45" itemprop="dateCreated datePublished" datetime="2020-06-23T16:03:55+08:00">2020-06-23</time>
+              <time title="Created: 2020-06-24 09:52:53 / Modified: 10:27:04" itemprop="dateCreated datePublished" datetime="2020-06-24T09:52:53+08:00">2020-06-24</time>
             </span>
 
           
@@ -188,19 +188,16 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="C和指针02-基础之语句"><a href="#C和指针02-基础之语句" class="headerlink" title="C和指针02    基础之语句"></a>C和指针02    基础之语句</h1><h2 id="空语句"><a href="#空语句" class="headerlink" title="空语句"></a>空语句</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">;</span><br></pre></td></tr></table></figure>
-<p>神秘的留白</p>
-<h2 id="do语句"><a href="#do语句" class="headerlink" title="do语句"></a>do语句</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">do</span>&#123;</span><br><span class="line">    statement</span><br><span class="line">&#125;<span class="keyword">while</span>(expression);</span><br></pre></td></tr></table></figure>
-<h2 id="switch语句"><a href="#switch语句" class="headerlink" title="switch语句"></a>switch语句</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">swich( command ):&#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">'A'</span>:</span><br><span class="line">        add_entry();</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">'D'</span>:</span><br><span class="line">        delete_entry();</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">'P'</span>:</span><br><span class="line">        print_entry();</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>执行流程：先计算command的值，根据不同的case匹配到与求出的值相同的入口，从该入口进入执行完该case以及在其之后的全部代码(因此如果只想执行一个case就要使用break语句)。</p>
-<h3 id="default-子句"><a href="#default-子句" class="headerlink" title="default 子句"></a>default 子句</h3><p>如果表达式计算的值不予任何一个case匹配，而我们又需要这种状态，可以加入以下语句</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">default</span>:</span><br></pre></td></tr></table></figure>
-<p>注：每个switch只能有一个default语句，而且在case匹配到的时候，如果程序一路贯穿下去，也会执行default语句。</p>
-<h2 id="goto语句"><a href="#goto语句" class="headerlink" title="goto语句"></a>goto语句</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">goto</span> 语句标签；</span><br></pre></td></tr></table></figure>
-<p>goto语句要配合语句标签一起使用，语句标签是一个以冒号作为标识的语句<br>goto语句的一个小应用是跳出多层的循环嵌套，具体如下：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span>(condition1)&#123;</span><br><span class="line">    <span class="keyword">while</span>(condition2)&#123;</span><br><span class="line">        <span class="keyword">while</span>(condition3)&#123;</span><br><span class="line">            <span class="keyword">if</span>(condition)&#123;</span><br><span class="line">                <span class="keyword">goto</span> quit;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">quit: ;</span><br></pre></td></tr></table></figure>
-<p>这样便可以跳出全部循环。</p>
-
+        <h1 id="C和指针04-指针"><a href="#C和指针04-指针" class="headerlink" title="C和指针04 指针"></a>C和指针04 指针</h1><h2 id="内存和地址"><a href="#内存和地址" class="headerlink" title="内存和地址"></a>内存和地址</h2><ol>
+<li>内存中的每个位置都由一个独一无二的地址标识</li>
+<li>内存中的每个位置都包含一个值</li>
+<li>硬件通过地址访问内存位置<h2 id="指针变量的内容"><a href="#指针变量的内容" class="headerlink" title="指针变量的内容"></a>指针变量的内容</h2>以下为地址内内容的对应关系<br>100|104|108|112|116</li>
+</ol>
+<p>-|-|-|-|-|<br>112|-1|1078523331|100|108<br>对地址名字代替<br>a|b|c|d|e<br>-|-|-|-|-|<br>112|-1|1078523331|100|108<br>声明方式如下</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a = <span class="number">112</span>, b = <span class="number">-1</span>;</span><br><span class="line"><span class="keyword">float</span> c = <span class="number">3.14</span>;</span><br><span class="line"><span class="keyword">int</span> *d = &amp;a;</span><br><span class="line"><span class="keyword">float</span> *e = &amp;c;</span><br></pre></td></tr></table></figure>
+<p>c之所以在表中是一个整数，是因为他可以被解释为整数，也可以被解释为浮点数。</p>
+<p>通过上述声明，abc的值容易确定，而d、e的值则分别是a和c的地址，即100和108.</p>
+<h2 id="间接访问操作符"><a href="#间接访问操作符" class="headerlink" title="间接访问操作符"></a>间接访问操作符</h2>
     </div>
 
     
@@ -215,8 +212,8 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/06/22/C%E5%92%8C%E6%8C%87%E9%92%8801%20%E5%9F%BA%E7%A1%80%E4%B9%8B%E6%95%B0%E6%8D%AE/" rel="prev" title="C和指针01 基础之数据">
-      <i class="fa fa-chevron-left"></i> C和指针01 基础之数据
+    <a href="/2020/06/24/C%E5%92%8C%E6%8C%87%E9%92%8803%20%E6%93%8D%E4%BD%9C%E7%AC%A6%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F/" rel="prev" title="C和指针03 操作符与表达式">
+      <i class="fa fa-chevron-left"></i> C和指针03 操作符与表达式
     </a></div>
       <div class="post-nav-item"></div>
     </div>
@@ -277,7 +274,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#C和指针02-基础之语句"><span class="nav-number">1.</span> <span class="nav-text">C和指针02    基础之语句</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#空语句"><span class="nav-number">1.1.</span> <span class="nav-text">空语句</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#do语句"><span class="nav-number">1.2.</span> <span class="nav-text">do语句</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#switch语句"><span class="nav-number">1.3.</span> <span class="nav-text">switch语句</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#default-子句"><span class="nav-number">1.3.1.</span> <span class="nav-text">default 子句</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#goto语句"><span class="nav-number">1.4.</span> <span class="nav-text">goto语句</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#C和指针04-指针"><span class="nav-number">1.</span> <span class="nav-text">C和指针04 指针</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#内存和地址"><span class="nav-number">1.1.</span> <span class="nav-text">内存和地址</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#指针变量的内容"><span class="nav-number">1.2.</span> <span class="nav-text">指针变量的内容</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#间接访问操作符"><span class="nav-number">1.3.</span> <span class="nav-text">间接访问操作符</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -291,7 +288,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-count">6</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
