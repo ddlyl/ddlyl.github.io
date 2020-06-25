@@ -145,7 +145,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/24/C%E5%92%8C%E6%8C%87%E9%92%8804%20%E6%8C%87%E9%92%88/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/25/%E7%AE%97%E6%B3%95/KMP%E7%AE%97%E6%B3%95/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -159,7 +159,141 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/06/24/C%E5%92%8C%E6%8C%87%E9%92%8804%20%E6%8C%87%E9%92%88/" class="post-title-link" itemprop="url">C和指针04 指针</a>
+            <a href="/2020/06/25/%E7%AE%97%E6%B3%95/KMP%E7%AE%97%E6%B3%95/" class="post-title-link" itemprop="url">算法/KMP算法</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-06-25 20:03:56 / Modified: 20:42:50" itemprop="dateCreated datePublished" datetime="2020-06-25T20:03:56+08:00">2020-06-25</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h1><p><a href="https://www.acwing.com/problem/content/description/833/" target="_blank" rel="noopener">https://www.acwing.com/problem/content/description/833/</a><br>给定一个模式串S，以及一个模板串P，所有字符串中只包含大小写英文字母以及阿拉伯数字。<br>模板串P在模式串S中多次作为子串出现。<br>求出模板串P在模式串S中所有出现的位置的起始下标。</p>
+<p><strong>输入格式</strong><br>第一行输入整数N，表示字符串P的长度。<br>第二行输入字符串P。<br>第三行输入整数M，表示字符串S的长度。<br>第四行输入字符串S。  </p>
+<p><strong>输出格式</strong><br>共一行，输出所有出现位置的起始下标（下标从0开始计数），整数之间用空格隔开。</p>
+<p><strong>数据范围:</strong><br>1≤$N$≤$10^5$<br>1≤$M$≤$10^6$</p>
+<h1 id="暴力枚举"><a href="#暴力枚举" class="headerlink" title="暴力枚举"></a>暴力枚举</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1000010</span>;</span><br><span class="line"><span class="keyword">int</span> n,m,k;</span><br><span class="line"><span class="keyword">char</span> p[N],s[N];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;n&gt;&gt;p+<span class="number">1</span>&gt;&gt;m&gt;&gt;s+<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m; i++)<span class="comment">//i遍历s子串作为匹配起点</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> flag = <span class="number">1</span>;<span class="comment">//纪录匹配状态</span></span><br><span class="line">		k = i;<span class="comment">//k指向p子串，表示当前匹配的下标</span></span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j&lt;= n; j++)<span class="comment">//j遍历p子串</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span> (s[k] != p[j])<span class="comment">//匹配失败</span></span><br><span class="line">			&#123;</span><br><span class="line">				flag = <span class="number">0</span>;</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			k += <span class="number">1</span>;<span class="comment">//第k位可以匹配，考虑k+1位</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (flag == <span class="number">1</span>)<span class="comment">//遍历完p子串后，flag仍为真，说明全部匹配成功</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">cout</span>&lt;&lt;k - n - <span class="number">1</span> &lt;&lt;<span class="string">' '</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h1><p>考虑匹配过程中的某一个过程  </p>
+<p><img src="images/kmp-1.png" alt="Demo"></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/25/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E6%94%BF%E6%B2%BB%E5%AD%A6%E9%80%9A%E8%AF%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/06/25/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E6%94%BF%E6%B2%BB%E5%AD%A6%E9%80%9A%E8%AF%86/" class="post-title-link" itemprop="url">读书笔记/政治学通识</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-06-25 16:26:43 / Modified: 17:17:44" itemprop="dateCreated datePublished" datetime="2020-06-25T16:26:43+08:00">2020-06-25</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="什么是政治"><a href="#什么是政治" class="headerlink" title="什么是政治"></a>什么是政治</h1><h2 id="政治是国家兴衰的关键"><a href="#政治是国家兴衰的关键" class="headerlink" title="政治是国家兴衰的关键"></a>政治是国家兴衰的关键</h2><h3 id="政治与个体"><a href="#政治与个体" class="headerlink" title="政治与个体"></a>政治与个体</h3><p>亚里士多德：”人是天生的政治动物”。</p>
+<h3 id="政治与经济"><a href="#政治与经济" class="headerlink" title="政治与经济"></a>政治与经济</h3><ol>
+<li><p><strong>奥尔森《独裁、民主与发展》</strong><br>引用20世纪20年代中国军阀割据的历史。军阀混战导致流寇统治，流寇统治破坏了社会的正常激励机制，造成社会混乱。与此同时，部分地区出现流寇变成坐寇的情况，为维护长期统治，促进社会激励机制。</p>
+<p>坐寇统治的弊端：不理性(高赋税)；统治者死后的情况很难处理。</p>
+<p>解决方案：统治者的权力必须受到制约(宪政的基本原则)</p>
+</li>
+<li><p><strong>道格拉斯·诺思《经济史上的结构与变革》</strong><br>英国的制度倾向于保护财产的权力$\rightarrow$较早的出现工业革命<br>法国的制度中君主力量过大$\rightarrow$同期未出现工业革命</p>
+<p>穷国的核心是其经济增长的不连续，根本原因在于构建有效社会秩序的困难。</p>
+<h2 id="中国人的政治观"><a href="#中国人的政治观" class="headerlink" title="中国人的政治观"></a>中国人的政治观</h2><p>《说文解字》：”政，正也。”<br>《易经》:”君子安而不忘危，存而不忘亡，治而不忘乱。”<br>《书·毕命》：”道洽政治，泽润生命。”<br>《新书·大政下》：”有教然后政治也，政治然后民劝之。”<br>孙中山《民权主义》：”政是众人的事，治就是管理，管理众人之事便是政治。有管理众人之事的力量，便是政权，今以人民管理政事，便叫做民权。”<br>公共政治教科书：”政治是以经济为基础的上层建筑，是经济的集中体现，是以政治权力为核心展开的各种社会活动和社会关系的总和。”(根源是经济，实质是阶级关系，核心是政治权力)</p>
+</li>
+</ol>
+<h2 id="孔子和韩非子的分野"><a href="#孔子和韩非子的分野" class="headerlink" title="孔子和韩非子的分野"></a>孔子和韩非子的分野</h2>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/24/C%E5%92%8C%E6%8C%87%E9%92%88/04%20%E6%8C%87%E9%92%88/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/06/24/C%E5%92%8C%E6%8C%87%E9%92%88/04%20%E6%8C%87%E9%92%88/" class="post-title-link" itemprop="url">C和指针/04 指针</a>
         </h2>
 
         <div class="post-meta">
@@ -218,7 +352,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/24/C%E5%92%8C%E6%8C%87%E9%92%8803%20%E6%93%8D%E4%BD%9C%E7%AC%A6%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/24/C%E5%92%8C%E6%8C%87%E9%92%88/03%20%E6%93%8D%E4%BD%9C%E7%AC%A6%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -232,7 +366,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/06/24/C%E5%92%8C%E6%8C%87%E9%92%8803%20%E6%93%8D%E4%BD%9C%E7%AC%A6%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="post-title-link" itemprop="url">C和指针03 操作符与表达式</a>
+            <a href="/2020/06/24/C%E5%92%8C%E6%8C%87%E9%92%88/03%20%E6%93%8D%E4%BD%9C%E7%AC%A6%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="post-title-link" itemprop="url">C和指针/03 操作符与表达式</a>
         </h2>
 
         <div class="post-meta">
@@ -315,7 +449,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/23/C%E5%92%8C%E6%8C%87%E9%92%8802%20%E8%AF%AD%E5%8F%A5/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/23/C%E5%92%8C%E6%8C%87%E9%92%88/02%20%E8%AF%AD%E5%8F%A5/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -329,7 +463,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/06/23/C%E5%92%8C%E6%8C%87%E9%92%8802%20%E8%AF%AD%E5%8F%A5/" class="post-title-link" itemprop="url">C和指针02 语句</a>
+            <a href="/2020/06/23/C%E5%92%8C%E6%8C%87%E9%92%88/02%20%E8%AF%AD%E5%8F%A5/" class="post-title-link" itemprop="url">C和指针/02 语句</a>
         </h2>
 
         <div class="post-meta">
@@ -391,7 +525,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/22/C%E5%92%8C%E6%8C%87%E9%92%8801%20%E6%95%B0%E6%8D%AE/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/22/C%E5%92%8C%E6%8C%87%E9%92%88/01%20%E6%95%B0%E6%8D%AE/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -405,7 +539,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/06/22/C%E5%92%8C%E6%8C%87%E9%92%8801%20%E6%95%B0%E6%8D%AE/" class="post-title-link" itemprop="url">C和指针01 数据</a>
+            <a href="/2020/06/22/C%E5%92%8C%E6%8C%87%E9%92%88/01%20%E6%95%B0%E6%8D%AE/" class="post-title-link" itemprop="url">C和指针/01 数据</a>
         </h2>
 
         <div class="post-meta">
@@ -737,7 +871,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">6</span>
+          <span class="site-state-item-count">8</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

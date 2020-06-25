@@ -20,19 +20,19 @@
     var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="操作符算术操作符1+ - * &#x2F; % &#x2F;: 两边都是整数则执行整除，有浮点数则执行除法 位运算左移: &lt;&lt;  相当于乘以2右移: &gt;&gt;  相当于除以2    &amp; | ^ &lt;&lt; &gt;&gt;    按位与 按位或 按位异或 左移(乘2) 右移(除以2)   例子 把指定位置设为1 1value |&#x3D; 1 &lt;&lt; bit_number 把指定位">
+  <meta name="description" content="内存和地址 内存中的每个位置都由一个独一无二的地址标识 内存中的每个位置都包含一个值 硬件通过地址访问内存位置指针变量的内容以下为地址内内容的对应关系100|104|108|112|116|    -|-|-|-|-|112|-1|1078523331|100|108对地址名字代替a|b|c|d|e|-|-|-|-|-|112|-1|1078523331|100|108声明方式如下 1234int">
 <meta property="og:type" content="article">
-<meta property="og:title" content="C和指针03 操作符与表达式">
-<meta property="og:url" content="http://yoursite.com/2020/06/24/C%E5%92%8C%E6%8C%87%E9%92%8803%20%E6%93%8D%E4%BD%9C%E7%AC%A6%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F/index.html">
+<meta property="og:title" content="C和指针&#x2F;04 指针">
+<meta property="og:url" content="http://yoursite.com/2020/06/24/C%E5%92%8C%E6%8C%87%E9%92%88/04%20%E6%8C%87%E9%92%88/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="操作符算术操作符1+ - * &#x2F; % &#x2F;: 两边都是整数则执行整除，有浮点数则执行除法 位运算左移: &lt;&lt;  相当于乘以2右移: &gt;&gt;  相当于除以2    &amp; | ^ &lt;&lt; &gt;&gt;    按位与 按位或 按位异或 左移(乘2) 右移(除以2)   例子 把指定位置设为1 1value |&#x3D; 1 &lt;&lt; bit_number 把指定位">
+<meta property="og:description" content="内存和地址 内存中的每个位置都由一个独一无二的地址标识 内存中的每个位置都包含一个值 硬件通过地址访问内存位置指针变量的内容以下为地址内内容的对应关系100|104|108|112|116|    -|-|-|-|-|112|-1|1078523331|100|108对地址名字代替a|b|c|d|e|-|-|-|-|-|112|-1|1078523331|100|108声明方式如下 1234int">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-06-24T00:42:46.340Z">
-<meta property="article:modified_time" content="2020-06-25T01:14:43.360Z">
+<meta property="article:published_time" content="2020-06-24T01:52:53.890Z">
+<meta property="article:modified_time" content="2020-06-25T01:18:29.047Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://yoursite.com/2020/06/24/C%E5%92%8C%E6%8C%87%E9%92%8803%20%E6%93%8D%E4%BD%9C%E7%AC%A6%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F/">
+<link rel="canonical" href="http://yoursite.com/2020/06/24/C%E5%92%8C%E6%8C%87%E9%92%88/04%20%E6%8C%87%E9%92%88/">
 
 
 <script id="page-configurations">
@@ -45,7 +45,7 @@
   };
 </script>
 
-  <title>C和指针03 操作符与表达式 | Hexo</title>
+  <title>C和指针/04 指针 | Hexo</title>
   
 
 
@@ -150,7 +150,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/24/C%E5%92%8C%E6%8C%87%E9%92%8803%20%E6%93%8D%E4%BD%9C%E7%AC%A6%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/24/C%E5%92%8C%E6%8C%87%E9%92%88/04%20%E6%8C%87%E9%92%88/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -163,7 +163,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          C和指针03 操作符与表达式
+          C和指针/04 指针
         </h1>
 
         <div class="post-meta">
@@ -173,14 +173,14 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2020-06-24 08:42:46" itemprop="dateCreated datePublished" datetime="2020-06-24T08:42:46+08:00">2020-06-24</time>
+              <time title="Created: 2020-06-24 09:52:53" itemprop="dateCreated datePublished" datetime="2020-06-24T09:52:53+08:00">2020-06-24</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-06-25 09:14:43" itemprop="dateModified" datetime="2020-06-25T09:14:43+08:00">2020-06-25</time>
+                <time title="Modified: 2020-06-25 09:18:29" itemprop="dateModified" datetime="2020-06-25T09:18:29+08:00">2020-06-25</time>
               </span>
 
           
@@ -194,40 +194,16 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="操作符"><a href="#操作符" class="headerlink" title="操作符"></a>操作符</h1><h2 id="算术操作符"><a href="#算术操作符" class="headerlink" title="算术操作符"></a>算术操作符</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">+ - * / %</span><br></pre></td></tr></table></figure>
-<p>/: 两边都是整数则执行整除，有浮点数则执行除法</p>
-<h2 id="位运算"><a href="#位运算" class="headerlink" title="位运算"></a>位运算</h2><p>左移: &lt;&lt;  相当于乘以2<br>右移: &gt;&gt;  相当于除以2</p>
-<table>
-<thead>
-<tr>
-<th>&amp;</th>
-<th>|</th>
-<th>^</th>
-<th>&lt;&lt;</th>
-<th>&gt;&gt;</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>按位与</td>
-<td>按位或</td>
-<td>按位异或</td>
-<td>左移(乘2)</td>
-<td>右移(除以2)</td>
-</tr>
-</tbody></table>
-<h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><ol>
-<li>把指定位置设为1 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">value |= <span class="number">1</span> &lt;&lt; bit_number</span><br></pre></td></tr></table></figure></li>
-<li>把指定位清0 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">value &amp;= ~ (<span class="number">1</span> &lt;&lt; bit_number)</span><br></pre></td></tr></table></figure></li>
-<li>测试某位是否为1 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">value &amp; <span class="number">1</span> &lt;&lt; bit_number <span class="comment">//若该位为1，则返回非零值</span></span><br></pre></td></tr></table></figure></li>
-<li>返回参数值中值为1的位的个数<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">count_one_bits</span><span class="params">( <span class="keyword">unsigned</span> value )</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> ones;</span><br><span class="line">    <span class="keyword">for</span> (ones = <span class="number">0</span>; value != <span class="number">0</span>; value &gt;&gt;<span class="number">1</span> )&#123;</span><br><span class="line">        <span class="keyword">if</span>((value &amp; <span class="number">1</span>) != <span class="number">0</span>)&#123;</span><br><span class="line">            ones += <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ones;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="单目运算符"><a href="#单目运算符" class="headerlink" title="单目运算符"></a>单目运算符</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">!   ++  -   &amp;   <span class="keyword">sizeof</span>()</span><br><span class="line">~   --  -   *   (<span class="keyword">int</span>)a</span><br></pre></td></tr></table></figure>
-~ : 求补操作，原先为1的位全变成0，原先为0的位全变成1<br>&amp; : 取地址<br>* : 取指针所指向的值</li>
+        <h1 id="内存和地址"><a href="#内存和地址" class="headerlink" title="内存和地址"></a>内存和地址</h1><ol>
+<li>内存中的每个位置都由一个独一无二的地址标识</li>
+<li>内存中的每个位置都包含一个值</li>
+<li>硬件通过地址访问内存位置<h1 id="指针变量的内容"><a href="#指针变量的内容" class="headerlink" title="指针变量的内容"></a>指针变量的内容</h1>以下为地址内内容的对应关系<br>100|104|108|112|116|  </li>
 </ol>
-<h2 id="条件操作符"><a href="#条件操作符" class="headerlink" title="条件操作符"></a>条件操作符</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">expression1 ? expression2 : expression3</span><br></pre></td></tr></table></figure>
-<p>expression1 真则执行expression2，否则就执行expression3</p>
-<h2 id="左值与右值"><a href="#左值与右值" class="headerlink" title="左值与右值"></a>左值与右值</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a = b + <span class="number">25</span></span><br></pre></td></tr></table></figure>
-<p>等号左边的为左值，右边为右值</p>
-
+<p>-|-|-|-|-|<br>112|-1|1078523331|100|108<br>对地址名字代替<br>a|b|c|d|e|<br>-|-|-|-|-|<br>112|-1|1078523331|100|108<br>声明方式如下</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a = <span class="number">112</span>, b = <span class="number">-1</span>;</span><br><span class="line"><span class="keyword">float</span> c = <span class="number">3.14</span>;</span><br><span class="line"><span class="keyword">int</span> *d = &amp;a;</span><br><span class="line"><span class="keyword">float</span> *e = &amp;c;</span><br></pre></td></tr></table></figure>
+<p>c之所以在表中是一个整数，是因为他可以被解释为整数，也可以被解释为浮点数。</p>
+<p>通过上述声明，abc的值容易确定，而d、e的值则分别是a和c的地址，即100和108.</p>
+<h1 id="间接访问操作符"><a href="#间接访问操作符" class="headerlink" title="间接访问操作符"></a>间接访问操作符</h1>
     </div>
 
     
@@ -242,12 +218,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/06/23/C%E5%92%8C%E6%8C%87%E9%92%8802%20%E8%AF%AD%E5%8F%A5/" rel="prev" title="C和指针02 语句">
-      <i class="fa fa-chevron-left"></i> C和指针02 语句
+    <a href="/2020/06/24/C%E5%92%8C%E6%8C%87%E9%92%88/03%20%E6%93%8D%E4%BD%9C%E7%AC%A6%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F/" rel="prev" title="C和指针/03 操作符与表达式">
+      <i class="fa fa-chevron-left"></i> C和指针/03 操作符与表达式
     </a></div>
       <div class="post-nav-item">
-    <a href="/2020/06/24/C%E5%92%8C%E6%8C%87%E9%92%8804%20%E6%8C%87%E9%92%88/" rel="next" title="C和指针04 指针">
-      C和指针04 指针 <i class="fa fa-chevron-right"></i>
+    <a href="/2020/06/25/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E6%94%BF%E6%B2%BB%E5%AD%A6%E9%80%9A%E8%AF%86/" rel="next" title="读书笔记/政治学通识">
+      读书笔记/政治学通识 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -307,7 +283,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#操作符"><span class="nav-number">1.</span> <span class="nav-text">操作符</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#算术操作符"><span class="nav-number">1.1.</span> <span class="nav-text">算术操作符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#位运算"><span class="nav-number">1.2.</span> <span class="nav-text">位运算</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#例子"><span class="nav-number">1.2.1.</span> <span class="nav-text">例子</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#单目运算符"><span class="nav-number">1.3.</span> <span class="nav-text">单目运算符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#条件操作符"><span class="nav-number">1.4.</span> <span class="nav-text">条件操作符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#左值与右值"><span class="nav-number">1.5.</span> <span class="nav-text">左值与右值</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#内存和地址"><span class="nav-number">1.</span> <span class="nav-text">内存和地址</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#指针变量的内容"><span class="nav-number">2.</span> <span class="nav-text">指针变量的内容</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#间接访问操作符"><span class="nav-number">3.</span> <span class="nav-text">间接访问操作符</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -321,7 +297,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">6</span>
+          <span class="site-state-item-count">8</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
