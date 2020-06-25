@@ -168,10 +168,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2020-06-24 09:52:53 / Modified: 10:27:04" itemprop="dateCreated datePublished" datetime="2020-06-24T09:52:53+08:00">2020-06-24</time>
+              <time title="Created: 2020-06-24 09:52:53" itemprop="dateCreated datePublished" datetime="2020-06-24T09:52:53+08:00">2020-06-24</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-06-25 09:18:29" itemprop="dateModified" datetime="2020-06-25T09:18:29+08:00">2020-06-25</time>
+              </span>
 
           
 
@@ -184,16 +190,16 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="C和指针04-指针"><a href="#C和指针04-指针" class="headerlink" title="C和指针04 指针"></a>C和指针04 指针</h1><h2 id="内存和地址"><a href="#内存和地址" class="headerlink" title="内存和地址"></a>内存和地址</h2><ol>
+          <h1 id="内存和地址"><a href="#内存和地址" class="headerlink" title="内存和地址"></a>内存和地址</h1><ol>
 <li>内存中的每个位置都由一个独一无二的地址标识</li>
 <li>内存中的每个位置都包含一个值</li>
-<li>硬件通过地址访问内存位置<h2 id="指针变量的内容"><a href="#指针变量的内容" class="headerlink" title="指针变量的内容"></a>指针变量的内容</h2>以下为地址内内容的对应关系<br>100|104|108|112|116</li>
+<li>硬件通过地址访问内存位置<h1 id="指针变量的内容"><a href="#指针变量的内容" class="headerlink" title="指针变量的内容"></a>指针变量的内容</h1>以下为地址内内容的对应关系<br>100|104|108|112|116|  </li>
 </ol>
-<p>-|-|-|-|-|<br>112|-1|1078523331|100|108<br>对地址名字代替<br>a|b|c|d|e<br>-|-|-|-|-|<br>112|-1|1078523331|100|108<br>声明方式如下</p>
+<p>-|-|-|-|-|<br>112|-1|1078523331|100|108<br>对地址名字代替<br>a|b|c|d|e|<br>-|-|-|-|-|<br>112|-1|1078523331|100|108<br>声明方式如下</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a = <span class="number">112</span>, b = <span class="number">-1</span>;</span><br><span class="line"><span class="keyword">float</span> c = <span class="number">3.14</span>;</span><br><span class="line"><span class="keyword">int</span> *d = &amp;a;</span><br><span class="line"><span class="keyword">float</span> *e = &amp;c;</span><br></pre></td></tr></table></figure>
 <p>c之所以在表中是一个整数，是因为他可以被解释为整数，也可以被解释为浮点数。</p>
 <p>通过上述声明，abc的值容易确定，而d、e的值则分别是a和c的地址，即100和108.</p>
-<h2 id="间接访问操作符"><a href="#间接访问操作符" class="headerlink" title="间接访问操作符"></a>间接访问操作符</h2>
+<h1 id="间接访问操作符"><a href="#间接访问操作符" class="headerlink" title="间接访问操作符"></a>间接访问操作符</h1>
       
     </div>
 
@@ -235,10 +241,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2020-06-24 08:42:46 / Modified: 09:58:42" itemprop="dateCreated datePublished" datetime="2020-06-24T08:42:46+08:00">2020-06-24</time>
+              <time title="Created: 2020-06-24 08:42:46" itemprop="dateCreated datePublished" datetime="2020-06-24T08:42:46+08:00">2020-06-24</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-06-25 09:14:43" itemprop="dateModified" datetime="2020-06-25T09:14:43+08:00">2020-06-25</time>
+              </span>
 
           
 
@@ -251,9 +263,9 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="C和指针03-操作符与表达式"><a href="#C和指针03-操作符与表达式" class="headerlink" title="C和指针03 操作符与表达式"></a>C和指针03 操作符与表达式</h1><h2 id="操作符"><a href="#操作符" class="headerlink" title="操作符"></a>操作符</h2><h3 id="算术操作符"><a href="#算术操作符" class="headerlink" title="算术操作符"></a>算术操作符</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">+ - * / %</span><br></pre></td></tr></table></figure>
+          <h1 id="操作符"><a href="#操作符" class="headerlink" title="操作符"></a>操作符</h1><h2 id="算术操作符"><a href="#算术操作符" class="headerlink" title="算术操作符"></a>算术操作符</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">+ - * / %</span><br></pre></td></tr></table></figure>
 <p>/: 两边都是整数则执行整除，有浮点数则执行除法</p>
-<h3 id="位运算"><a href="#位运算" class="headerlink" title="位运算"></a>位运算</h3><p>左移: &lt;&lt;  相当于乘以2<br>右移: &gt;&gt;  相当于除以2</p>
+<h2 id="位运算"><a href="#位运算" class="headerlink" title="位运算"></a>位运算</h2><p>左移: &lt;&lt;  相当于乘以2<br>右移: &gt;&gt;  相当于除以2</p>
 <table>
 <thead>
 <tr>
@@ -272,17 +284,17 @@
 <td>右移(除以2)</td>
 </tr>
 </tbody></table>
-<h4 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h4><ol>
+<h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><ol>
 <li>把指定位置设为1 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">value |= <span class="number">1</span> &lt;&lt; bit_number</span><br></pre></td></tr></table></figure></li>
 <li>把指定位清0 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">value &amp;= ~ (<span class="number">1</span> &lt;&lt; bit_number)</span><br></pre></td></tr></table></figure></li>
 <li>测试某位是否为1 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">value &amp; <span class="number">1</span> &lt;&lt; bit_number <span class="comment">//若该位为1，则返回非零值</span></span><br></pre></td></tr></table></figure></li>
 <li>返回参数值中值为1的位的个数<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">count_one_bits</span><span class="params">( <span class="keyword">unsigned</span> value )</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> ones;</span><br><span class="line">    <span class="keyword">for</span> (ones = <span class="number">0</span>; value != <span class="number">0</span>; value &gt;&gt;<span class="number">1</span> )&#123;</span><br><span class="line">        <span class="keyword">if</span>((value &amp; <span class="number">1</span>) != <span class="number">0</span>)&#123;</span><br><span class="line">            ones += <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ones;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="单目运算符"><a href="#单目运算符" class="headerlink" title="单目运算符"></a>单目运算符</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">!   ++  -   &amp;   <span class="keyword">sizeof</span>()</span><br><span class="line">~   --  -   *   (<span class="keyword">int</span>)a</span><br></pre></td></tr></table></figure>
+<h2 id="单目运算符"><a href="#单目运算符" class="headerlink" title="单目运算符"></a>单目运算符</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">!   ++  -   &amp;   <span class="keyword">sizeof</span>()</span><br><span class="line">~   --  -   *   (<span class="keyword">int</span>)a</span><br></pre></td></tr></table></figure>
 ~ : 求补操作，原先为1的位全变成0，原先为0的位全变成1<br>&amp; : 取地址<br>* : 取指针所指向的值</li>
 </ol>
-<h3 id="条件操作符"><a href="#条件操作符" class="headerlink" title="条件操作符"></a>条件操作符</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">expression1 ? expression2 : expression3</span><br></pre></td></tr></table></figure>
+<h2 id="条件操作符"><a href="#条件操作符" class="headerlink" title="条件操作符"></a>条件操作符</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">expression1 ? expression2 : expression3</span><br></pre></td></tr></table></figure>
 <p>expression1 真则执行expression2，否则就执行expression3</p>
-<h3 id="左值与右值"><a href="#左值与右值" class="headerlink" title="左值与右值"></a>左值与右值</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a = b + <span class="number">25</span></span><br></pre></td></tr></table></figure>
+<h2 id="左值与右值"><a href="#左值与右值" class="headerlink" title="左值与右值"></a>左值与右值</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a = b + <span class="number">25</span></span><br></pre></td></tr></table></figure>
 <p>等号左边的为左值，右边为右值</p>
 
       
@@ -334,7 +346,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-06-24 08:43:29" itemprop="dateModified" datetime="2020-06-24T08:43:29+08:00">2020-06-24</time>
+                <time title="Modified: 2020-06-25 09:14:25" itemprop="dateModified" datetime="2020-06-25T09:14:25+08:00">2020-06-25</time>
               </span>
 
           
@@ -348,15 +360,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="C和指针02-语句"><a href="#C和指针02-语句" class="headerlink" title="C和指针02    语句"></a>C和指针02    语句</h1><h2 id="空语句"><a href="#空语句" class="headerlink" title="空语句"></a>空语句</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">;</span><br></pre></td></tr></table></figure>
+          <h1 id="空语句"><a href="#空语句" class="headerlink" title="空语句"></a>空语句</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">;</span><br></pre></td></tr></table></figure>
 <p>神秘的留白</p>
-<h2 id="do语句"><a href="#do语句" class="headerlink" title="do语句"></a>do语句</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">do</span>&#123;</span><br><span class="line">    statement</span><br><span class="line">&#125;<span class="keyword">while</span>(expression);</span><br></pre></td></tr></table></figure>
-<h2 id="switch语句"><a href="#switch语句" class="headerlink" title="switch语句"></a>switch语句</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">swich( command ):&#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">'A'</span>:</span><br><span class="line">        add_entry();</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">'D'</span>:</span><br><span class="line">        delete_entry();</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">'P'</span>:</span><br><span class="line">        print_entry();</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="do语句"><a href="#do语句" class="headerlink" title="do语句"></a>do语句</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">do</span>&#123;</span><br><span class="line">    statement</span><br><span class="line">&#125;<span class="keyword">while</span>(expression);</span><br></pre></td></tr></table></figure>
+<h1 id="switch语句"><a href="#switch语句" class="headerlink" title="switch语句"></a>switch语句</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">swich( command ):&#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">'A'</span>:</span><br><span class="line">        add_entry();</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">'D'</span>:</span><br><span class="line">        delete_entry();</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">'P'</span>:</span><br><span class="line">        print_entry();</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>执行流程：先计算command的值，根据不同的case匹配到与求出的值相同的入口，从该入口进入执行完该case以及在其之后的全部代码(因此如果只想执行一个case就要使用break语句)。</p>
-<h3 id="default-子句"><a href="#default-子句" class="headerlink" title="default 子句"></a>default 子句</h3><p>如果表达式计算的值不予任何一个case匹配，而我们又需要这种状态，可以加入以下语句</p>
+<h2 id="default-子句"><a href="#default-子句" class="headerlink" title="default 子句"></a>default 子句</h2><p>如果表达式计算的值不予任何一个case匹配，而我们又需要这种状态，可以加入以下语句</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">default</span>:</span><br></pre></td></tr></table></figure>
 <p>注：每个switch只能有一个default语句，而且在case匹配到的时候，如果程序一路贯穿下去，也会执行default语句。</p>
-<h2 id="goto语句"><a href="#goto语句" class="headerlink" title="goto语句"></a>goto语句</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">goto</span> 语句标签；</span><br></pre></td></tr></table></figure>
+<h1 id="goto语句"><a href="#goto语句" class="headerlink" title="goto语句"></a>goto语句</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">goto</span> 语句标签；</span><br></pre></td></tr></table></figure>
 <p>goto语句要配合语句标签一起使用，语句标签是一个以冒号作为标识的语句<br>goto语句的一个小应用是跳出多层的循环嵌套，具体如下：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span>(condition1)&#123;</span><br><span class="line">    <span class="keyword">while</span>(condition2)&#123;</span><br><span class="line">        <span class="keyword">while</span>(condition3)&#123;</span><br><span class="line">            <span class="keyword">if</span>(condition)&#123;</span><br><span class="line">                <span class="keyword">goto</span> quit;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">quit: ;</span><br></pre></td></tr></table></figure>
 <p>这样便可以跳出全部循环。</p>
@@ -410,7 +422,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-06-24 08:43:31" itemprop="dateModified" datetime="2020-06-24T08:43:31+08:00">2020-06-24</time>
+                <time title="Modified: 2020-06-25 09:14:10" itemprop="dateModified" datetime="2020-06-25T09:14:10+08:00">2020-06-25</time>
               </span>
 
           
@@ -424,9 +436,9 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="C和指针01-数据"><a href="#C和指针01-数据" class="headerlink" title="C和指针01    数据"></a>C和指针01    数据</h1><p>​变量的三个属性——作用域、链接属性、存储属性。这三个属性决定一个变量可以在什么地方用，值会被保存多久。</p>
-<h2 id="基本数据类型"><a href="#基本数据类型" class="headerlink" title="基本数据类型"></a>基本数据类型</h2><p>​         整型、浮点型、指针、聚合类型（数组和结构）</p>
-<h3 id="指针"><a href="#指针" class="headerlink" title="指针"></a>指针</h3><ol>
+          <p>变量的三个属性——作用域、链接属性、存储属性。这三个属性决定一个变量可以在什么地方用，值会被保存多久。</p>
+<h1 id="基本数据类型"><a href="#基本数据类型" class="headerlink" title="基本数据类型"></a>基本数据类型</h1><p>​         整型、浮点型、指针、聚合类型（数组和结构）</p>
+<h2 id="指针"><a href="#指针" class="headerlink" title="指针"></a>指针</h2><ol>
 <li><p>指针的声明：<code>int *a;</code></p>
 <p>此时a是一个指向int型的指针, *a产生的结果是int</p>
 <p>注：此时*要写在int空格之后，尤其是在声明多个指针变量时 <code>int* b,c,d;</code>并不是声明了三个指针变量而是只声明了b一个指针。正确语句如下：<code>int *b,*c,*d;</code></p>
@@ -441,7 +453,7 @@
 
 </li>
 </ol>
-<h2 id="typedef"><a href="#typedef" class="headerlink" title="typedef"></a>typedef</h2><p>typedef 用来为各种数据类型定义新名字。</p>
+<h1 id="typedef"><a href="#typedef" class="headerlink" title="typedef"></a>typedef</h1><p>typedef 用来为各种数据类型定义新名字。</p>
 <ol>
 <li><p>声明方式</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">char</span> *ptr_to_char;</span><br></pre></td></tr></table></figure>
@@ -458,15 +470,15 @@
 </li>
 </ol>
 <p>​       这里只有a是指针，b被声明为了一个字符</p>
-<h2 id="const"><a href="#const" class="headerlink" title="const"></a>const</h2><p>对比一下四则语句</p>
+<h1 id="const"><a href="#const" class="headerlink" title="const"></a>const</h1><p>对比一下四则语句</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> *pi;</span><br><span class="line"><span class="keyword">int</span> <span class="keyword">const</span> *pci;</span><br><span class="line"><span class="keyword">int</span> *<span class="keyword">const</span> cpi;</span><br><span class="line"><span class="keyword">int</span> <span class="keyword">const</span> *<span class="keyword">const</span> cpci;</span><br></pre></td></tr></table></figure>
 <p>pi 是一个指向整型的指针，指针和指向的值都是变量<br>pci 是一个指向整型常量的指针，这里指针是变量，指针指向的值则是常量<br>cpi 是一个指向整型变量的指针，这里指针是常量，指针指向的值则是变量<br>cpci无论是指针还是指针指向的值，都是常量</p>
-<h2 id="作用域-scope"><a href="#作用域-scope" class="headerlink" title="作用域(scope)"></a>作用域(scope)</h2><p><strong>代码块作用域</strong>：代码块内的声明，作用域为整个代码块。如果内层的代码块的一个标识符与外层代码块的标识符同名，内层的标识符会隐藏外层的标识符——外层的标识符无法在内层代码中通过名字访问。<br><strong>文件作用域</strong>：所有在代码块外的声明，作用域为这个源文件。<br><strong>原型作用域</strong>：函数原型中声明的参数名，可以随意命名。<br><strong>函数作用域</strong>：只适用于语句标签，一个函数中的所有语句标签必须唯一。</p>
-<h2 id="链接属性-linkage"><a href="#链接属性-linkage" class="headerlink" title="链接属性(linkage)"></a>链接属性(linkage)</h2><p>当不同的源文件分别被编译时，如果相同的标识符出现在不同的源文件里，此时标识符的链接属性决定他们是是指向同一个实体还是指向不同实体。</p>
-<h3 id="链接属性：external-internal-none"><a href="#链接属性：external-internal-none" class="headerlink" title="链接属性：external, internal, none"></a>链接属性：external, internal, none</h3><p>external: 类似于全局变量，无论声明多少次，位于几个源文件都表示同一个实体。</p>
+<h1 id="作用域-scope"><a href="#作用域-scope" class="headerlink" title="作用域(scope)"></a>作用域(scope)</h1><p><strong>代码块作用域</strong>：代码块内的声明，作用域为整个代码块。如果内层的代码块的一个标识符与外层代码块的标识符同名，内层的标识符会隐藏外层的标识符——外层的标识符无法在内层代码中通过名字访问。<br><strong>文件作用域</strong>：所有在代码块外的声明，作用域为这个源文件。<br><strong>原型作用域</strong>：函数原型中声明的参数名，可以随意命名。<br><strong>函数作用域</strong>：只适用于语句标签，一个函数中的所有语句标签必须唯一。</p>
+<h1 id="链接属性-linkage"><a href="#链接属性-linkage" class="headerlink" title="链接属性(linkage)"></a>链接属性(linkage)</h1><p>当不同的源文件分别被编译时，如果相同的标识符出现在不同的源文件里，此时标识符的链接属性决定他们是是指向同一个实体还是指向不同实体。</p>
+<h2 id="链接属性：external-internal-none"><a href="#链接属性：external-internal-none" class="headerlink" title="链接属性：external, internal, none"></a>链接属性：external, internal, none</h2><p>external: 类似于全局变量，无论声明多少次，位于几个源文件都表示同一个实体。</p>
 <p>internal：类似于局部变量，在同一个源文件内的所有声明都指向同一个实体，在不同源文件中则分属不同实体。</p>
 <p>none：总是被当做单独的个体。</p>
-<h3 id="链接属性之间的转换"><a href="#链接属性之间的转换" class="headerlink" title="链接属性之间的转换"></a>链接属性之间的转换</h3><p>external$\rightleftharpoons$internal  </p>
+<h2 id="链接属性之间的转换"><a href="#链接属性之间的转换" class="headerlink" title="链接属性之间的转换"></a>链接属性之间的转换</h2><p>external$\rightleftharpoons$internal  </p>
 <ol>
 <li>static:将一个正常情况下具有external属性的变量链接为internal通过以下声明方式使变量被源文件私有<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="keyword">int</span> b;</span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">int</span> <span class="title">c</span> <span class="params">(<span class="keyword">int</span> b )</span></span></span><br></pre></td></tr></table></figure></li>
 <li>extern：为一个标识符指定external链接属性，这样就可以访问在其他位置定义的这个实体<br>注：对于统一标识符的第二次及以后的声明不会改变由第一次声明所指定的链接属性<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="keyword">int</span> i;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">func</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">   <span class="keyword">int</span> j;</span><br><span class="line">   <span class="keyword">extern</span> <span class="keyword">int</span> k;</span><br><span class="line">   <span class="keyword">extern</span> <span class="keyword">int</span> i; <span class="comment">//此处变量i的链接属性不改变</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -474,18 +486,18 @@
 
 </li>
 </ol>
-<h2 id="储存类型-storage-class"><a href="#储存类型-storage-class" class="headerlink" title="储存类型(storage class)"></a>储存类型(storage class)</h2><p>变量的储存类型是指存储变量值的内存类型，变量的存储类型决定变量何时创建，合适销毁以及他的值将保持多久。储存变量的地方有以下三个：普通内存、运行时的堆栈、硬件寄存器。</p>
-<h3 id="普通内存"><a href="#普通内存" class="headerlink" title="普通内存"></a>普通内存</h3><p>凡是在任何代码块之外声明的变量总是存储在静态内存中。这类变量称为静态(static)变量。不能指定内存，在程序运行前创建，在程序的执行期间始终存在。</p>
-<h3 id="堆栈"><a href="#堆栈" class="headerlink" title="堆栈"></a>堆栈</h3><p>代码块内部的变量储存在堆栈中，称为自动(auto)变量。当程序执行到声明语句时，自动变量才被创建，当程序离开代码块后，自动变量销毁，如果多次调用，则自动变量会被反复创建，位置可能相同也可能不同。</p>
+<h1 id="储存类型-storage-class"><a href="#储存类型-storage-class" class="headerlink" title="储存类型(storage class)"></a>储存类型(storage class)</h1><p>变量的储存类型是指存储变量值的内存类型，变量的存储类型决定变量何时创建，合适销毁以及他的值将保持多久。储存变量的地方有以下三个：普通内存、运行时的堆栈、硬件寄存器。</p>
+<h2 id="普通内存"><a href="#普通内存" class="headerlink" title="普通内存"></a>普通内存</h2><p>凡是在任何代码块之外声明的变量总是存储在静态内存中。这类变量称为静态(static)变量。不能指定内存，在程序运行前创建，在程序的执行期间始终存在。</p>
+<h2 id="堆栈"><a href="#堆栈" class="headerlink" title="堆栈"></a>堆栈</h2><p>代码块内部的变量储存在堆栈中，称为自动(auto)变量。当程序执行到声明语句时，自动变量才被创建，当程序离开代码块后，自动变量销毁，如果多次调用，则自动变量会被反复创建，位置可能相同也可能不同。</p>
 <p>对于在代码块内部的变量，加上关键字ststic，可以将他的存储类型从自动变为静态，当然，修改变量的存储类型并不会改变他的作用域。</p>
 <p><em>函数的形参不能声明为静态，实参总是在堆栈中传递给函数</em></p>
-<h3 id="寄存器变量"><a href="#寄存器变量" class="headerlink" title="寄存器变量"></a>寄存器变量</h3><p>寄存器变量比用于存储于内存的变量访问起来效率要高，用register声明。但是编译器一般都会有自己的想法。寄存器变量的创建和销毁与自动变量相同。</p>
-<h3 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h3><p>静态变量初始化为0，自动变量初始化则比较随机。</p>
-<h2 id="ststic-关键字"><a href="#ststic-关键字" class="headerlink" title="ststic 关键字"></a>ststic 关键字</h2><ol>
+<h2 id="寄存器变量"><a href="#寄存器变量" class="headerlink" title="寄存器变量"></a>寄存器变量</h2><p>寄存器变量比用于存储于内存的变量访问起来效率要高，用register声明。但是编译器一般都会有自己的想法。寄存器变量的创建和销毁与自动变量相同。</p>
+<h2 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h2><p>静态变量初始化为0，自动变量初始化则比较随机。</p>
+<h1 id="ststic-关键字"><a href="#ststic-关键字" class="headerlink" title="ststic 关键字"></a>ststic 关键字</h1><ol>
 <li>当static用于函数定义是，或用于代码块之外的变量声明时，static关键字用于修改标识符的链接属性，从external到internal，标识符的存储类型和作用域不受影响。</li>
 <li>当static用于代码块内部的变量声明时，static关键字用于修改变量的存储类型，从自动变量修改为静态变量，变量的链接属性和作用域不受影响。</li>
 </ol>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><table>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><table>
 <thead>
 <tr>
 <th>变量类型</th>
