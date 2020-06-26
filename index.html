@@ -170,7 +170,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2020-06-26 09:32:53 / Modified: 10:40:04" itemprop="dateCreated datePublished" datetime="2020-06-26T09:32:53+08:00">2020-06-26</time>
+              <time title="Created: 2020-06-26 09:32:53 / Modified: 21:56:28" itemprop="dateCreated datePublished" datetime="2020-06-26T09:32:53+08:00">2020-06-26</time>
             </span>
 
           
@@ -185,119 +185,14 @@
 
       
           <h1 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h1><p><a href="https://www.acwing.com/problem/content/description/833/" target="_blank" rel="noopener">https://www.acwing.com/problem/content/description/833/</a><br>给定一个模式串S，以及一个模板串P，所有字符串中只包含大小写英文字母以及阿拉伯数字。<br>模板串P在模式串S中多次作为子串出现。<br>求出模板串P在模式串S中所有出现的位置的起始下标。</p>
-<p><strong>输入格式</strong><br>第一行输入整数N，表示字符串P的长度。<br>第二行输入字符串P。<br>第三行输入整数M，表示字符串S的长度。<br>第四行输入字符串S。  </p>
-<p><strong>输出格式</strong><br>共一行，输出所有出现位置的起始下标（下标从0开始计数），整数之间用空格隔开。</p>
-<p><strong>数据范围:</strong><br>1≤$N$≤$10^5$<br>1≤$M$≤$10^6$</p>
-<h1 id="暴力枚举"><a href="#暴力枚举" class="headerlink" title="暴力枚举"></a>暴力枚举</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1000010</span>;</span><br><span class="line"><span class="keyword">int</span> n,m,k;</span><br><span class="line"><span class="keyword">char</span> p[N],s[N];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;n&gt;&gt;p+<span class="number">1</span>&gt;&gt;m&gt;&gt;s+<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m; i++)<span class="comment">//i遍历s子串作为匹配起点</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> flag = <span class="number">1</span>;<span class="comment">//纪录匹配状态</span></span><br><span class="line">		k = i;<span class="comment">//k指向p子串，表示当前匹配的下标</span></span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j&lt;= n; j++)<span class="comment">//j遍历p子串</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span> (s[k] != p[j])<span class="comment">//匹配失败</span></span><br><span class="line">			&#123;</span><br><span class="line">				flag = <span class="number">0</span>;</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			k += <span class="number">1</span>;<span class="comment">//第k位可以匹配，考虑k+1位</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (flag == <span class="number">1</span>)<span class="comment">//遍历完p子串后，flag仍为真，说明全部匹配成功</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">cout</span>&lt;&lt;k - n - <span class="number">1</span> &lt;&lt;<span class="string">' '</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h1><p>考虑匹配过程中的某一个过程  </p>
-<p><img src="/2020/06/26/KMP%E7%AE%97%E6%B3%95/kmp-1.png" alt="图1"></p>
-<p>如图所示，1号和2号字符串完全相等，但是s的第i位和p的第j+1位并不相等，很显然这并不是一个合法的状态，那么问题的关键在于之后要怎么做？</p>
-<p>按照暴力枚举的思路，就要将p子串往右移动一位，在重新遍历搜索。这样无疑会产生很多无意义的计算，从必要条件的角度考虑，假设p往右移动后可以和s匹配(或者退一步，至少保证p右移后可以得到匹配位数更多的结果)，则一定有下列性质  </p>
-<p><img src="/2020/06/26/KMP%E7%AE%97%E6%B3%95/kmp-2.png" alt="图2"></p>
-<ol>
-<li>红色的3子串和蓝色的2子串相等，这样就保证了p的前j位可以有效匹配。</li>
-<li>红色的3子串和黑色的1子串相等，这是由第一幅图的性质得到的  </li>
-</ol>
-<p>从而我们得到，图2中的1和2子串必定相等，由于我们只是将p子串进行了右移，因此p的下标改变而s的下标并不改变。根据图1与图2的关系，图2中的子串1和子串2分别是图1中p子串前j位的一个连续的前子串和连续的后子串。在经过图1的匹配失败后，我们至少应该将p移到图二的位置，匹配才有可能继续进行下去。为了使我们将p右移的格数最少(所有可能值中最靠前的一个)我们需要找到满足上述条件的前缀和的最大值。</p>
-<p>就此，我们的问题就转化成了，对于给定的字符串p的前j位，如何预处理出一个结果k，使得p由第1位到第k位组成的子串和p由第j-k-1到第j位组成的子串相等，且k是所有取值中最大的。这就是kmp中的next数组。</p>
-<h2 id="next数组"><a href="#next数组" class="headerlink" title="next数组"></a>next数组</h2><p>下面是一个next数组的例子  </p>
-<table>
-<thead>
-<tr>
-<th>p</th>
-<th>a</th>
-<th>b</th>
-<th>a</th>
-<th>b</th>
-<th>a</th>
-<th>b</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>j</td>
-<td>1</td>
-<td>2</td>
-<td>3</td>
-<td>4</td>
-<td>5</td>
-<td>6</td>
-</tr>
-<tr>
-<td>next[j]</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>2</td>
-<td>3</td>
-<td>4</td>
-</tr>
-<tr>
-<td>子串</td>
-<td>-</td>
-<td>-</td>
-<td>a</td>
-<td>ab</td>
-<td>aba</td>
-<td>abab</td>
-</tr>
-</tbody></table>
-<p>假设图1的j等于5，p子串如表格所给。则可知s中又一个为ababa的部分，但他的后一位不是b因此不能和p匹配，这时我们要将p右移，注意到p[1:3] == p[3:5]，因此需要将p子串右移两位，即j = 3,这个3就是p子串从下标1到下标5的最大的使前缀和后缀相等的长度，即j = ne[j]。</p>
-<h2 id="kmp匹配"><a href="#kmp匹配" class="headerlink" title="kmp匹配"></a>kmp匹配</h2><p>我们先假定已经正确处理了next数组，现将kmp匹配的过程写出。(ne[j]就是next数组)</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>, j = <span class="number">0</span>; i &lt;= m; i ++ )</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">while</span> (j &amp;&amp; s[i] != p[j + <span class="number">1</span>]) j = ne[j];</span><br><span class="line">        <span class="keyword">if</span> (s[i] == p[j + <span class="number">1</span>]) j ++ ;</span><br><span class="line">        <span class="keyword">if</span> (j == n)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"%d "</span>, i - n);</span><br><span class="line">            j = ne[j];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<p>最外层的for循环，用来一位一位的枚举s串匹配的字符下标，由于整个过程我们移动的是p子串，因此对于s的匹配下标，需要通过循环来实现全部的枚举。</p>
-<p>先考虑如何从图1变到图2：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> (j &amp;&amp; s[i] != p[j + <span class="number">1</span>]) j = ne[j];</span><br></pre></td></tr></table></figure>
-<p>如果j不为0(即p子串有部分与s匹配)并且s的第i位和p的第j+1位不匹配(图1的情况)，就将j赋值成ne[j]，即将p串右移(图2的情况)，一直这样下去，直到p为0(不存在该条件下的合法状态)或者将p右移后s的第i位得到了匹配。</p>
-<p>对于第一种情况,直接进入下一次循环即可<br>对于第二种情况</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (s[i] == p[j + <span class="number">1</span>]) j ++ ;</span><br></pre></td></tr></table></figure>
-<p>说明我们将s的第i位和p的j+1位进行了匹配，在循环内部自增j，进入下一次循环(自增i)，判断下一位的匹配情况。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (j == n)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d "</span>, i - n);</span><br><span class="line">        j = ne[j];</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<p>如果j匹配完了全部的p，输出答案即可。</p>
-<p>通过i的循环，完成了kmp的匹配过程。</p>
-<h2 id="如何得到next数组"><a href="#如何得到next数组" class="headerlink" title="如何得到next数组"></a>如何得到next数组</h2><p>下面考虑如何得到next数组。    </p>
-<table>
-<thead>
-<tr>
-<th>p</th>
-<th>a</th>
-<th>b</th>
-<th>a</th>
-<th>b</th>
-<th>a</th>
-<th>b</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>i</td>
-<td>1</td>
-<td>2</td>
-<td>3</td>
-<td>4</td>
-<td>5</td>
-<td>6</td>
-</tr>
-<tr>
-<td>next[i]</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>2</td>
-<td>3</td>
-<td>4</td>
-</tr>
-<tr>
-<td>子串</td>
-<td>-</td>
-<td>-</td>
-<td>a</td>
-<td>ab</td>
-<td>aba</td>
-<td>abab</td>
-</tr>
-</tbody></table>
-<p>考虑 p 的子串，i = 1时ne[i]只能为0，因此从 i = 2 开始循环，变量 j 用来纪录最大的前缀和的长度，从0开始。注意到j的取值只和i有关，因此每次循环一次后都可以唯一的得到ne[i]的取值。与kmp的过程类似，如果 j 不为0，即前缀和后缀有部分相等但是p的第 i 位与 j + 1 位不等，这时要将j减小，减小到什么位置呢。考虑到j一定是严格小于i的，因此这时候就类似于kmp匹配的过程，将 j 变成ne[j]即可。持续移动p串直到匹配成功或者 j == 0(即前缀和与后缀和无法相等)，便得到了要求的结果。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>, j = <span class="number">0</span>; i &lt;= n; i ++ )</span><br><span class="line">   &#123;</span><br><span class="line">       <span class="keyword">while</span> (j &amp;&amp; p[i] != p[j + <span class="number">1</span>]) j = ne[j];</span><br><span class="line">       <span class="keyword">if</span> (p[i] == p[j + <span class="number">1</span>]) j ++ ;</span><br><span class="line">       ne[i] = j;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-<h1 id="完整代码"><a href="#完整代码" class="headerlink" title="完整代码"></a>完整代码</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">100010</span>, M = <span class="number">1000010</span>;</span><br><span class="line"><span class="keyword">int</span> n, m;</span><br><span class="line"><span class="keyword">int</span> ne[N];</span><br><span class="line"><span class="keyword">char</span> s[M], p[N];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n &gt;&gt; p + <span class="number">1</span> &gt;&gt; m &gt;&gt; s + <span class="number">1</span>;</span><br><span class="line">	<span class="comment">//next 数组 </span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>, j = <span class="number">0</span>; i &lt;= n; i ++ )</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">while</span> (j &amp;&amp; p[i] != p[j + <span class="number">1</span>]) j = ne[j];</span><br><span class="line">        <span class="keyword">if</span> (p[i] == p[j + <span class="number">1</span>]) j ++ ;</span><br><span class="line">        ne[i] = j;</span><br><span class="line">    &#125;</span><br><span class="line">	<span class="comment">//kmp 匹配 </span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>, j = <span class="number">0</span>; i &lt;= m; i ++ )</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">while</span> (j &amp;&amp; s[i] != p[j + <span class="number">1</span>]) j = ne[j];</span><br><span class="line">        <span class="keyword">if</span> (s[i] == p[j + <span class="number">1</span>]) j ++ ;</span><br><span class="line">        <span class="keyword">if</span> (j == n)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"%d "</span>, i - n);</span><br><span class="line">            j = ne[j];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/06/26/KMP%E7%AE%97%E6%B3%95/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -347,7 +242,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-06-26 13:15:17" itemprop="dateModified" datetime="2020-06-26T13:15:17+08:00">2020-06-26</time>
+                <time title="Modified: 2020-06-26 21:56:28" itemprop="dateModified" datetime="2020-06-26T21:56:28+08:00">2020-06-26</time>
               </span>
 
           
@@ -369,22 +264,15 @@
 </li>
 <li><p><strong>道格拉斯·诺思《经济史上的结构与变革》</strong><br>英国的制度倾向于保护财产的权力$\rightarrow$较早的出现工业革命<br>法国的制度中君主力量过大$\rightarrow$同期未出现工业革命</p>
 <p>穷国的核心是其经济增长的不连续，根本原因在于构建有效社会秩序的困难。</p>
-<h2 id="中国人的政治观"><a href="#中国人的政治观" class="headerlink" title="中国人的政治观"></a>中国人的政治观</h2><p>《说文解字》：”政，正也。”<br>《易经》:”君子安而不忘危，存而不忘亡，治而不忘乱。”<br>《书·毕命》：”道洽政治，泽润生命。”<br>《新书·大政下》：”有教然后政治也，政治然后民劝之。”<br>孙中山《民权主义》：”政是众人的事，治就是管理，管理众人之事便是政治。有管理众人之事的力量，便是政权，今以人民管理政事，便叫做民权。”<br>公共政治教科书：”政治是以经济为基础的上层建筑，是经济的集中体现，是以政治权力为核心展开的各种社会活动和社会关系的总和。”(根源是经济，实质是阶级关系，核心是政治权力)</p>
-</li>
-</ol>
-<h2 id="孔子和韩非子的分野"><a href="#孔子和韩非子的分野" class="headerlink" title="孔子和韩非子的分野"></a>孔子和韩非子的分野</h2><h3 id="儒家"><a href="#儒家" class="headerlink" title="儒家"></a>儒家</h3><p>强调政治的伦理观或政治的道德观。认为”政府是社会的榜样道德”。</p>
-<blockquote>
-<p>公曰：”敢问何为政？” 孔子对曰：”政者，正也。君为正，则百姓从政矣。君之所为，百姓之所从。君所不为，百姓何从？”   </p>
-</blockquote>
-<ol>
-<li>过度强调政治的道德性和伦理性，倡导道德约束，主张个人自律。</li>
-<li>社会的繁荣不仅依赖于自利的动机，也同样依赖于人们的美德。</li>
-</ol>
-<h3 id="法家"><a href="#法家" class="headerlink" title="法家"></a>法家</h3><blockquote>
-<p>韩非子：”国者，君之车也。”</p>
-</blockquote>
-<p>把国家视为国君的一个工具，目的是为了实现君主的欲望和抱负。并且主张赏罚分明。提出了人是自利的观点，但不同于西方自由主义强调对政治权力和掌权者进行约束。法家主要阐述君主如何利用法、术、势来进行有效统治。</p>
-
+<h2 id="中国人的政治观"><a href="#中国人的政治观" class="headerlink" title="中国人的政治观"></a>中国人的政治观</h2></li></ol>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/06/25/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E6%94%BF%E6%B2%BB%E5%AD%A6%E9%80%9A%E8%AF%86/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -434,7 +322,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-06-26 09:27:36" itemprop="dateModified" datetime="2020-06-26T09:27:36+08:00">2020-06-26</time>
+                <time title="Modified: 2020-06-26 21:56:28" itemprop="dateModified" datetime="2020-06-26T21:56:28+08:00">2020-06-26</time>
               </span>
 
           
@@ -451,50 +339,15 @@
           <h1 id="内存和地址"><a href="#内存和地址" class="headerlink" title="内存和地址"></a>内存和地址</h1><ol>
 <li>内存中的每个位置都由一个独一无二的地址标识</li>
 <li>内存中的每个位置都包含一个值</li>
-<li>硬件通过地址访问内存位置<h1 id="指针变量的内容"><a href="#指针变量的内容" class="headerlink" title="指针变量的内容"></a>指针变量的内容</h1>以下为地址内内容的对应关系</li>
-</ol>
-<table>
-<thead>
-<tr>
-<th>100</th>
-<th>104</th>
-<th>108</th>
-<th>112</th>
-<th>116</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>112</td>
-<td>-1</td>
-<td>1078523331</td>
-<td>100</td>
-<td>108</td>
-</tr>
-</tbody></table>
-<p>对地址名字代替  </p>
-<table>
-<thead>
-<tr>
-<th>a</th>
-<th>b</th>
-<th>c</th>
-<th>d</th>
-<th>e</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>112</td>
-<td>-1</td>
-<td>1078523331</td>
-<td>100</td>
-<td>108</td>
-</tr>
-</tbody></table>
-<p>声明方式如下</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a = <span class="number">112</span>, b = <span class="number">-1</span>;</span><br><span class="line"><span class="keyword">float</span> c = <span class="number">3.14</span>;</span><br><span class="line"><span class="keyword">int</span> *d = &amp;a;</span><br><span class="line"><span class="keyword">float</span> *e = &amp;c;</span><br></pre></td></tr></table></figure>
-<p>c之所以在表中是一个整数，是因为他可以被解释为整数，也可以被解释为浮点数。</p>
-<p>通过上述声明，abc的值容易确定，而d、e的值则分别是a和c的地址，即100和108.</p>
-<h1 id="间接访问操作符"><a href="#间接访问操作符" class="headerlink" title="间接访问操作符"></a>间接访问操作符</h1>
+<li>硬件通过地址访问内存位置</li></ol>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/06/24/C%E5%92%8C%E6%8C%87%E9%92%88/04%20%E6%8C%87%E9%92%88/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -544,7 +397,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-06-25 09:14:43" itemprop="dateModified" datetime="2020-06-25T09:14:43+08:00">2020-06-25</time>
+                <time title="Modified: 2020-06-26 21:56:28" itemprop="dateModified" datetime="2020-06-26T21:56:28+08:00">2020-06-26</time>
               </span>
 
           
@@ -560,38 +413,14 @@
       
           <h1 id="操作符"><a href="#操作符" class="headerlink" title="操作符"></a>操作符</h1><h2 id="算术操作符"><a href="#算术操作符" class="headerlink" title="算术操作符"></a>算术操作符</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">+ - * / %</span><br></pre></td></tr></table></figure>
 <p>/: 两边都是整数则执行整除，有浮点数则执行除法</p>
-<h2 id="位运算"><a href="#位运算" class="headerlink" title="位运算"></a>位运算</h2><p>左移: &lt;&lt;  相当于乘以2<br>右移: &gt;&gt;  相当于除以2</p>
-<table>
-<thead>
-<tr>
-<th>&amp;</th>
-<th>|</th>
-<th>^</th>
-<th>&lt;&lt;</th>
-<th>&gt;&gt;</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>按位与</td>
-<td>按位或</td>
-<td>按位异或</td>
-<td>左移(乘2)</td>
-<td>右移(除以2)</td>
-</tr>
-</tbody></table>
-<h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><ol>
-<li>把指定位置设为1 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">value |= <span class="number">1</span> &lt;&lt; bit_number</span><br></pre></td></tr></table></figure></li>
-<li>把指定位清0 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">value &amp;= ~ (<span class="number">1</span> &lt;&lt; bit_number)</span><br></pre></td></tr></table></figure></li>
-<li>测试某位是否为1 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">value &amp; <span class="number">1</span> &lt;&lt; bit_number <span class="comment">//若该位为1，则返回非零值</span></span><br></pre></td></tr></table></figure></li>
-<li>返回参数值中值为1的位的个数<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">count_one_bits</span><span class="params">( <span class="keyword">unsigned</span> value )</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> ones;</span><br><span class="line">    <span class="keyword">for</span> (ones = <span class="number">0</span>; value != <span class="number">0</span>; value &gt;&gt;<span class="number">1</span> )&#123;</span><br><span class="line">        <span class="keyword">if</span>((value &amp; <span class="number">1</span>) != <span class="number">0</span>)&#123;</span><br><span class="line">            ones += <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ones;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="单目运算符"><a href="#单目运算符" class="headerlink" title="单目运算符"></a>单目运算符</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">!   ++  -   &amp;   <span class="keyword">sizeof</span>()</span><br><span class="line">~   --  -   *   (<span class="keyword">int</span>)a</span><br></pre></td></tr></table></figure>
-~ : 求补操作，原先为1的位全变成0，原先为0的位全变成1<br>&amp; : 取地址<br>* : 取指针所指向的值</li>
-</ol>
-<h2 id="条件操作符"><a href="#条件操作符" class="headerlink" title="条件操作符"></a>条件操作符</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">expression1 ? expression2 : expression3</span><br></pre></td></tr></table></figure>
-<p>expression1 真则执行expression2，否则就执行expression3</p>
-<h2 id="左值与右值"><a href="#左值与右值" class="headerlink" title="左值与右值"></a>左值与右值</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a = b + <span class="number">25</span></span><br></pre></td></tr></table></figure>
-<p>等号左边的为左值，右边为右值</p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/06/24/C%E5%92%8C%E6%8C%87%E9%92%88/03%20%E6%93%8D%E4%BD%9C%E7%AC%A6%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -641,7 +470,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-06-25 09:14:25" itemprop="dateModified" datetime="2020-06-25T09:14:25+08:00">2020-06-25</time>
+                <time title="Modified: 2020-06-26 21:56:28" itemprop="dateModified" datetime="2020-06-26T21:56:28+08:00">2020-06-26</time>
               </span>
 
           
@@ -657,17 +486,14 @@
       
           <h1 id="空语句"><a href="#空语句" class="headerlink" title="空语句"></a>空语句</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">;</span><br></pre></td></tr></table></figure>
 <p>神秘的留白</p>
-<h1 id="do语句"><a href="#do语句" class="headerlink" title="do语句"></a>do语句</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">do</span>&#123;</span><br><span class="line">    statement</span><br><span class="line">&#125;<span class="keyword">while</span>(expression);</span><br></pre></td></tr></table></figure>
-<h1 id="switch语句"><a href="#switch语句" class="headerlink" title="switch语句"></a>switch语句</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">swich( command ):&#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">'A'</span>:</span><br><span class="line">        add_entry();</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">'D'</span>:</span><br><span class="line">        delete_entry();</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">'P'</span>:</span><br><span class="line">        print_entry();</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>执行流程：先计算command的值，根据不同的case匹配到与求出的值相同的入口，从该入口进入执行完该case以及在其之后的全部代码(因此如果只想执行一个case就要使用break语句)。</p>
-<h2 id="default-子句"><a href="#default-子句" class="headerlink" title="default 子句"></a>default 子句</h2><p>如果表达式计算的值不予任何一个case匹配，而我们又需要这种状态，可以加入以下语句</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">default</span>:</span><br></pre></td></tr></table></figure>
-<p>注：每个switch只能有一个default语句，而且在case匹配到的时候，如果程序一路贯穿下去，也会执行default语句。</p>
-<h1 id="goto语句"><a href="#goto语句" class="headerlink" title="goto语句"></a>goto语句</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">goto</span> 语句标签；</span><br></pre></td></tr></table></figure>
-<p>goto语句要配合语句标签一起使用，语句标签是一个以冒号作为标识的语句<br>goto语句的一个小应用是跳出多层的循环嵌套，具体如下：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span>(condition1)&#123;</span><br><span class="line">    <span class="keyword">while</span>(condition2)&#123;</span><br><span class="line">        <span class="keyword">while</span>(condition3)&#123;</span><br><span class="line">            <span class="keyword">if</span>(condition)&#123;</span><br><span class="line">                <span class="keyword">goto</span> quit;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">quit: ;</span><br></pre></td></tr></table></figure>
-<p>这样便可以跳出全部循环。</p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/06/23/C%E5%92%8C%E6%8C%87%E9%92%88/02%20%E8%AF%AD%E5%8F%A5/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -717,7 +543,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-06-25 09:14:10" itemprop="dateModified" datetime="2020-06-25T09:14:10+08:00">2020-06-25</time>
+                <time title="Modified: 2020-06-26 21:56:28" itemprop="dateModified" datetime="2020-06-26T21:56:28+08:00">2020-06-26</time>
               </span>
 
           
@@ -732,99 +558,14 @@
 
       
           <p>变量的三个属性——作用域、链接属性、存储属性。这三个属性决定一个变量可以在什么地方用，值会被保存多久。</p>
-<h1 id="基本数据类型"><a href="#基本数据类型" class="headerlink" title="基本数据类型"></a>基本数据类型</h1><p>​         整型、浮点型、指针、聚合类型（数组和结构）</p>
-<h2 id="指针"><a href="#指针" class="headerlink" title="指针"></a>指针</h2><ol>
-<li><p>指针的声明：<code>int *a;</code></p>
-<p>此时a是一个指向int型的指针, *a产生的结果是int</p>
-<p>注：此时*要写在int空格之后，尤其是在声明多个指针变量时 <code>int* b,c,d;</code>并不是声明了三个指针变量而是只声明了b一个指针。正确语句如下：<code>int *b,*c,*d;</code></p>
-</li>
-<li><p>在声明时为指针赋值</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> *message = <span class="string">"Hello world!"</span></span><br></pre></td></tr></table></figure>
-
-<p>注：这里的初始值并不是赋给表达式*message ，而是赋给message本身，也就是说，该声明相当于:</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> *message;</span><br><span class="line">message = <span class="string">"Hello world!"</span>;</span><br></pre></td></tr></table></figure>
-
-
-
-</li>
-</ol>
-<h1 id="typedef"><a href="#typedef" class="headerlink" title="typedef"></a>typedef</h1><p>typedef 用来为各种数据类型定义新名字。</p>
-<ol>
-<li><p>声明方式</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">char</span> *ptr_to_char;</span><br></pre></td></tr></table></figure>
-<p>该语句将<strong>ptr_to_char</strong>作为指向字符中的指针类型的新名字，在之后的程序中</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ptr_to_char a;</span><br></pre></td></tr></table></figure>
-<p>与</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> *a</span><br></pre></td></tr></table></figure>
-<p>意思相同。</p>
-</li>
-<li><p>与#define区别: </p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> d_ptr_to_char char *;</span></span><br><span class="line">d_ptr_to_char a, b;</span><br></pre></td></tr></table></figure>
-
-
-</li>
-</ol>
-<p>​       这里只有a是指针，b被声明为了一个字符</p>
-<h1 id="const"><a href="#const" class="headerlink" title="const"></a>const</h1><p>对比一下四则语句</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> *pi;</span><br><span class="line"><span class="keyword">int</span> <span class="keyword">const</span> *pci;</span><br><span class="line"><span class="keyword">int</span> *<span class="keyword">const</span> cpi;</span><br><span class="line"><span class="keyword">int</span> <span class="keyword">const</span> *<span class="keyword">const</span> cpci;</span><br></pre></td></tr></table></figure>
-<p>pi 是一个指向整型的指针，指针和指向的值都是变量<br>pci 是一个指向整型常量的指针，这里指针是变量，指针指向的值则是常量<br>cpi 是一个指向整型变量的指针，这里指针是常量，指针指向的值则是变量<br>cpci无论是指针还是指针指向的值，都是常量</p>
-<h1 id="作用域-scope"><a href="#作用域-scope" class="headerlink" title="作用域(scope)"></a>作用域(scope)</h1><p><strong>代码块作用域</strong>：代码块内的声明，作用域为整个代码块。如果内层的代码块的一个标识符与外层代码块的标识符同名，内层的标识符会隐藏外层的标识符——外层的标识符无法在内层代码中通过名字访问。<br><strong>文件作用域</strong>：所有在代码块外的声明，作用域为这个源文件。<br><strong>原型作用域</strong>：函数原型中声明的参数名，可以随意命名。<br><strong>函数作用域</strong>：只适用于语句标签，一个函数中的所有语句标签必须唯一。</p>
-<h1 id="链接属性-linkage"><a href="#链接属性-linkage" class="headerlink" title="链接属性(linkage)"></a>链接属性(linkage)</h1><p>当不同的源文件分别被编译时，如果相同的标识符出现在不同的源文件里，此时标识符的链接属性决定他们是是指向同一个实体还是指向不同实体。</p>
-<h2 id="链接属性：external-internal-none"><a href="#链接属性：external-internal-none" class="headerlink" title="链接属性：external, internal, none"></a>链接属性：external, internal, none</h2><p>external: 类似于全局变量，无论声明多少次，位于几个源文件都表示同一个实体。</p>
-<p>internal：类似于局部变量，在同一个源文件内的所有声明都指向同一个实体，在不同源文件中则分属不同实体。</p>
-<p>none：总是被当做单独的个体。</p>
-<h2 id="链接属性之间的转换"><a href="#链接属性之间的转换" class="headerlink" title="链接属性之间的转换"></a>链接属性之间的转换</h2><p>external$\rightleftharpoons$internal  </p>
-<ol>
-<li>static:将一个正常情况下具有external属性的变量链接为internal通过以下声明方式使变量被源文件私有<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="keyword">int</span> b;</span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">int</span> <span class="title">c</span> <span class="params">(<span class="keyword">int</span> b )</span></span></span><br></pre></td></tr></table></figure></li>
-<li>extern：为一个标识符指定external链接属性，这样就可以访问在其他位置定义的这个实体<br>注：对于统一标识符的第二次及以后的声明不会改变由第一次声明所指定的链接属性<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="keyword">int</span> i;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">func</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">   <span class="keyword">int</span> j;</span><br><span class="line">   <span class="keyword">extern</span> <span class="keyword">int</span> k;</span><br><span class="line">   <span class="keyword">extern</span> <span class="keyword">int</span> i; <span class="comment">//此处变量i的链接属性不改变</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-</li>
-</ol>
-<h1 id="储存类型-storage-class"><a href="#储存类型-storage-class" class="headerlink" title="储存类型(storage class)"></a>储存类型(storage class)</h1><p>变量的储存类型是指存储变量值的内存类型，变量的存储类型决定变量何时创建，合适销毁以及他的值将保持多久。储存变量的地方有以下三个：普通内存、运行时的堆栈、硬件寄存器。</p>
-<h2 id="普通内存"><a href="#普通内存" class="headerlink" title="普通内存"></a>普通内存</h2><p>凡是在任何代码块之外声明的变量总是存储在静态内存中。这类变量称为静态(static)变量。不能指定内存，在程序运行前创建，在程序的执行期间始终存在。</p>
-<h2 id="堆栈"><a href="#堆栈" class="headerlink" title="堆栈"></a>堆栈</h2><p>代码块内部的变量储存在堆栈中，称为自动(auto)变量。当程序执行到声明语句时，自动变量才被创建，当程序离开代码块后，自动变量销毁，如果多次调用，则自动变量会被反复创建，位置可能相同也可能不同。</p>
-<p>对于在代码块内部的变量，加上关键字ststic，可以将他的存储类型从自动变为静态，当然，修改变量的存储类型并不会改变他的作用域。</p>
-<p><em>函数的形参不能声明为静态，实参总是在堆栈中传递给函数</em></p>
-<h2 id="寄存器变量"><a href="#寄存器变量" class="headerlink" title="寄存器变量"></a>寄存器变量</h2><p>寄存器变量比用于存储于内存的变量访问起来效率要高，用register声明。但是编译器一般都会有自己的想法。寄存器变量的创建和销毁与自动变量相同。</p>
-<h2 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h2><p>静态变量初始化为0，自动变量初始化则比较随机。</p>
-<h1 id="ststic-关键字"><a href="#ststic-关键字" class="headerlink" title="ststic 关键字"></a>ststic 关键字</h1><ol>
-<li>当static用于函数定义是，或用于代码块之外的变量声明时，static关键字用于修改标识符的链接属性，从external到internal，标识符的存储类型和作用域不受影响。</li>
-<li>当static用于代码块内部的变量声明时，static关键字用于修改变量的存储类型，从自动变量修改为静态变量，变量的链接属性和作用域不受影响。</li>
-</ol>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><table>
-<thead>
-<tr>
-<th>变量类型</th>
-<th>声明的位置</th>
-<th>是否存于堆栈</th>
-<th>作用域</th>
-<th>如果声明为static</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>全局</td>
-<td>所有代码块之外</td>
-<td>否</td>
-<td>从声明到文件尾</td>
-<td>不允许从其他源文件访问</td>
-</tr>
-<tr>
-<td>局部</td>
-<td>代码块起始处</td>
-<td>是</td>
-<td>整个代码块</td>
-<td>不存储与堆栈中</td>
-</tr>
-<tr>
-<td>形式参数</td>
-<td>函数头部</td>
-<td>是</td>
-<td>正割函数</td>
-<td>不允许</td>
-</tr>
-</tbody></table>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/06/22/C%E5%92%8C%E6%8C%87%E9%92%88/01%20%E6%95%B0%E6%8D%AE/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
