@@ -145,7 +145,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/25/%E7%AE%97%E6%B3%95/KMP%E7%AE%97%E6%B3%95/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/26/KMP%E7%AE%97%E6%B3%95/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -159,7 +159,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/06/25/%E7%AE%97%E6%B3%95/KMP%E7%AE%97%E6%B3%95/" class="post-title-link" itemprop="url">算法/KMP算法</a>
+            <a href="/2020/06/26/KMP%E7%AE%97%E6%B3%95/" class="post-title-link" itemprop="url">KMP算法</a>
         </h2>
 
         <div class="post-meta">
@@ -170,7 +170,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2020-06-25 20:03:56 / Modified: 20:42:50" itemprop="dateCreated datePublished" datetime="2020-06-25T20:03:56+08:00">2020-06-25</time>
+              <time title="Created: 2020-06-26 09:32:53 / Modified: 09:34:56" itemprop="dateCreated datePublished" datetime="2020-06-26T09:32:53+08:00">2020-06-26</time>
             </span>
 
           
@@ -190,8 +190,114 @@
 <p><strong>数据范围:</strong><br>1≤$N$≤$10^5$<br>1≤$M$≤$10^6$</p>
 <h1 id="暴力枚举"><a href="#暴力枚举" class="headerlink" title="暴力枚举"></a>暴力枚举</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1000010</span>;</span><br><span class="line"><span class="keyword">int</span> n,m,k;</span><br><span class="line"><span class="keyword">char</span> p[N],s[N];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;n&gt;&gt;p+<span class="number">1</span>&gt;&gt;m&gt;&gt;s+<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m; i++)<span class="comment">//i遍历s子串作为匹配起点</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> flag = <span class="number">1</span>;<span class="comment">//纪录匹配状态</span></span><br><span class="line">		k = i;<span class="comment">//k指向p子串，表示当前匹配的下标</span></span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j&lt;= n; j++)<span class="comment">//j遍历p子串</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span> (s[k] != p[j])<span class="comment">//匹配失败</span></span><br><span class="line">			&#123;</span><br><span class="line">				flag = <span class="number">0</span>;</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			k += <span class="number">1</span>;<span class="comment">//第k位可以匹配，考虑k+1位</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (flag == <span class="number">1</span>)<span class="comment">//遍历完p子串后，flag仍为真，说明全部匹配成功</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">cout</span>&lt;&lt;k - n - <span class="number">1</span> &lt;&lt;<span class="string">' '</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h1 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h1><p>考虑匹配过程中的某一个过程  </p>
-<p><img src="images/kmp-1.png" alt="Demo"></p>
-
+<p><img src="/2020/06/26/KMP%E7%AE%97%E6%B3%95/kmp-1.png" alt="图1"></p>
+<p>如图所示，1号和2号字符串完全相等，但是s的第i位和p的第j+1位并不相等，很显然这并不是一个合法的状态，那么问题的关键在于之后要怎么做？</p>
+<p>按照暴力枚举的思路，就要将p子串往右移动一位，在重新遍历搜索。这样无疑会产生很多无意义的计算，从必要条件的角度考虑，假设p往右移动后可以和s匹配(或者退一步，至少保证p右移后可以得到匹配位数更多的结果)，则一定有下列性质  </p>
+<p><img src="/2020/06/26/KMP%E7%AE%97%E6%B3%95/kmp-2.png" alt="图2"></p>
+<ol>
+<li>红色的3子串和蓝色的2子串相等，这样就保证了p的前j位可以有效匹配。</li>
+<li>红色的3子串和黑色的1子串相等，这是由第一幅图的性质得到的  </li>
+</ol>
+<p>从而我们得到，图2中的1和2子串必定相等，由于我们只是将p子串进行了右移，因此p的下标改变而s的下标并不改变。根据图1与图2的关系，图2中的子串1和子串2分别是图1中p子串前j位的一个连续的前子串和连续的后子串。在经过图1的匹配失败后，我们至少应该将p移到图二的位置，匹配才有可能继续进行下去。为了使我们将p右移的格数最少(所有可能值中最靠前的一个)我们需要找到满足上述条件的前缀和的最大值。</p>
+<p>就此，我们的问题就转化成了，对于给定的字符串p的前j位，如何预处理出一个结果k，使得p由第1位到第k位组成的子串和p由第j-k-1到第j位组成的子串相等，且k是所有取值中最大的。这就是kmp中的next数组。</p>
+<h2 id="next数组"><a href="#next数组" class="headerlink" title="next数组"></a>next数组</h2><p>下面是一个next数组的例子  </p>
+<table>
+<thead>
+<tr>
+<th>p</th>
+<th>a</th>
+<th>b</th>
+<th>a</th>
+<th>b</th>
+<th>a</th>
+<th>b</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>j</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+</tr>
+<tr>
+<td>next[j]</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+</tr>
+<tr>
+<td>子串</td>
+<td>-</td>
+<td>-</td>
+<td>a</td>
+<td>ab</td>
+<td>aba</td>
+<td>abab</td>
+</tr>
+</tbody></table>
+<p>假设图1的j等于5，p子串如表格所给。则可知s中又一个为ababa的部分，但他的后一位不是b因此不能和p匹配，这时我们要将p右移，注意到p[1:3] == p[3:5]，因此需要将p子串右移两位，即j = 3,这个3就是p子串从下标1到下标5的最大的使前缀和后缀相等的长度，即j = ne[j]。</p>
+<h2 id="kmp匹配"><a href="#kmp匹配" class="headerlink" title="kmp匹配"></a>kmp匹配</h2><p>我们先假定已经正确处理了next数组，现将kmp匹配的过程写出。(ne[j]就是next数组)</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>, j = <span class="number">0</span>; i &lt;= m; i ++ )</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">while</span> (j &amp;&amp; s[i] != p[j + <span class="number">1</span>]) j = ne[j];</span><br><span class="line">        <span class="keyword">if</span> (s[i] == p[j + <span class="number">1</span>]) j ++ ;</span><br><span class="line">        <span class="keyword">if</span> (j == n)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"%d "</span>, i - n);</span><br><span class="line">            j = ne[j];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>最外层的for循环，用来一位一位的枚举s串匹配的字符下标，由于整个过程我们移动的是p子串，因此对于s的匹配下标，需要通过循环来实现全部的枚举。</p>
+<p>先考虑如何从图1变到图2：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> (j &amp;&amp; s[i] != p[j + <span class="number">1</span>]) j = ne[j];</span><br></pre></td></tr></table></figure>
+<p>如果j不为0(即p子串有部分与s匹配)并且s的第i位和p的第j+1位不匹配(图1的情况)，就将j赋值成ne[j]，即将p串右移(图2的情况)，一直这样下去，直到p为0(不存在该条件下的合法状态)或者将p右移后s的第i位得到了匹配。</p>
+<p>对于第一种情况,直接进入下一次循环即可<br>对于第二种情况</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (s[i] == p[j + <span class="number">1</span>]) j ++ ;</span><br></pre></td></tr></table></figure>
+<p>说明我们将s的第i位和p的j+1位进行了匹配，在循环内部自增j，进入下一次循环(自增i)，判断下一位的匹配情况。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (j == n)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d "</span>, i - n);</span><br><span class="line">        j = ne[j];</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>如果j匹配完了全部的p，输出答案即可。</p>
+<p>通过i的循环，完成了kmp的匹配过程。</p>
+<h2 id="next数组-1"><a href="#next数组-1" class="headerlink" title="next数组"></a>next数组</h2><p>下面考虑如何得到next数组。    </p>
+<table>
+<thead>
+<tr>
+<th>p</th>
+<th>a</th>
+<th>b</th>
+<th>a</th>
+<th>b</th>
+<th>a</th>
+<th>b</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>i</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+</tr>
+<tr>
+<td>next[i]</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+</tr>
+<tr>
+<td>子串</td>
+<td>-</td>
+<td>-</td>
+<td>a</td>
+<td>ab</td>
+<td>aba</td>
+<td>abab</td>
+</tr>
+</tbody></table>
+<p>考虑 p 的子串，i = 1时ne[i]只能为0，因此从 i = 2 开始循环，变量 j 用来纪录最大的前缀和的长度，从0开始。注意到j的取值只和i有关，因此每次循环一次后都可以唯一的得到ne[i]的取值。与kmp的过程类似，如果 j 不为0，即前缀和后缀有部分相等但是p的第 i 位与 j + 1 位不等，这时要将j减小，减小到什么位置呢。考虑到j一定是严格小于i的，因此这时候就类似于kmp匹配的过程，将 j 变成ne[j]即可。持续移动p串直到匹配成功或者 j == 0(即前缀和与后缀和无法相等)，便得到了要求的结果。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>, j = <span class="number">0</span>; i &lt;= n; i ++ )</span><br><span class="line">   &#123;</span><br><span class="line">       <span class="keyword">while</span> (j &amp;&amp; p[i] != p[j + <span class="number">1</span>]) j = ne[j];</span><br><span class="line">       <span class="keyword">if</span> (p[i] == p[j + <span class="number">1</span>]) j ++ ;</span><br><span class="line">       ne[i] = j;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<h1 id="完整代码"><a href="#完整代码" class="headerlink" title="完整代码"></a>完整代码</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">100010</span>, M = <span class="number">1000010</span>;</span><br><span class="line"><span class="keyword">int</span> n, m;</span><br><span class="line"><span class="keyword">int</span> ne[N];</span><br><span class="line"><span class="keyword">char</span> s[M], p[N];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n &gt;&gt; p + <span class="number">1</span> &gt;&gt; m &gt;&gt; s + <span class="number">1</span>;</span><br><span class="line">	<span class="comment">//next 数组 </span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>, j = <span class="number">0</span>; i &lt;= n; i ++ )</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">while</span> (j &amp;&amp; p[i] != p[j + <span class="number">1</span>]) j = ne[j];</span><br><span class="line">        <span class="keyword">if</span> (p[i] == p[j + <span class="number">1</span>]) j ++ ;</span><br><span class="line">        ne[i] = j;</span><br><span class="line">    &#125;</span><br><span class="line">	<span class="comment">//kmp 匹配 </span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>, j = <span class="number">0</span>; i &lt;= m; i ++ )</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">while</span> (j &amp;&amp; s[i] != p[j + <span class="number">1</span>]) j = ne[j];</span><br><span class="line">        <span class="keyword">if</span> (s[i] == p[j + <span class="number">1</span>]) j ++ ;</span><br><span class="line">        <span class="keyword">if</span> (j == n)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"%d "</span>, i - n);</span><br><span class="line">            j = ne[j];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -310,7 +416,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-06-25 09:18:29" itemprop="dateModified" datetime="2020-06-25T09:18:29+08:00">2020-06-25</time>
+                <time title="Modified: 2020-06-26 09:27:36" itemprop="dateModified" datetime="2020-06-26T09:27:36+08:00">2020-06-26</time>
               </span>
 
           
@@ -327,9 +433,46 @@
           <h1 id="内存和地址"><a href="#内存和地址" class="headerlink" title="内存和地址"></a>内存和地址</h1><ol>
 <li>内存中的每个位置都由一个独一无二的地址标识</li>
 <li>内存中的每个位置都包含一个值</li>
-<li>硬件通过地址访问内存位置<h1 id="指针变量的内容"><a href="#指针变量的内容" class="headerlink" title="指针变量的内容"></a>指针变量的内容</h1>以下为地址内内容的对应关系<br>100|104|108|112|116|  </li>
+<li>硬件通过地址访问内存位置<h1 id="指针变量的内容"><a href="#指针变量的内容" class="headerlink" title="指针变量的内容"></a>指针变量的内容</h1>以下为地址内内容的对应关系</li>
 </ol>
-<p>-|-|-|-|-|<br>112|-1|1078523331|100|108<br>对地址名字代替<br>a|b|c|d|e|<br>-|-|-|-|-|<br>112|-1|1078523331|100|108<br>声明方式如下</p>
+<table>
+<thead>
+<tr>
+<th>100</th>
+<th>104</th>
+<th>108</th>
+<th>112</th>
+<th>116</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>112</td>
+<td>-1</td>
+<td>1078523331</td>
+<td>100</td>
+<td>108</td>
+</tr>
+</tbody></table>
+<p>对地址名字代替  </p>
+<table>
+<thead>
+<tr>
+<th>a</th>
+<th>b</th>
+<th>c</th>
+<th>d</th>
+<th>e</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>112</td>
+<td>-1</td>
+<td>1078523331</td>
+<td>100</td>
+<td>108</td>
+</tr>
+</tbody></table>
+<p>声明方式如下</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a = <span class="number">112</span>, b = <span class="number">-1</span>;</span><br><span class="line"><span class="keyword">float</span> c = <span class="number">3.14</span>;</span><br><span class="line"><span class="keyword">int</span> *d = &amp;a;</span><br><span class="line"><span class="keyword">float</span> *e = &amp;c;</span><br></pre></td></tr></table></figure>
 <p>c之所以在表中是一个整数，是因为他可以被解释为整数，也可以被解释为浮点数。</p>
 <p>通过上述声明，abc的值容易确定，而d、e的值则分别是a和c的地址，即100和108.</p>

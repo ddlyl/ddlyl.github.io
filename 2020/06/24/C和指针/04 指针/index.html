@@ -20,15 +20,15 @@
     var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="内存和地址 内存中的每个位置都由一个独一无二的地址标识 内存中的每个位置都包含一个值 硬件通过地址访问内存位置指针变量的内容以下为地址内内容的对应关系100|104|108|112|116|    -|-|-|-|-|112|-1|1078523331|100|108对地址名字代替a|b|c|d|e|-|-|-|-|-|112|-1|1078523331|100|108声明方式如下 1234int">
+  <meta name="description" content="内存和地址 内存中的每个位置都由一个独一无二的地址标识 内存中的每个位置都包含一个值 硬件通过地址访问内存位置指针变量的内容以下为地址内内容的对应关系     100 104 108 112 116    112 -1 1078523331 100 108   对地址名字代替      a b c d e    112 -1 1078523331 100 108   声明方式如下 1234int">
 <meta property="og:type" content="article">
 <meta property="og:title" content="C和指针&#x2F;04 指针">
 <meta property="og:url" content="http://yoursite.com/2020/06/24/C%E5%92%8C%E6%8C%87%E9%92%88/04%20%E6%8C%87%E9%92%88/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="内存和地址 内存中的每个位置都由一个独一无二的地址标识 内存中的每个位置都包含一个值 硬件通过地址访问内存位置指针变量的内容以下为地址内内容的对应关系100|104|108|112|116|    -|-|-|-|-|112|-1|1078523331|100|108对地址名字代替a|b|c|d|e|-|-|-|-|-|112|-1|1078523331|100|108声明方式如下 1234int">
+<meta property="og:description" content="内存和地址 内存中的每个位置都由一个独一无二的地址标识 内存中的每个位置都包含一个值 硬件通过地址访问内存位置指针变量的内容以下为地址内内容的对应关系     100 104 108 112 116    112 -1 1078523331 100 108   对地址名字代替      a b c d e    112 -1 1078523331 100 108   声明方式如下 1234int">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-06-24T01:52:53.890Z">
-<meta property="article:modified_time" content="2020-06-25T01:18:29.047Z">
+<meta property="article:modified_time" content="2020-06-26T01:27:36.858Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 
@@ -180,7 +180,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-06-25 09:18:29" itemprop="dateModified" datetime="2020-06-25T09:18:29+08:00">2020-06-25</time>
+                <time title="Modified: 2020-06-26 09:27:36" itemprop="dateModified" datetime="2020-06-26T09:27:36+08:00">2020-06-26</time>
               </span>
 
           
@@ -197,9 +197,46 @@
         <h1 id="内存和地址"><a href="#内存和地址" class="headerlink" title="内存和地址"></a>内存和地址</h1><ol>
 <li>内存中的每个位置都由一个独一无二的地址标识</li>
 <li>内存中的每个位置都包含一个值</li>
-<li>硬件通过地址访问内存位置<h1 id="指针变量的内容"><a href="#指针变量的内容" class="headerlink" title="指针变量的内容"></a>指针变量的内容</h1>以下为地址内内容的对应关系<br>100|104|108|112|116|  </li>
+<li>硬件通过地址访问内存位置<h1 id="指针变量的内容"><a href="#指针变量的内容" class="headerlink" title="指针变量的内容"></a>指针变量的内容</h1>以下为地址内内容的对应关系</li>
 </ol>
-<p>-|-|-|-|-|<br>112|-1|1078523331|100|108<br>对地址名字代替<br>a|b|c|d|e|<br>-|-|-|-|-|<br>112|-1|1078523331|100|108<br>声明方式如下</p>
+<table>
+<thead>
+<tr>
+<th>100</th>
+<th>104</th>
+<th>108</th>
+<th>112</th>
+<th>116</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>112</td>
+<td>-1</td>
+<td>1078523331</td>
+<td>100</td>
+<td>108</td>
+</tr>
+</tbody></table>
+<p>对地址名字代替  </p>
+<table>
+<thead>
+<tr>
+<th>a</th>
+<th>b</th>
+<th>c</th>
+<th>d</th>
+<th>e</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>112</td>
+<td>-1</td>
+<td>1078523331</td>
+<td>100</td>
+<td>108</td>
+</tr>
+</tbody></table>
+<p>声明方式如下</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a = <span class="number">112</span>, b = <span class="number">-1</span>;</span><br><span class="line"><span class="keyword">float</span> c = <span class="number">3.14</span>;</span><br><span class="line"><span class="keyword">int</span> *d = &amp;a;</span><br><span class="line"><span class="keyword">float</span> *e = &amp;c;</span><br></pre></td></tr></table></figure>
 <p>c之所以在表中是一个整数，是因为他可以被解释为整数，也可以被解释为浮点数。</p>
 <p>通过上述声明，abc的值容易确定，而d、e的值则分别是a和c的地址，即100和108.</p>
