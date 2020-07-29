@@ -32,8 +32,10 @@
 <meta property="og:image" content="http://luyilin.top/2020/07/28/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/Data%20Preprocessing/3.JPG">
 <meta property="og:image" content="http://luyilin.top/2020/07/28/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/Data%20Preprocessing/4.JPG">
 <meta property="og:image" content="http://luyilin.top/2020/07/28/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/Data%20Preprocessing/5.JPG">
+<meta property="og:image" content="http://luyilin.top/2020/07/28/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/Data%20Preprocessing/6.JPG">
+<meta property="og:image" content="http://luyilin.top/2020/07/28/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/Data%20Preprocessing/7.JPG">
 <meta property="article:published_time" content="2020-07-28T11:39:52.429Z">
-<meta property="article:modified_time" content="2020-07-28T13:44:23.296Z">
+<meta property="article:modified_time" content="2020-07-29T12:57:04.592Z">
 <meta property="article:author" content="luyilin">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://luyilin.top/2020/07/28/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/Data%20Preprocessing/1.JPG">
@@ -183,10 +185,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2020-07-28 19:39:52 / Modified: 21:44:23" itemprop="dateCreated datePublished" datetime="2020-07-28T19:39:52+08:00">2020-07-28</time>
+              <time title="Created: 2020-07-28 19:39:52" itemprop="dateCreated datePublished" datetime="2020-07-28T19:39:52+08:00">2020-07-28</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-07-29 20:57:04" itemprop="dateModified" datetime="2020-07-29T20:57:04+08:00">2020-07-29</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -252,7 +260,19 @@
 <li>逐渐扩张找最好属性</li>
 <li>逐渐递减</li>
 </ul>
-<h1 id="Feature-Extraction-主成分分析"><a href="#Feature-Extraction-主成分分析" class="headerlink" title="Feature Extraction(主成分分析)"></a>Feature Extraction(主成分分析)</h1>
+<h1 id="Feature-Extraction"><a href="#Feature-Extraction" class="headerlink" title="Feature Extraction"></a>Feature Extraction</h1><h2 id="主成分分析-PCA（Principal-Component-Analysis）-降维"><a href="#主成分分析-PCA（Principal-Component-Analysis）-降维" class="headerlink" title="主成分分析 PCA（Principal Component Analysis） 降维"></a>主成分分析 PCA（Principal Component Analysis） 降维</h2><ul>
+<li>若某个属性的方差越大：则说明该属性越重要</li>
+</ul>
+<p><img src="/2020/07/28/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/Data%20Preprocessing/6.JPG" alt="6"></p>
+<p>坐标变换</p>
+<p><img src="/2020/07/28/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/Data%20Preprocessing/7.JPG" alt="7"></p>
+<p><strong><em>数学推导</em></strong></p>
+<p>PCA：<br>To project the original data to the eigenvectors of S with the largest eigenvalues.</p>
+<p>不考虑数据的类，可能会把数据投影到一起</p>
+<h2 id="对于有标签的数据：LDA"><a href="#对于有标签的数据：LDA" class="headerlink" title="对于有标签的数据：LDA"></a>对于有标签的数据：LDA</h2><p>表示区分信息，不同类的数据尽可能远，相同的数据尽可能的近</p>
+<p>$$J=\frac{\left|\mu_{1}-\mu_{2}\right|^{2}}{S_{1}^{2}+S_{2}^{2}}$$</p>
+<p>想要J最大化</p>
+<h2 id="C-Class-LDA"><a href="#C-Class-LDA" class="headerlink" title="C-Class LDA"></a>C-Class LDA</h2>
     </div>
 
     
@@ -270,7 +290,10 @@
     <a href="/2020/07/23/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/Introduction/" rel="prev" title="数据挖掘/Introduction">
       <i class="fa fa-chevron-left"></i> 数据挖掘/Introduction
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2020/07/29/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E5%9B%BE/" rel="next" title="数据结构/图">
+      数据结构/图 <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -329,7 +352,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Data-Cleansing"><span class="nav-number">1.</span> <span class="nav-text">Data Cleansing</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Missing-Data"><span class="nav-number">1.1.</span> <span class="nav-text">Missing Data</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Outliers（离群点）"><span class="nav-number">1.2.</span> <span class="nav-text">Outliers（离群点）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Duplicate-Data（相同的信息）"><span class="nav-number">1.3.</span> <span class="nav-text">Duplicate Data（相同的信息）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Data-Transformation"><span class="nav-number">2.</span> <span class="nav-text">Data Transformation</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#转换类型"><span class="nav-number">2.1.</span> <span class="nav-text">转换类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据简化"><span class="nav-number">2.2.</span> <span class="nav-text">数据简化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#不平衡数据集"><span class="nav-number">2.3.</span> <span class="nav-text">不平衡数据集</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Over-Sampling"><span class="nav-number">2.4.</span> <span class="nav-text">Over-Sampling</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Boundary-Sampling"><span class="nav-number">2.5.</span> <span class="nav-text">Boundary Sampling</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Normalization（标准化）"><span class="nav-number">2.6.</span> <span class="nav-text">Normalization（标准化）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Data-Description"><span class="nav-number">3.</span> <span class="nav-text">Data Description</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Feature-Selection（特征选择）"><span class="nav-number">4.</span> <span class="nav-text">Feature Selection（特征选择）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#熵"><span class="nav-number">4.1.</span> <span class="nav-text">熵</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Feature-Subset-Search（寻找最好属性）"><span class="nav-number">4.2.</span> <span class="nav-text">Feature Subset Search（寻找最好属性）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Feature-Extraction-主成分分析"><span class="nav-number">5.</span> <span class="nav-text">Feature Extraction(主成分分析)</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Data-Cleansing"><span class="nav-number">1.</span> <span class="nav-text">Data Cleansing</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Missing-Data"><span class="nav-number">1.1.</span> <span class="nav-text">Missing Data</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Outliers（离群点）"><span class="nav-number">1.2.</span> <span class="nav-text">Outliers（离群点）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Duplicate-Data（相同的信息）"><span class="nav-number">1.3.</span> <span class="nav-text">Duplicate Data（相同的信息）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Data-Transformation"><span class="nav-number">2.</span> <span class="nav-text">Data Transformation</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#转换类型"><span class="nav-number">2.1.</span> <span class="nav-text">转换类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据简化"><span class="nav-number">2.2.</span> <span class="nav-text">数据简化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#不平衡数据集"><span class="nav-number">2.3.</span> <span class="nav-text">不平衡数据集</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Over-Sampling"><span class="nav-number">2.4.</span> <span class="nav-text">Over-Sampling</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Boundary-Sampling"><span class="nav-number">2.5.</span> <span class="nav-text">Boundary Sampling</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Normalization（标准化）"><span class="nav-number">2.6.</span> <span class="nav-text">Normalization（标准化）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Data-Description"><span class="nav-number">3.</span> <span class="nav-text">Data Description</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Feature-Selection（特征选择）"><span class="nav-number">4.</span> <span class="nav-text">Feature Selection（特征选择）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#熵"><span class="nav-number">4.1.</span> <span class="nav-text">熵</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Feature-Subset-Search（寻找最好属性）"><span class="nav-number">4.2.</span> <span class="nav-text">Feature Subset Search（寻找最好属性）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Feature-Extraction"><span class="nav-number">5.</span> <span class="nav-text">Feature Extraction</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#主成分分析-PCA（Principal-Component-Analysis）-降维"><span class="nav-number">5.1.</span> <span class="nav-text">主成分分析 PCA（Principal Component Analysis） 降维</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对于有标签的数据：LDA"><span class="nav-number">5.2.</span> <span class="nav-text">对于有标签的数据：LDA</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C-Class-LDA"><span class="nav-number">5.3.</span> <span class="nav-text">C-Class LDA</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -343,7 +366,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">28</span>
+          <span class="site-state-item-count">29</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

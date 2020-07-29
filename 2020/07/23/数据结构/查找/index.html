@@ -28,7 +28,7 @@
 <meta property="og:description" content="重点">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-07-23T06:16:01.041Z">
-<meta property="article:modified_time" content="2020-07-25T06:36:00.647Z">
+<meta property="article:modified_time" content="2020-07-29T07:02:27.337Z">
 <meta property="article:author" content="luyilin">
 <meta name="twitter:card" content="summary">
 
@@ -185,7 +185,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-07-25 14:36:00" itemprop="dateModified" datetime="2020-07-25T14:36:00+08:00">2020-07-25</time>
+                <time title="Modified: 2020-07-29 15:02:27" itemprop="dateModified" datetime="2020-07-29T15:02:27+08:00">2020-07-29</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -234,11 +234,56 @@
 </ul>
 <p>兼顾查找和插入、删除操作的效率？</p>
 <p>二叉排序树$O(log_2n)$，但有可能退化成一条链$O(n)$</p>
-<h1 id="Trie-树"><a href="#Trie-树" class="headerlink" title="Trie 树"></a>Trie 树</h1><h2 id="结点"><a href="#结点" class="headerlink" title="结点"></a>结点</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">tnode</span> &#123;</span>	<span class="comment">// word tree </span></span><br><span class="line">    <span class="keyword">char</span> isword;	<span class="comment">// is or not a word</span></span><br><span class="line">    <span class="keyword">char</span> isleaf;	<span class="comment">// is or not a leaf node</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">tnode</span> *<span class="title">ptr</span>[26];</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h1 id="Trie-树"><a href="#Trie-树" class="headerlink" title="Trie 树"></a>Trie 树</h1><p>词频统计</p>
+<h2 id="结点"><a href="#结点" class="headerlink" title="结点"></a>结点</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">tnode</span> &#123;</span>	<span class="comment">// word tree </span></span><br><span class="line">    <span class="keyword">char</span> isword;	<span class="comment">// is or not a word</span></span><br><span class="line">    <span class="keyword">char</span> isleaf;	<span class="comment">// is or not a leaf node</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">tnode</span> *<span class="title">ptr</span>[26];</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
 <h2 id="构造"><a href="#构造" class="headerlink" title="构造"></a>构造</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">wordTree</span><span class="params">(struct tnode *root,<span class="keyword">char</span> *w)</span>  </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">tnode</span> *<span class="title">p</span>;</span></span><br><span class="line">    <span class="keyword">for</span>(p=root; *w != <span class="string">'\0'</span>; w++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(p-&gt;ptr[*w-<span class="string">'a'</span>] == <span class="literal">NULL</span>) &#123;</span><br><span class="line">            p-&gt;ptr[*w-<span class="string">'a'</span>] = talloc();</span><br><span class="line">            p-&gt;isleaf = <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        p = p-&gt;ptr[*w-<span class="string">'a'</span>];	</span><br><span class="line">    &#125;</span><br><span class="line">    p-&gt;isword = <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">struct tnode *<span class="title">talloc</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;   <span class="keyword">int</span> i;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">tnode</span> *<span class="title">p</span>;</span></span><br><span class="line">    p = (struct tnode *)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(struct tnode));</span><br><span class="line">    isword = <span class="number">0</span>; isleaf = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>; i&lt;<span class="number">26</span>; i++)</span><br><span class="line">        ptr[i] = <span class="literal">NULL</span>;</span><br><span class="line">    <span class="keyword">return</span> p;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>在访问速度要求很高的系统中，如拼写检查、词频统计中，trie结构是一个非常好的选择。</p>
+<h1 id="B树"><a href="#B树" class="headerlink" title="B树"></a>B树</h1><p>基本数据+索引表</p>
+<h2 id="B-树"><a href="#B-树" class="headerlink" title="B-树"></a>B-树</h2><p>一个m阶的B-树为满足下列条件的m叉树：</p>
+<ol>
+<li><p>每个分支结点最多有m 棵子树；</p>
+</li>
+<li><p>除根结点外，每个分支结点最少有$\left \lfloor m/2\right \rfloor$棵子树；</p>
+</li>
+<li><p>根结点最少有两棵子树(除非根为叶结点,此时B-树只有一个结点)；</p>
+</li>
+<li><p>所有“叶结点”都在同一层上，叶结点不包含任何关键字信息（可以把叶结点视为实际上不存在的外部结点,指向这些“叶结点”的指针为空)；</p>
+</li>
+<li><p>所有分支结点中包含下列信息：<br>${n,p_0,key_1,p_1,key_2,p_2,…,key_n,p_n}$<br>其中,n为结点中关键字值的个数,$n\le m-1,key_i$为关键字，且满足$key_i&lt;key_{i+1},1\le i&lt; n, p_i是指向该结点的第i+1$棵子树的根的指针，$0 \le i\le n$  </p>
+</li>
+</ol>
+<h3 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h3><p>首先将给定的关键字k在B-树的根结点的关键字集合中采用顺序查找或者折半查找进行查找，若有$k=key_i$ , 则查找成功，根据相应的指针取得记录.否则，若$k&lt;key_i$,则在指针$p_i-1$所指的结点中重复上述查找过程,直到在某结点中查找成功，或者有$p_{i-1}$=NULL，查找失败。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> M     1000</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">node</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span>  keynum; </span><br><span class="line">    keytype  key[M+<span class="number">1</span>];</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">node</span>  *<span class="title">ptr</span>[<span class="title">M</span>+1];</span></span><br><span class="line">    rectype  *recptr[M+<span class="number">1</span>];</span><br><span class="line">&#125; BNode;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">keytype  <span class="title">searchBTree</span><span class="params">(BNode *t,keytype k)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i,n;</span><br><span class="line">    BNode *p=t;</span><br><span class="line">    <span class="keyword">while</span>(p!=<span class="literal">NULL</span>)&#123;</span><br><span class="line">        n=p-&gt;keynum;</span><br><span class="line">        p-&gt;key[n+<span class="number">1</span>]=Maxkey;</span><br><span class="line">        i=<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(k&gt;p-&gt;key[i])</span><br><span class="line">            i++;</span><br><span class="line">        <span class="keyword">if</span>(p-&gt;key[i]==k)</span><br><span class="line">            <span class="keyword">return</span>  p-&gt;key[i];</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            p=p-&gt;ptr[i<span class="number">-1</span>];           </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span>  <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="建立"><a href="#建立" class="headerlink" title="建立"></a>建立</h3><ul>
+<li>节点分裂<br>若将k插入到某结点后使得该结点中关键字值数目超过m-1时，则要以该结点位置居中的那个关键字值为界将该结点一分为二,产生一个新结点，并把位置居中的那个关键字值插入到双亲结点中;如双亲结点也出现上述情况,则需要再次进行分裂.最坏情况下,需要一直分裂到根结点，以致于使得B-树的深度加1。</li>
+</ul>
+<h2 id="B-树-1"><a href="#B-树-1" class="headerlink" title="B+树"></a>B+树</h2><p>一个m阶的B+树为满足下列条件的m叉树：</p>
+<ol>
+<li><p>每个分支结点最多有m 棵子树；</p>
+</li>
+<li><p>除根结点外，每个分支结点最少有$\left \lfloor m/2\right \rfloor$棵子树；</p>
+</li>
+<li><p>根结点最少有两棵子树(除非根为叶结点,此时B-树只有一个结点)；</p>
+</li>
+<li><p>具有n棵子树的结点中一定有n个关键字；</p>
+</li>
+<li><p>叶结点中存放记录的关键字以及指向记录的指针,或者数据分块后每块的最大关键字值及指向该块的指针，并且叶结点按关键字值的大小顺序链接成线性链表。${key_1,p_1,key_2,p_2,…,key_n,p_n}$</p>
+</li>
+<li><p>所有分支结点可以看成是索引的索引，结点中仅包含它的各个孩子结点中最大(或最小)关键字值  和指向孩子结点的指针。</p>
+</li>
+</ol>
+<p>最后一层含有所有的关键字</p>
+<h2 id="B-树与B-树"><a href="#B-树与B-树" class="headerlink" title="B-树与B+树"></a>B-树与B+树</h2><ol>
+<li>B-树的每个分支结点中含有该结点中关键字值的个数,B+树没有；</li>
+<li>B-树的每个分支结点中含有指向关键字值对应纪录的指针，而B+树只有叶结点有指向关键字值对应记录的指针；</li>
+<li>B-树只有一个指向根节点的入口，而B+树的叶结点被链接成为一个不等长的链表， 因此，B+树有两个入口，一个指向根结点，另一个指向最左边的叶结点(即最小关键字所在的叶结点)。</li>
+</ol>
+<h1 id="散列查找（Hash）"><a href="#散列查找（Hash）" class="headerlink" title="散列查找（Hash）"></a>散列查找（Hash）</h1><p>见对应</p>
 
     </div>
 
@@ -319,7 +364,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#连续顺序表"><span class="nav-number">1.</span> <span class="nav-text">连续顺序表</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#顺序查找法"><span class="nav-number">1.1.</span> <span class="nav-text">顺序查找法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#有序连续顺序表的二分法"><span class="nav-number">1.2.</span> <span class="nav-text">有序连续顺序表的二分法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#插值查找"><span class="nav-number">1.3.</span> <span class="nav-text">插值查找</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#链式顺序表"><span class="nav-number">2.</span> <span class="nav-text">链式顺序表</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#索引"><span class="nav-number">3.</span> <span class="nav-text">索引</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Trie-树"><span class="nav-number">4.</span> <span class="nav-text">Trie 树</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#结点"><span class="nav-number">4.1.</span> <span class="nav-text">结点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#构造"><span class="nav-number">4.2.</span> <span class="nav-text">构造</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#连续顺序表"><span class="nav-number">1.</span> <span class="nav-text">连续顺序表</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#顺序查找法"><span class="nav-number">1.1.</span> <span class="nav-text">顺序查找法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#有序连续顺序表的二分法"><span class="nav-number">1.2.</span> <span class="nav-text">有序连续顺序表的二分法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#插值查找"><span class="nav-number">1.3.</span> <span class="nav-text">插值查找</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#链式顺序表"><span class="nav-number">2.</span> <span class="nav-text">链式顺序表</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#索引"><span class="nav-number">3.</span> <span class="nav-text">索引</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Trie-树"><span class="nav-number">4.</span> <span class="nav-text">Trie 树</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#结点"><span class="nav-number">4.1.</span> <span class="nav-text">结点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#构造"><span class="nav-number">4.2.</span> <span class="nav-text">构造</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#B树"><span class="nav-number">5.</span> <span class="nav-text">B树</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#B-树"><span class="nav-number">5.1.</span> <span class="nav-text">B-树</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#查找"><span class="nav-number">5.1.1.</span> <span class="nav-text">查找</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#建立"><span class="nav-number">5.1.2.</span> <span class="nav-text">建立</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#B-树-1"><span class="nav-number">5.2.</span> <span class="nav-text">B+树</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#B-树与B-树"><span class="nav-number">5.3.</span> <span class="nav-text">B-树与B+树</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#散列查找（Hash）"><span class="nav-number">6.</span> <span class="nav-text">散列查找（Hash）</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -333,7 +378,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">28</span>
+          <span class="site-state-item-count">29</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
