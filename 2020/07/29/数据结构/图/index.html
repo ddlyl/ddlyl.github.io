@@ -28,7 +28,7 @@
 <meta property="og:description" content="基本概念 出度 OD  入度 ID  顶点的度 TDTD&#x3D; OD + ID   对于有n个顶点，e条边的图$$e &#x3D; \sum_{i &#x3D; 1}^nTD(v_i)*\frac{1}{2}$$  对于n个结点的无向图最多有n（n-1）&#x2F;2条边  对于n个结点的有向图最多有n（n-1）条边  边的数目达到最大————完全图，接近最大————稠密图，否则称为稀疏图  图的连通  无向图的连通： 任意两点都">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-07-29T07:02:32.844Z">
-<meta property="article:modified_time" content="2020-07-29T13:32:42.942Z">
+<meta property="article:modified_time" content="2020-07-30T06:15:22.136Z">
 <meta property="article:author" content="luyilin">
 <meta name="twitter:card" content="summary">
 
@@ -177,10 +177,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2020-07-29 15:02:32 / Modified: 21:32:42" itemprop="dateCreated datePublished" datetime="2020-07-29T15:02:32+08:00">2020-07-29</time>
+              <time title="Created: 2020-07-29 15:02:32" itemprop="dateCreated datePublished" datetime="2020-07-29T15:02:32+08:00">2020-07-29</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-07-30 14:15:22" itemprop="dateModified" datetime="2020-07-30T14:15:22+08:00">2020-07-30</time>
+              </span>
 
           
 
@@ -249,7 +255,9 @@
 <li>无向图的边结点个数一定为偶数；边结点个数为奇数的图一定是有向图。</li>
 </ul>
 <h2 id="逆链接表"><a href="#逆链接表" class="headerlink" title="逆链接表"></a>逆链接表</h2><p>纪录以某个点为终点的点的关系</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//头结点</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">ver</span>&#123;</span></span><br><span class="line">   vertype  vertex;</span><br><span class="line">   ELink  *link;</span><br><span class="line">&#125;VLink; </span><br><span class="line"></span><br><span class="line"><span class="comment">//边结点</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">edge</span>&#123;</span></span><br><span class="line">   <span class="keyword">int</span>  adjvex;</span><br><span class="line">   <span class="keyword">int</span>  weight;</span><br><span class="line">   <span class="class"><span class="keyword">struct</span> <span class="title">edge</span>  *<span class="title">next</span>;</span></span><br><span class="line"> &#125;ELink;</span><br><span class="line"></span><br><span class="line">VLink G[MaxV]</span><br></pre></td></tr></table></figure>
 
+<h1 id="遍历"><a href="#遍历" class="headerlink" title="遍历"></a>遍历</h1>
     </div>
 
     
@@ -267,7 +275,10 @@
     <a href="/2020/07/28/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/Data%20Preprocessing/" rel="prev" title="数据挖掘/Data Preprocessing">
       <i class="fa fa-chevron-left"></i> 数据挖掘/Data Preprocessing
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2020/07/30/acwing/DFS%E4%B8%8EBFS/" rel="next" title="acwing/DFS与BFS">
+      acwing/DFS与BFS <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -326,7 +337,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#基本概念"><span class="nav-number">1.</span> <span class="nav-text">基本概念</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#储存"><span class="nav-number">2.</span> <span class="nav-text">储存</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#邻接矩阵"><span class="nav-number">2.1.</span> <span class="nav-text">邻接矩阵</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#邻接表存储"><span class="nav-number">2.2.</span> <span class="nav-text">邻接表存储</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#逆链接表"><span class="nav-number">2.3.</span> <span class="nav-text">逆链接表</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#基本概念"><span class="nav-number">1.</span> <span class="nav-text">基本概念</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#储存"><span class="nav-number">2.</span> <span class="nav-text">储存</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#邻接矩阵"><span class="nav-number">2.1.</span> <span class="nav-text">邻接矩阵</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#邻接表存储"><span class="nav-number">2.2.</span> <span class="nav-text">邻接表存储</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#逆链接表"><span class="nav-number">2.3.</span> <span class="nav-text">逆链接表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码"><span class="nav-number">2.4.</span> <span class="nav-text">代码</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#遍历"><span class="nav-number">3.</span> <span class="nav-text">遍历</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -340,7 +351,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">29</span>
+          <span class="site-state-item-count">31</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
