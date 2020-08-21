@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"luyilin.top","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="数据类型属性与度量属性的不同类型 数值的如下属性（操作）常常用来描述属性   相异性 序 加法 乘法     用值的个数描述属性： 离散的、连续的  非对称属性对于非对称属性，出现非0值才使重要的   数据集的类型 数据集的一般特性维度、稀疏性、分辨率 记录数据 事务数据：项的集合的集族，纪录的集合 数据矩阵 稀疏数据矩阵   基于图形的数据（纪录对象之间的联系、图形作为对象如化学结构） 有序数据">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据挖掘&#x2F;数据">
+<meta property="og:url" content="http://luyilin.top/2020/08/21/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/%E6%95%B0%E6%8D%AE/index.html">
+<meta property="og:site_name" content="引而不发，跃如也">
+<meta property="og:description" content="数据类型属性与度量属性的不同类型 数值的如下属性（操作）常常用来描述属性   相异性 序 加法 乘法     用值的个数描述属性： 离散的、连续的  非对称属性对于非对称属性，出现非0值才使重要的   数据集的类型 数据集的一般特性维度、稀疏性、分辨率 记录数据 事务数据：项的集合的集族，纪录的集合 数据矩阵 稀疏数据矩阵   基于图形的数据（纪录对象之间的联系、图形作为对象如化学结构） 有序数据">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://luyilin.top/2020/08/21/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/%E6%95%B0%E6%8D%AE/1.JPG">
+<meta property="og:image" content="http://luyilin.top/2020/08/21/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/%E6%95%B0%E6%8D%AE/2.JPG">
+<meta property="og:image" content="http://luyilin.top/2020/08/21/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/%E6%95%B0%E6%8D%AE/3.JPG">
+<meta property="og:image" content="http://luyilin.top/2020/08/21/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/%E6%95%B0%E6%8D%AE/4.JPG">
+<meta property="og:image" content="http://luyilin.top/2020/08/21/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/%E6%95%B0%E6%8D%AE/5.JPG">
+<meta property="og:image" content="http://luyilin.top/2020/08/21/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/%E6%95%B0%E6%8D%AE/7.JPG">
+<meta property="og:image" content="http://luyilin.top/2020/08/21/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/%E6%95%B0%E6%8D%AE/8.JPG">
+<meta property="article:published_time" content="2020-08-21T00:36:15.326Z">
+<meta property="article:modified_time" content="2020-08-21T07:06:13.899Z">
+<meta property="article:author" content="luyilin">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://luyilin.top/2020/08/21/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/%E6%95%B0%E6%8D%AE/1.JPG">
+
+<link rel="canonical" href="http://luyilin.top/2020/08/21/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/%E6%95%B0%E6%8D%AE/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>数据挖掘/数据 | 引而不发，跃如也</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">引而不发，跃如也</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://luyilin.top/2020/08/21/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/%E6%95%B0%E6%8D%AE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="luyilin">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="引而不发，跃如也">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          数据挖掘/数据
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-08-21 08:36:15 / Modified: 15:06:13" itemprop="dateCreated datePublished" datetime="2020-08-21T08:36:15+08:00">2020-08-21</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/" itemprop="url" rel="index"><span itemprop="name">数据挖掘</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h1><h2 id="属性与度量"><a href="#属性与度量" class="headerlink" title="属性与度量"></a>属性与度量</h2><h3 id="属性的不同类型"><a href="#属性的不同类型" class="headerlink" title="属性的不同类型"></a>属性的不同类型</h3><ul>
+<li>数值的如下属性（操作）常常用来描述属性</li>
+</ul>
+<ol>
+<li>相异性</li>
+<li>序</li>
+<li>加法</li>
+<li>乘法</li>
+</ol>
+<p><img src="/2020/08/21/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/%E6%95%B0%E6%8D%AE/1.JPG" alt="1"></p>
+<p><img src="/2020/08/21/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/%E6%95%B0%E6%8D%AE/2.JPG" alt="2"></p>
+<ul>
+<li><p>用值的个数描述属性： 离散的、连续的</p>
+</li>
+<li><p>非对称属性<br>对于非对称属性，出现非0值才使重要的</p>
+</li>
+</ul>
+<h2 id="数据集的类型"><a href="#数据集的类型" class="headerlink" title="数据集的类型"></a>数据集的类型</h2><ol>
+<li>数据集的一般特性<br>维度、稀疏性、分辨率</li>
+<li>记录数据<ul>
+<li>事务数据：项的集合的集族，纪录的集合</li>
+<li>数据矩阵</li>
+<li>稀疏数据矩阵</li>
+</ul>
+</li>
+<li>基于图形的数据（纪录对象之间的联系、图形作为对象如化学结构）</li>
+<li>有序数据</li>
+<li>时序数据</li>
+<li>空间数据</li>
+</ol>
+<h1 id="数据质量"><a href="#数据质量" class="headerlink" title="数据质量"></a>数据质量</h1><ol>
+<li>数据质量问题的纠正和检测</li>
+<li>数据清理</li>
+</ol>
+<h2 id="测量和数据收集问题"><a href="#测量和数据收集问题" class="headerlink" title="测量和数据收集问题"></a>测量和数据收集问题</h2><ol>
+<li>测量误差和收集误差</li>
+<li>噪声和伪像<br> 噪声是测量误差的随机部分<br> <img src="/2020/08/21/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/%E6%95%B0%E6%8D%AE/3.JPG" alt="3"><br> 伪像： 数据出现的确定性失真</li>
+<li>精度、偏倚和准确率<br>精度：重复测量值之间的接近程度，通常用集合的标准差度量<br>偏倚：测量值与被测量值之间的系统的变差，用集合的均值与测出的已知值之间的差度量</li>
+</ol>
+<p>   准确率：被测量的测量值与实际值之间的接近度</p>
+<ol start="4">
+<li><p>离群点<br> 合法的对象、异常</p>
+</li>
+<li><p>遗漏值</p>
+<ul>
+<li>删除数据对象或属性</li>
+<li>估计遗漏值</li>
+<li>忽略遗漏值（仅是用没有遗漏值的属性进行计算）</li>
+</ul>
+</li>
+<li><p>不一致的值（需要对数据更正）</p>
+</li>
+<li><p>重复数据</p>
+</li>
+</ol>
+<h2 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h2><blockquote>
+<p>数据是高质量的，如果它适合预期的应用</p>
+</blockquote>
+<ul>
+<li>时效性</li>
+<li>相关性</li>
+</ul>
+<h1 id="数据预处理"><a href="#数据预处理" class="headerlink" title="数据预处理"></a>数据预处理</h1><h2 id="聚集"><a href="#聚集" class="headerlink" title="聚集"></a>聚集</h2><ul>
+<li>将两个或多个对象合并成单个对象</li>
+<li>聚集是删除属性的过程，或者压缩特定属性不同值个数的过程，如将日期从可能的365天压缩到12个月</li>
+</ul>
+<p>动机：</p>
+<ul>
+<li>节约内存、时间</li>
+<li>起到范围或者标度转换的作用</li>
+<li>更稳定</li>
+</ul>
+<h2 id="抽样"><a href="#抽样" class="headerlink" title="抽样"></a>抽样</h2><ul>
+<li><p>选择数据对象子集进行分析的常用方法</p>
+</li>
+<li><p>动机：压缩数据量，以便使用更好但是开销更大的算法</p>
+</li>
+<li><p>主要原理：<br>样本数据在我们感兴趣的性质上（如平均值）域原数据集近似，则样本室友代表性的，进而使用样本和使用整个数据集的效果几乎一样</p>
+</li>
+</ul>
+<ol>
+<li>抽样方法<ul>
+<li>简单随机抽样（有放回、无放回）</li>
+<li>分层抽样</li>
+</ul>
+</li>
+</ol>
+<p>注： 抽样会导致一定程度上的信息损失</p>
+<ol start="2">
+<li>渐进抽样<br>从小样本开始，逐渐增加样本容量直至的达到足够容量的样本</li>
+</ol>
+<h2 id="维归约"><a href="#维归约" class="headerlink" title="维归约"></a>维归约</h2><ul>
+<li>将一些旧属性合并在一起来降低数据集的维度</li>
+</ul>
+<p>注：通过选择旧属性的子集得到新属性，这种维归约成为特征子集选择或特征选择</p>
+<ul>
+<li>删除不相关的特征并降低噪声，避免维灾难</li>
+<li>关键： 主成分分析（PCA）</li>
+</ul>
+<h2 id="特征子集选择"><a href="#特征子集选择" class="headerlink" title="特征子集选择"></a>特征子集选择</h2><ul>
+<li>选择特征的一个子集</li>
+</ul>
+<h3 id="特征选择方法"><a href="#特征选择方法" class="headerlink" title="特征选择方法"></a>特征选择方法</h3><ol>
+<li>嵌入方法</li>
+</ol>
+<p>决策树分类器<br>2. 过滤方法</p>
+<p>在数据挖掘算法之前进行特征选择</p>
+<ol start="3">
+<li>包装方法<br>将可能的特征子集作为数据挖掘算法的输入，选出产生最好结果的子集</li>
+</ol>
+<ul>
+<li>也可以进行特征加权</li>
+</ul>
+<p><img src="/2020/08/21/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/%E6%95%B0%E6%8D%AE/4.JPG" alt="4"></p>
+<h2 id="特征创建"><a href="#特征创建" class="headerlink" title="特征创建"></a>特征创建</h2><ol>
+<li>特征提取</li>
+<li>映射数据到新的空间<br>傅里叶变换</li>
+<li>特征构造：密度</li>
+</ol>
+<h2 id="离散化和二元化"><a href="#离散化和二元化" class="headerlink" title="离散化和二元化"></a>离散化和二元化</h2><ol>
+<li>二元化<br><img src="/2020/08/21/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/%E6%95%B0%E6%8D%AE/5.JPG" alt="5"></li>
+<li>连续属性离散化<ul>
+<li>非监督离散化：等宽、等频率（将相同数量的对象放进每个区间）、等深、K均值</li>
+<li>监督化离散：</li>
+</ul>
+</li>
+</ol>
+<pre><code>定义**熵**：
+
+
+设$k$是不同的类标号数，$m_i$是某划分的第$i$个区间中值的个数，$m_{ij}$是区间$i$中类$j$的值的个数，第$i$个区间的熵$e_i$由如下等式给出
+$$e_i = -\sum_{j = 1}^k\ p_{ij}\ log_2P_{ij}$$
+
+其中
+$$p_{ij} = m_{ij}/m_{i}$$
+是第$i$个区间中类$j$的概率。该划分的总熵$e$是每个区间熵的加权平均，即
+
+$$e = \sum_{i = 1}^n\ w_ie_i$$
+
+其中
+$$w_i = m_i/m,\ m为值的个数$$ 
+![6](6.JPG)</code></pre><h2 id="变量变换"><a href="#变量变换" class="headerlink" title="变量变换"></a>变量变换</h2><ol>
+<li><p>简单函数<br>$$x^k,log \ x,e^x,\sqrt{x},|x|$$</p>
+</li>
+<li><p>规范化或标准化</p>
+</li>
+</ol>
+<p>统计学中的标准化：<br>$$x’ = \frac{(x - \bar{x})}{s_x}$$</p>
+<p>$s_x为标准差$</p>
+<p>数据挖掘中的标准化：</p>
+<ol>
+<li>用中位数取代均值</li>
+<li>用标准绝对差取代标准差</li>
+</ol>
+<p>标准绝对差：<br>$$\sigma = \sum_{i = 1}^m|x_i - \mu_i|$$</p>
+<p>其中，m是对象个数，$\mu$是均值或中位数</p>
+<h1 id="相似性和相异性的度量"><a href="#相似性和相异性的度量" class="headerlink" title="相似性和相异性的度量"></a>相似性和相异性的度量</h1><h2 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><ul>
+<li><p>相似度： 两个对象之间的相似程度。取值范围：0（不相似）-1（相似）</p>
+</li>
+<li><p>相异度（距离）：两个对象的差异程度。取值范围： 0（相同）-1/正无穷</p>
+</li>
+</ul>
+<h3 id="变换"><a href="#变换" class="headerlink" title="变换"></a>变换</h3><p><img src="/2020/08/21/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/%E6%95%B0%E6%8D%AE/7.JPG" alt="7"></p>
+<h2 id="简单属性"><a href="#简单属性" class="headerlink" title="简单属性"></a>简单属性</h2><p><img src="/2020/08/21/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/%E6%95%B0%E6%8D%AE/8.JPG" alt="8"></p>
+<h2 id="数据对象之间的相异度"><a href="#数据对象之间的相异度" class="headerlink" title="数据对象之间的相异度"></a>数据对象之间的相异度</h2><p>定义r-范数</p>
+<ul>
+<li>r = 1 为曼哈顿距离</li>
+<li>r = 2 为欧几里得距离</li>
+<li>r = $+\infit$为属性之间的对大值</li>
+</ul>
+<p>满足非负性，对称性，三角不等式，进而引入度量</p>
+<h2 id="数据对象之间的相似度"><a href="#数据对象之间的相似度" class="headerlink" title="数据对象之间的相似度"></a>数据对象之间的相似度</h2><p>对于相似度，三角不等式通常不成立</p>
+<h2 id="邻近性度量的例子"><a href="#邻近性度量的例子" class="headerlink" title="邻近性度量的例子"></a>邻近性度量的例子</h2>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/08/16/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E5%A4%A7%E5%AD%A6/" rel="prev" title="读书笔记/大学">
+      <i class="fa fa-chevron-left"></i> 读书笔记/大学
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#数据类型"><span class="nav-number">1.</span> <span class="nav-text">数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#属性与度量"><span class="nav-number">1.1.</span> <span class="nav-text">属性与度量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#属性的不同类型"><span class="nav-number">1.1.1.</span> <span class="nav-text">属性的不同类型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据集的类型"><span class="nav-number">1.2.</span> <span class="nav-text">数据集的类型</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数据质量"><span class="nav-number">2.</span> <span class="nav-text">数据质量</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#测量和数据收集问题"><span class="nav-number">2.1.</span> <span class="nav-text">测量和数据收集问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#应用"><span class="nav-number">2.2.</span> <span class="nav-text">应用</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数据预处理"><span class="nav-number">3.</span> <span class="nav-text">数据预处理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#聚集"><span class="nav-number">3.1.</span> <span class="nav-text">聚集</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#抽样"><span class="nav-number">3.2.</span> <span class="nav-text">抽样</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#维归约"><span class="nav-number">3.3.</span> <span class="nav-text">维归约</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#特征子集选择"><span class="nav-number">3.4.</span> <span class="nav-text">特征子集选择</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#特征选择方法"><span class="nav-number">3.4.1.</span> <span class="nav-text">特征选择方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#特征创建"><span class="nav-number">3.5.</span> <span class="nav-text">特征创建</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#离散化和二元化"><span class="nav-number">3.6.</span> <span class="nav-text">离散化和二元化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#变量变换"><span class="nav-number">3.7.</span> <span class="nav-text">变量变换</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#相似性和相异性的度量"><span class="nav-number">4.</span> <span class="nav-text">相似性和相异性的度量</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#基础"><span class="nav-number">4.1.</span> <span class="nav-text">基础</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#定义"><span class="nav-number">4.1.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#变换"><span class="nav-number">4.1.2.</span> <span class="nav-text">变换</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#简单属性"><span class="nav-number">4.2.</span> <span class="nav-text">简单属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据对象之间的相异度"><span class="nav-number">4.3.</span> <span class="nav-text">数据对象之间的相异度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据对象之间的相似度"><span class="nav-number">4.4.</span> <span class="nav-text">数据对象之间的相似度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#邻近性度量的例子"><span class="nav-number">4.5.</span> <span class="nav-text">邻近性度量的例子</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">luyilin</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">41</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">luyilin</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+</body>
+</html>
