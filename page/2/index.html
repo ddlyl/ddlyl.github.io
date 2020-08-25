@@ -150,6 +150,382 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://luyilin.top/2020/08/10/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/ex1-%E5%8D%95%E5%8F%98%E9%87%8F%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="luyilin">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="引而不发，跃如也">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/08/10/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/ex1-%E5%8D%95%E5%8F%98%E9%87%8F%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/" class="post-title-link" itemprop="url">机器学习/ex1-单变量线性回归</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-08-10 21:53:17 / Modified: 21:55:46" itemprop="dateCreated datePublished" datetime="2020-08-10T21:53:17+08:00">2020-08-10</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%BD%9C%E4%B8%9A/" itemprop="url" rel="index"><span itemprop="name">机器学习作业</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="单变量线性回归"><a href="#单变量线性回归" class="headerlink" title="单变量线性回归"></a>单变量线性回归</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">%matplotlib inline</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br></pre></td></tr></table></figure>
+
+<h1 id="预处理"><a href="#预处理" class="headerlink" title="预处理"></a>预处理</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 读入文件</span></span><br><span class="line">file = <span class="string">'ex1data1.txt'</span></span><br><span class="line">data = pd.read_csv(file, names = [<span class="string">'population'</span>,<span class="string">'profit'</span>])</span><br><span class="line">data.head()</span><br></pre></td></tr></table></figure>
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}</code></pre><p></style><p></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>population</th>
+      <th>profit</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>6.1101</td>
+      <td>17.5920</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>5.5277</td>
+      <td>9.1302</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>8.5186</td>
+      <td>13.6620</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>7.0032</td>
+      <td>11.8540</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5.8598</td>
+      <td>6.8233</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data.shape</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>(97, 2)</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 绘图</span></span><br><span class="line">data.plot(kind=<span class="string">'scatter'</span>, x=<span class="string">'population'</span>, y=<span class="string">'profit'</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x200ae1906d8&gt;</code></pre><p><img src="/2020/08/10/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/ex1-%E5%8D%95%E5%8F%98%E9%87%8F%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/output_5_1.png" alt="png"></p>
+<h1 id="梯度下降"><a href="#梯度下降" class="headerlink" title="梯度下降"></a>梯度下降</h1><p>我们希望下列函数最小<br>$$J\left(\theta\right)=\frac{1}{2 m} \sum_{i=1}^{m}\left(h_{\theta}\left(x^{(i)}\right)-y^{(i)}\right)^{2}$$</p>
+<p>其中<br>$$h_\theta(x) = x\theta^T = \theta_0 + \theta_1x_1$$</p>
+<p>$ x = [1,population]$</p>
+<p>$\theta = [\theta_0 ,\ \theta_1] $</p>
+<p>由梯度下降算法，我们不断更新$\theta_j$  (注意要同时更新所有参数)<br>$$\theta_j = \theta_j - \alpha\frac{1}{m}\sum_{i = 1}^m(h_\theta(x^{(i)})-(y^{(i)}))x_j^{(i)}$$</p>
+<h2 id="代价函数"><a href="#代价函数" class="headerlink" title="代价函数"></a>代价函数</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">ComputerCost</span><span class="params">(x,y,theta)</span>:</span></span><br><span class="line">    inner = np.power(((x * theta.T ) - y ),<span class="number">2</span>)</span><br><span class="line">    <span class="keyword">return</span> np.sum(inner)/(<span class="number">2</span> * len(x))</span><br></pre></td></tr></table></figure>
+
+<h2 id="变量处理"><a href="#变量处理" class="headerlink" title="变量处理"></a>变量处理</h2><ul>
+<li>We store each example as a row in the the X<br>matrix in Octave/MATLAB. To take into account the intercept term ($\theta_0$),<br>we add an additional first column to X and set it to all ones. This allows<br>us to treat $\theta_0$ as simply another ‘feature’.</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data.insert(<span class="number">0</span>, <span class="string">'Ones'</span>,<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data.head()</span><br></pre></td></tr></table></figure>
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}</code></pre><p></style><p></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Ones</th>
+      <th>population</th>
+      <th>profit</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>6.1101</td>
+      <td>17.5920</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>5.5277</td>
+      <td>9.1302</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1</td>
+      <td>8.5186</td>
+      <td>13.6620</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1</td>
+      <td>7.0032</td>
+      <td>11.8540</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1</td>
+      <td>5.8598</td>
+      <td>6.8233</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 列数</span></span><br><span class="line">cols = data.shape[<span class="number">1</span>]<span class="comment"># = 2</span></span><br><span class="line"><span class="comment">#自变量</span></span><br><span class="line">x = data.iloc[:,<span class="number">0</span>:cols<span class="number">-1</span>]</span><br><span class="line">x.head()</span><br></pre></td></tr></table></figure>
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}</code></pre><p></style><p></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Ones</th>
+      <th>population</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>6.1101</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>5.5277</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1</td>
+      <td>8.5186</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1</td>
+      <td>7.0032</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1</td>
+      <td>5.8598</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 因变量</span></span><br><span class="line">y = data.iloc[:,cols<span class="number">-1</span>:cols]</span><br><span class="line">y.head()</span><br></pre></td></tr></table></figure>
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}</code></pre><p></style><p></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>profit</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>17.5920</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>9.1302</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>13.6620</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>11.8540</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>6.8233</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+<h2 id="格式转换"><a href="#格式转换" class="headerlink" title="格式转换"></a>格式转换</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">x = np.matrix(x.values)</span><br><span class="line">y = np.matrix(y.values)</span><br><span class="line">theta = np.matrix([<span class="number">0</span>,<span class="number">0</span>])</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(x.shape,theta.shape,y.shape)</span><br></pre></td></tr></table></figure>
+
+<pre><code>(97, 2) (1, 2) (97, 1)</code></pre><h2 id="计算代价函数"><a href="#计算代价函数" class="headerlink" title="计算代价函数"></a>计算代价函数</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ComputerCost(x,y,theta)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>32.072733877455676</code></pre><h2 id="batch-gradient-decent"><a href="#batch-gradient-decent" class="headerlink" title="batch gradient decent"></a>batch gradient decent</h2><p>$$\theta:=\theta-a \frac{1}{m} \sum_{i=1}^{m}\left(\left(h_{\theta}\left(x^{(i)}\right)-y^{(i)}\right) \cdot x^{(i)}\right) $$</p>
+<p>$$\theta:=\theta-a \frac{1}{m} \sum_{i=1}^{m}\left(\left(x\theta^T - y \right)\cdot x\right) $$</p>
+<p>在x中加入一列1，用来用向量化的方式解决$\theta_0$的问题</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">gradientDescent</span><span class="params">(x, y, theta, alpha, epoch)</span>:</span></span><br><span class="line">    temp = np.matrix(np.zeros(theta.shape))</span><br><span class="line">    cost = np.zeros(epoch)<span class="comment">#存储每次循环的误差</span></span><br><span class="line">    m = x.shape[<span class="number">0</span>]<span class="comment">#样本数量</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(epoch):</span><br><span class="line">        <span class="comment"># 梯度下降</span></span><br><span class="line">        temp = theta - (alpha/m) * (x * theta.T - y).T * x</span><br><span class="line">        theta = temp</span><br><span class="line">        cost[i] = ComputerCost(x,y,theta)</span><br><span class="line">        </span><br><span class="line">    <span class="keyword">return</span> theta,cost</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">alpha = <span class="number">0.01</span></span><br><span class="line">epoch = <span class="number">1000</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="回归结果"><a href="#回归结果" class="headerlink" title="回归结果"></a>回归结果</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">final_theta, cost = gradientDescent(x,y,theta,alpha,epoch)</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">final_theta</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>matrix([[-3.24140214,  1.1272942 ]])</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cost[::<span class="number">100</span>]</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>array([6.73719046, 5.47636282, 5.17363455, 4.96260649, 4.81550149,
+       4.71295645, 4.6414736 , 4.5916438 , 4.55690808, 4.53269424])</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ComputerCost(x,y,final_theta)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>4.515955503078912</code></pre><h2 id="绘图"><a href="#绘图" class="headerlink" title="绘图"></a>绘图</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">x = np.linspace(data.population.min(), data.population.max(), <span class="number">100</span>)  <span class="comment"># 横坐标</span></span><br><span class="line">f = final_theta[<span class="number">0</span>, <span class="number">0</span>] + (final_theta[<span class="number">0</span>, <span class="number">1</span>] * x)  <span class="comment"># 纵坐标，利润</span></span><br><span class="line"></span><br><span class="line">fig, ax = plt.subplots()</span><br><span class="line">ax.plot(x, f, <span class="string">'r'</span>, label=<span class="string">'Prediction'</span>)</span><br><span class="line">ax.scatter(data[<span class="string">'population'</span>], data.profit, label=<span class="string">'Traning Data'</span>)</span><br><span class="line">ax.legend(loc=<span class="number">2</span>)  <span class="comment"># 2表示在左上角</span></span><br><span class="line">ax.set_xlabel(<span class="string">'Population'</span>)</span><br><span class="line">ax.set_ylabel(<span class="string">'Profit'</span>)</span><br><span class="line">ax.set_title(<span class="string">'Predicted Profit vs. Population Size'</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+
+<p><img src="/2020/08/10/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/ex1-%E5%8D%95%E5%8F%98%E9%87%8F%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/output_34_0.png" alt="png"></p>
+<ul>
+<li>代价函数</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">fig, ax = plt.subplots()</span><br><span class="line">ax.plot(np.arange(epoch), cost, <span class="string">'r'</span>)  <span class="comment"># np.arange()返回等差数组</span></span><br><span class="line">ax.set_xlabel(<span class="string">'Iterations'</span>)</span><br><span class="line">ax.set_ylabel(<span class="string">'Cost'</span>)</span><br><span class="line">ax.set_title(<span class="string">'Error vs. Training Epoch'</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+
+<p><img src="/2020/08/10/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/ex1-%E5%8D%95%E5%8F%98%E9%87%8F%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/output_36_0.png" alt="png"></p>
+<h1 id="完整代码"><a href="#完整代码" class="headerlink" title="完整代码"></a>完整代码</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="comment"># 读入文件</span></span><br><span class="line">file = <span class="string">'ex1data1.txt'</span></span><br><span class="line">data = pd.read_csv(file, names = [<span class="string">'population'</span>,<span class="string">'profit'</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 绘图</span></span><br><span class="line">data.plot(kind=<span class="string">'scatter'</span>, x=<span class="string">'population'</span>, y=<span class="string">'profit'</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 代价函数</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">ComputerCost</span><span class="params">(x,y,theta)</span>:</span></span><br><span class="line">    inner = np.power(((x * theta.T ) - y ),<span class="number">2</span>)</span><br><span class="line">    <span class="keyword">return</span> np.sum(inner)/(<span class="number">2</span> * len(x))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 向量化预处理x数组</span></span><br><span class="line">data.insert(<span class="number">0</span>, <span class="string">'Ones'</span>,<span class="number">1</span>)</span><br><span class="line">cols = data.shape[<span class="number">1</span>]<span class="comment"># = 2</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 提取自变量</span></span><br><span class="line">x = data.iloc[:,<span class="number">0</span>:cols<span class="number">-1</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 提取因变量</span></span><br><span class="line">y = data.iloc[:,cols<span class="number">-1</span>:cols]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 格式转换</span></span><br><span class="line">x = np.matrix(x.values)</span><br><span class="line">y = np.matrix(y.values)</span><br><span class="line">theta = np.matrix([<span class="number">0</span>,<span class="number">0</span>])</span><br><span class="line"></span><br><span class="line">ComputerCost(x,y,theta)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 梯度下降</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">gradientDescent</span><span class="params">(x, y, theta, alpha, epoch)</span>:</span></span><br><span class="line">    temp = np.matrix(np.zeros(theta.shape))</span><br><span class="line">    cost = np.zeros(epoch)<span class="comment">#存储每次循环的误差</span></span><br><span class="line">    m = x.shape[<span class="number">0</span>]<span class="comment">#样本数量</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(epoch):</span><br><span class="line">        <span class="comment"># 更新参数</span></span><br><span class="line">        temp = theta - (alpha/m) * (x * theta.T - y).T * x</span><br><span class="line">        theta = temp</span><br><span class="line">        cost[i] = ComputerCost(x,y,theta)</span><br><span class="line">        </span><br><span class="line">    <span class="keyword">return</span> theta,cost</span><br><span class="line"></span><br><span class="line">alpha = <span class="number">0.01</span></span><br><span class="line">epoch = <span class="number">1000</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 回归结果</span></span><br><span class="line">final_theta, cost = gradientDescent(x,y,theta,alpha,epoch)</span><br><span class="line">ComputerCost(x,y,final_theta)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 回归图像</span></span><br><span class="line">x = np.linspace(data.population.min(), data.population.max(), <span class="number">100</span>)  <span class="comment"># 横坐标</span></span><br><span class="line">f = final_theta[<span class="number">0</span>, <span class="number">0</span>] + (final_theta[<span class="number">0</span>, <span class="number">1</span>] * x)  <span class="comment"># 纵坐标，利润</span></span><br><span class="line">fig, ax = plt.subplots()</span><br><span class="line">ax.plot(x, f, <span class="string">'r'</span>, label=<span class="string">'Prediction'</span>)</span><br><span class="line">ax.scatter(data[<span class="string">'population'</span>], data.profit, label=<span class="string">'Traning Data'</span>)</span><br><span class="line">ax.legend(loc=<span class="number">2</span>)  <span class="comment"># 2表示在左上角</span></span><br><span class="line">ax.set_xlabel(<span class="string">'Population'</span>)</span><br><span class="line">ax.set_ylabel(<span class="string">'Profit'</span>)</span><br><span class="line">ax.set_title(<span class="string">'Predicted Profit vs. Population Size'</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 误差图像</span></span><br><span class="line">fig, ax = plt.subplots()</span><br><span class="line">ax.plot(np.arange(epoch), cost, <span class="string">'r'</span>)  <span class="comment"># np.arange()返回等差数组</span></span><br><span class="line">ax.set_xlabel(<span class="string">'Iterations'</span>)</span><br><span class="line">ax.set_ylabel(<span class="string">'Cost'</span>)</span><br><span class="line">ax.set_title(<span class="string">'Error vs. Training Epoch'</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://luyilin.top/2020/08/08/Python/Numpy/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1826,87 +2202,6 @@ log10(x) = [0.         0.30103    0.47712125]</code></pre><p>对于非常小的�
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://luyilin.top/2020/07/23/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%9F%A5%E6%89%BE/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="luyilin">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="引而不发，跃如也">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/07/23/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%9F%A5%E6%89%BE/" class="post-title-link" itemprop="url">数据结构/查找</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2020-07-23 14:16:01" itemprop="dateCreated datePublished" datetime="2020-07-23T14:16:01+08:00">2020-07-23</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-07-29 15:02:27" itemprop="dateModified" datetime="2020-07-29T15:02:27+08:00">2020-07-29</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" itemprop="url" rel="index"><span itemprop="name">数据结构</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>重点</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/07/23/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%9F%A5%E6%89%BE/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1976,7 +2271,7 @@ log10(x) = [0.         0.30103    0.47712125]</code></pre><p>对于非常小的�
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">45</span>
+          <span class="site-state-item-count">46</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
