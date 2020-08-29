@@ -150,6 +150,127 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://luyilin.top/2020/08/11/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E5%A4%9A%E5%8F%98%E9%87%8F%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%20%E6%AD%A3%E8%A7%84%E6%96%B9%E7%A8%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="luyilin">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="引而不发，跃如也">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/08/11/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E5%A4%9A%E5%8F%98%E9%87%8F%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%20%E6%AD%A3%E8%A7%84%E6%96%B9%E7%A8%8B/" class="post-title-link" itemprop="url">机器学习/多变量线性回归 正规方程</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-08-11 09:11:34 / Modified: 11:03:55" itemprop="dateCreated datePublished" datetime="2020-08-11T09:11:34+08:00">2020-08-11</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">机器学习</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="符号"><a href="#符号" class="headerlink" title="符号"></a>符号</h1><p>n：特征的数量</p>
+<p>$x^{(i)} = \begin{bmatrix}<br>1416<br>\3<br>\2<br>\40<br>\end{bmatrix}$  表示第$i$个训练实例</p>
+<p>$x^{(i)}_2 = 3$</p>
+<p>代表特征矩阵中第$i$行的第$j$个特征，也就是第$i$个训练实例的第$j$个特征。</p>
+<h1 id="多元线性回归"><a href="#多元线性回归" class="headerlink" title="多元线性回归"></a>多元线性回归</h1><h2 id="假设函数"><a href="#假设函数" class="headerlink" title="假设函数"></a>假设函数</h2><p>$$h_{\theta}(x)=\theta_{0}+\theta_{1} x_{1}+\theta_{2} x_{2}+\ldots+\theta_{n} x_{n}$$</p>
+<p>引入$x_0 = 1$,则<br>$$h_{\theta}(x)=\theta_{0}x_0+\theta_{1} x_{1}+\theta_{2} x_{2}+\ldots+\theta_{n} x_{n}$$</p>
+<p>x成为一个n+1维的向量<br>$x = \begin{bmatrix}<br>x_0<br>\x_1<br>\…<br>\x_n<br>\end{bmatrix}$ </p>
+<p>从而<br>$$h_\theta(x) = \theta^Tx$$</p>
+<h2 id="代价函数"><a href="#代价函数" class="headerlink" title="代价函数"></a>代价函数</h2><p>$$J\left(\theta\right)=\frac{1}{2 m} \sum_{i=1}^{m}\left(h_{\theta}\left(x^{(i)}\right)-y^{(i)}\right)^{2}$$</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">computeCost</span><span class="params">(X, y, theta)</span>:</span></span><br><span class="line">    inner = np.power(((X * theta.T) - y), <span class="number">2</span>)</span><br><span class="line">    <span class="keyword">return</span> np.sum(inner) / (<span class="number">2</span> * len(X))</span><br></pre></td></tr></table></figure>
+<h2 id="梯度下降"><a href="#梯度下降" class="headerlink" title="梯度下降"></a>梯度下降</h2><p>$$\theta_{j}:=\theta_{j}-a \frac{1}{m} \sum_{i=1}^{m}\left(\left(h_{\theta}\left(x^{(i)}\right)-y^{(i)}\right) \cdot x^{(i)}_j\right) $$</p>
+<p>$\alpha = 0.001, 0.003, 0.01, 0.03, 0.1, 0.3, 1, 3, 10…$</p>
+<h1 id="特征缩放-Feature-Scaling"><a href="#特征缩放-Feature-Scaling" class="headerlink" title="特征缩放 (Feature Scaling)"></a>特征缩放 (Feature Scaling)</h1><p>目的：使梯度下降更快收敛</p>
+<ul>
+<li>均值归一化</li>
+</ul>
+<p>将所有特征的尺度都尽量缩放到-1到1之间。</p>
+<p>$$x_n = \frac{x_n - \mu_n}{s_n}$$<br>其中$\mu_n$是平均值，$s_n$是标准差（max-min）</p>
+<h1 id="特征和多项式回归"><a href="#特征和多项式回归" class="headerlink" title="特征和多项式回归"></a>特征和多项式回归</h1><p>$$h(\theta) = \theta_0 + \theta_1x + \theta_2x^2 + \dots + \theta_nx^n$$</p>
+<p>可用$x_2 = x_2^2,x_3 = x_3^3\dots$ 将模型转化为线性回归模型</p>
+<ul>
+<li>注：这种方法要注意对变量进行特征缩放</li>
+</ul>
+<h1 id="正规方程"><a href="#正规方程" class="headerlink" title="正规方程"></a>正规方程</h1><p>不通过迭代，直接求出$\theta$的最优值</p>
+<p>假设我们的训练集特征矩阵为$X$(包含了$x_0 = 1$)并且我们的训练集结果为向量$y$，则利用正规方程解出向量</p>
+<p>$$\theta = (X^TX)^{-1}X^Ty$$</p>
+<p>其中$X$为$m *(n+1)$维,$y$为$m$列</p>
+<p>例</p>
+<p>$$\begin{aligned}<br>&amp;\begin{array}{c|c|c|c|c|c}<br>x_{0} &amp; x_{1} &amp; x_{2} &amp; x_{3} &amp; x_{4} &amp; y \<br>\hline 1 &amp; 2104 &amp; 5 &amp; 1 &amp; 45 &amp; 460 \<br>1 &amp; 1416 &amp; 3 &amp; 2 &amp; 40 &amp; 232 \<br>1 &amp; 1534 &amp; 3 &amp; 2 &amp; 30 &amp; 315 \<br>1 &amp; 852 &amp; 2 &amp; 1 &amp; 36 &amp; 178<br>\end{array}\<br>则X可写成\\<br>&amp;X=\left[\begin{array}{ccccc}<br>1 &amp; 2104 &amp; 5 &amp; 1 &amp; 45 \<br>1 &amp; 1416 &amp; 3 &amp; 2 &amp; 40 \<br>1 &amp; 1534 &amp; 3 &amp; 2 &amp; 30 \<br>1 &amp; 852 &amp; 2 &amp; 1 &amp; 36<br>\end{array}\right]<br>\end{aligned}$$</p>
+<p>此方法不需要提前对变量进行特征缩放，且不需要学习率$\alpha$</p>
+<table>
+<thead>
+<tr>
+<th>梯度下降</th>
+<th>正规方程</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>需要选择学习率</td>
+<td>不需要</td>
+</tr>
+<tr>
+<td>需要多次迭代</td>
+<td>一次运算得出</td>
+</tr>
+<tr>
+<td>当特征数量n大时也能较好适用</td>
+<td>需要计算$(X^TX)^{-1}$如果特征数量n较大则运算代价大，因为矩阵逆的计算时间复杂度为$O(n^3)$，通常来说当小于10000 时还是可以接受的</td>
+</tr>
+<tr>
+<td>适用于各种类型的模型</td>
+<td>只适用于线性模型，不适合逻辑回归模型等其他模型</td>
+</tr>
+</tbody></table>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://luyilin.top/2020/08/10/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/ex1-%E5%8D%95%E5%8F%98%E9%87%8F%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2121,87 +2242,6 @@ log10(x) = [0.         0.30103    0.47712125]</code></pre><p>对于非常小的�
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://luyilin.top/2020/07/23/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/Introduction/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="luyilin">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="引而不发，跃如也">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/07/23/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/Introduction/" class="post-title-link" itemprop="url">数据挖掘/Introduction</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2020-07-23 20:11:42" itemprop="dateCreated datePublished" datetime="2020-07-23T20:11:42+08:00">2020-07-23</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-07-27 20:51:02" itemprop="dateModified" datetime="2020-07-27T20:51:02+08:00">2020-07-27</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/" itemprop="url" rel="index"><span itemprop="name">数据挖掘</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>helloworld</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/07/23/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/Introduction/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -2271,7 +2311,7 @@ log10(x) = [0.         0.30103    0.47712125]</code></pre><p>对于非常小的�
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">46</span>
+          <span class="site-state-item-count">47</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
