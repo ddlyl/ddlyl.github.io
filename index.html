@@ -173,10 +173,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2020-08-26 20:00:46 / Modified: 20:28:00" itemprop="dateCreated datePublished" datetime="2020-08-26T20:00:46+08:00">2020-08-26</time>
+              <time title="Created: 2020-08-26 20:00:46" itemprop="dateCreated datePublished" datetime="2020-08-26T20:00:46+08:00">2020-08-26</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-09-06 16:04:36" itemprop="dateModified" datetime="2020-09-06T16:04:36+08:00">2020-09-06</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -202,8 +208,7 @@
 <p>我们认为变量$x$符合高斯分布</p>
 <p>其中</p>
 <p>$$<br>\quad \mu=\frac{1}{m} \sum_{i=1}^{m} x^{(i)}$$</p>
-<p>$$<br>\sigma^{2}=\frac{1}{m} \sum_{i=1}^{m}\left(x^{(i)}-\mu\right)^{2}</p>
-<p>$$</p>
+<p>$$<br>\sigma^{2}=\frac{1}{m} \sum_{i=1}^{m}\left(x^{(i)}-\mu\right)^{2}<br>$$</p>
 <p><img src="/2020/08/26/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%E4%B8%8E%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F/1.JPG" alt="1"></p>
 <h2 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h2><ul>
 <li>假设各个特征相互独立</li>
@@ -244,7 +249,7 @@
 <h2 id="选择特征"><a href="#选择特征" class="headerlink" title="选择特征"></a>选择特征</h2><h3 id="通过变换使特征满足高斯分布"><a href="#通过变换使特征满足高斯分布" class="headerlink" title="通过变换使特征满足高斯分布"></a>通过变换使特征满足高斯分布</h3><p><img src="/2020/08/26/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%E4%B8%8E%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F/2.JPG" alt="2"><br>$$x = log(x + c)$$<br>$$x = x^c$$</p>
 <h3 id="通过误差分析找到新特征"><a href="#通过误差分析找到新特征" class="headerlink" title="通过误差分析找到新特征"></a>通过误差分析找到新特征</h3><p>从被误判成正常的异常中找到与其他对象所不同的特征</p>
 <p>如CPU负载与网络通信量的比例</p>
-<h1 id="推荐系统"><a href="#推荐系统" class="headerlink" title="推荐系统"></a>推荐系统</h1>
+
       
     </div>
 
@@ -286,10 +291,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2020-08-25 14:20:18 / Modified: 15:35:10" itemprop="dateCreated datePublished" datetime="2020-08-25T14:20:18+08:00">2020-08-25</time>
+              <time title="Created: 2020-08-25 14:20:18" itemprop="dateCreated datePublished" datetime="2020-08-25T14:20:18+08:00">2020-08-25</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-09-06 16:05:18" itemprop="dateModified" datetime="2020-09-06T16:05:18+08:00">2020-09-06</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -347,8 +358,9 @@
 <ol>
 <li>均值归一化：如果特征是在不同的数量级上，我们还需要将其除以标准差$\sigma^2$。</li>
 <li>第二步是计算协方差矩阵（covariance matrix）<br>$$\Sigma=\frac{1}{m} \sum_{i=1}^{n}\left(x^{(i)}\right)\left(x^{(i)}\right)^{T}$$</li>
-<li>奇异值分解<br><code>[U,S,V] = svd(sigma)</code><br>对于一个  $n \times n$  维度的矩阵, 上式中的U是一个具有与数据之间最小投射误差的方向向量构成的矩阵。如果我们希望将数据从$n$维降至  $k$  维，我们只需要从U中选取前k个向量，获得一个$n\times k$维度的矩阵，我们用  $U_{\text {reduce}}$  表示，然后通过如下计算获得要求的新特征向量  $z^{(i)}$  :<br>$$z^{(i)}=U_{r e d u c e}^{T} * x^{(i)}$$<br>其中  $x$  是  $n \times 1$  维的，因此结果为  $k \times 1$  维度。<h2 id="主成分数量"><a href="#主成分数量" class="headerlink" title="主成分数量"></a>主成分数量</h2>我们获得三个参数：<code>[U, S, V] = svd(sigma)</code>。<br>其中的S是一个$n\times n$的矩阵，只有对角线上有值，而其它单元都是0</li>
+<li>奇异值分解<br><code>[U,S,V] = svd(sigma)</code><br>对于一个  $n \times n$  维度的矩阵, 上式中的U是一个具有与数据之间最小投射误差的方向向量构成的矩阵。如果我们希望将数据从$n$维降至  $k$  维，我们只需要从U中选取前k个向量，获得一个$n\times k$维度的矩阵，我们用  $U_{\text {reduce}}$  表示，然后通过如下计算获得要求的新特征向量  $z^{(i)}$  :<br>$$z^{(i)}=U_{r e d u c e}^{T} * x^{(i)}$$<br>其中  $x$  是  $n \times 1$  维的，因此结果为  $k \times 1$  维度。</li>
 </ol>
+<h2 id="主成分数量"><a href="#主成分数量" class="headerlink" title="主成分数量"></a>主成分数量</h2><p>我们获得三个参数：<code>[U, S, V] = svd(sigma)</code>。<br>其中的S是一个$n\times n$的矩阵，只有对角线上有值，而其它单元都是0</p>
 <p>我们可以使用这个矩阵来计算平均均方误差与训练集方差的比例 :<br>$$<br>\frac{\frac{1}{m} \sum_{i=1}^{m}\left|x^{(i)}-x_{a p p r o x}^{(i)}\right|^{2}}{\frac{1}{m} \sum_{i=1}^{m}\left|x^{(i)}\right|^{2}}=1-\frac{\Sigma_{i=1}^{k} S_{i i}}{\Sigma_{i=1}^{m} S_{i i}} \leq 1 %<br>$$<br>也就是：<br>$$\quad \frac{\Sigma_{i=1}^{k} s_{i i}}{\Sigma_{i=1}^{n} s_{i i}} \geq 0.99$$<br>在压缩过数据后，我们可以采用如下方法来近似地获得原有的特征:<br> $$x_{a p p r o x}^{(i)}=U_{r e d u c e} z^{(i)}$$ </p>
 <h2 id="压缩的还原"><a href="#压缩的还原" class="headerlink" title="压缩的还原"></a>压缩的还原</h2><p>$$z=U_{\text {reduce}}^{T} x$$<br>相反的方程为：<br>$$x_{a p p o x}=U_{r e d u c e} \cdot z_{1}$$<br>$$x_{a p p o x} \approx x $$</p>
 <h2 id="应用建议"><a href="#应用建议" class="headerlink" title="应用建议"></a>应用建议</h2><ol>
@@ -615,10 +627,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2020-08-22 09:09:04 / Modified: 11:09:38" itemprop="dateCreated datePublished" datetime="2020-08-22T09:09:04+08:00">2020-08-22</time>
+              <time title="Created: 2020-08-22 09:09:04" itemprop="dateCreated datePublished" datetime="2020-08-22T09:09:04+08:00">2020-08-22</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-09-06 16:09:52" itemprop="dateModified" datetime="2020-09-06T16:09:52+08:00">2020-09-06</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -663,11 +681,14 @@
 </li>
 <li><p>中位数绝对偏差：<br>$$MAD(x) = median({|x_1 - \bar{x}|,…,|x_m - \bar{x}|})$$</p>
 </li>
-<li><p>四分卫数极差<br>$$IRQ = x_{75%} - x_{25%}$$</p>
+<li><p>四分卫数极差<br>$$IRQ = x_{0.75} - x_{0.25}$$</p>
 </li>
 </ul>
 <h2 id="多元汇总统计"><a href="#多元汇总统计" class="headerlink" title="多元汇总统计"></a>多元汇总统计</h2><p>散布：协方差矩阵</p>
-<p>其中，$S$ 的第$i j$个元素  $s_{i j}$  是数据的第  $i$  个和第  $j$  个属性的协方差。这样，如果  $x_{i}$  和  $x_{j}$  分别是第  $i$  个和第 $j$ 个属性，则<br>$$<br>s_{i j}=\operatorname{covariance}\left(x_{i}, x_{j}\right)<br>$$<br>而 $covariance  \left(x_{i}, x_{j}\right)$  由<br>$$<br>\operatorname{covariance}\left(x_{i}, x_{j}\right)=\frac{1}{m-1} \sum_{k=1}^{m}\left(x_{k i}-\bar{x}<em>{i}\right)\left(x</em>{k j}-\bar{x}<em>{j}\right)<br>$$<br>给出,其中  $x</em>{k i}$  和  $x_{k j}$  分别是第  $k$  个对象的第  $i$  和第  $j$  个属性的值. 注意, $covariance  \left(x_{i}, x_{i}\right)=  variance  \left(x_{i}\right)$  </p>
+<p>其中，$S$ 的第$i j$个元素  $s_{i j}$  是数据的第  $i$  个和第  $j$  个属性的协方差。这样，如果  $x_{i}$  和  $x_{j}$  分别是第  $i$  个和第 $j$ 个属性，则<br>$$<br>s_{i j}=\operatorname{covariance}\left(x_{i}, x_{j}\right)<br>$$</p>
+<p>而 $covariance  \left(x_{i}, x_{j}\right)$  由</p>
+<p>$$<br>\operatorname{covariance}\left(x_{i},x_{j}\right)=\frac{1}{m-1}\sum_{k=1}^{m}\left(x_{ki}-\bar{x}<em>{i}\right)\left(x</em>{kj}-\bar{x}_{j}\right)<br>$$</p>
+<p>给出,其中  $x_{k i}$  和  $x_{k j}$  分别是第  $k$  个对象的第  $i$  和第  $j$  个属性的值. 注意, $covariance  \left(x_{i}, x_{i}\right)=  variance  \left(x_{i}\right)$  </p>
 <p>这样，协方差矩阵的对角线上是属性的方差。</p>
 <p>两个属性的协方差是两个属性一起变化并依赖于变量大小的度量。协方差的值接近于 0 表明 两个变最不具有（线性）关系，但是不能仅观察协方差的值来确定两个变量之间的关联程度。 因为两个属性的相关性直接指出两个属性（线性）相关的程度，对于数据探索，相关性比协方差更可取。相关矩阵（correlation matrix）$R$ 的第  $i j$个元素是数据 的第 $i$ 个和第 $j$ 个属性之间的相关性。如果  $x_{i}$  和  $x_{j}$ 分别是第  $i$  个和第  $j$  个属性，则<br>$$<br>r_{i j}=\text { correlation }\left(x_{i}, x_{j}\right)=\frac{\text { covariance }\left(x_{i}, x_{j}\right)}{s_{i} s_{j}}<br>$$</p>
 <p>其中，$s_i$和  $s_{j}$  分别是  $x_{i}$  和  $x_{j}$  的方差。R 的对角线上的元素是 $correlation  \left(x_{l}, x_{i}\right)=1$,  而其他元素在-1 和 1 之间。考虑包含每对对像而不是每对属性之间相关性的相关矩阵也是有用的。</p>
@@ -851,10 +872,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2020-08-21 08:36:15 / Modified: 20:18:17" itemprop="dateCreated datePublished" datetime="2020-08-21T08:36:15+08:00">2020-08-21</time>
+              <time title="Created: 2020-08-21 08:36:15" itemprop="dateCreated datePublished" datetime="2020-08-21T08:36:15+08:00">2020-08-21</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-09-06 16:11:44" itemprop="dateModified" datetime="2020-09-06T16:11:44+08:00">2020-09-06</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -1003,21 +1030,12 @@
 </ul>
 </li>
 </ol>
-<pre><code>定义  熵：
-
-
-设$k$是不同的类标号数，$m_i$是某划分的第$i$个区间中值的个数，$m_{ij}$是区间$i$中类$j$的值的个数，第$i$个区间的熵$e_i$由如下等式给出
-$$e_i = -\sum_{j = 1}^k\ p_{ij}\ log_2P_{ij}$$
-
-其中
-$$p_{ij} = m_{ij}/m_{i}$$
-是第$i$个区间中类$j$的概率。该划分的总熵$e$是每个区间熵的加权平均，即
-
-$$e = \sum_{i = 1}^n\ w_ie_i$$
-
-其中
-$$w_i = m_i/m,\ m为值的个数$$ 
-![6](6.JPG)</code></pre><h2 id="变量变换"><a href="#变量变换" class="headerlink" title="变量变换"></a>变量变换</h2><ol>
+<p>定义  <strong>熵</strong>：</p>
+<p>设$k$是不同的类标号数，$m_i$是某划分的第$i$个区间中值的个数，$m_{ij}$是区间$i$中类$j$的值的个数，第$i$个区间的熵$e_i$由如下等式给出<br>$$e_i = -\sum_{j = 1}^k\ p_{ij}\ log_2P_{ij}$$</p>
+<p>其中<br>$$p_{ij} = m_{ij}/m_{i}$$<br>是第$i$个区间中类$j$的概率。该划分的总熵$e$是每个区间熵的加权平均，即</p>
+<p>$$e = \sum_{i = 1}^n\ w_ie_i$$</p>
+<p>其中<br>$$w_i = m_i/m,\ m为值的个数$$<br><img src="/2020/08/21/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/%E6%95%B0%E6%8D%AE/6.JPG" alt="6"></p>
+<h2 id="变量变换"><a href="#变量变换" class="headerlink" title="变量变换"></a>变量变换</h2><ol>
 <li><p>简单函数<br>$$x^k,log \ x,e^x,\sqrt{x},|x|$$</p>
 </li>
 <li><p>规范化或标准化</p>
@@ -1044,91 +1062,11 @@ $$w_i = m_i/m,\ m为值的个数$$
 <ul>
 <li>r = 1 为曼哈顿距离</li>
 <li>r = 2 为欧几里得距离</li>
-<li>r = $+\infit$为属性之间的对大值</li>
+<li>r = $+\infin$为属性之间的对大值</li>
 </ul>
 <p>满足非负性，对称性，三角不等式，进而引入度量</p>
 <h2 id="数据对象之间的相似度"><a href="#数据对象之间的相似度" class="headerlink" title="数据对象之间的相似度"></a>数据对象之间的相似度</h2><p>对于相似度，三角不等式通常不成立</p>
 <h2 id="邻近性度量的例子"><a href="#邻近性度量的例子" class="headerlink" title="邻近性度量的例子"></a>邻近性度量的例子</h2>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://luyilin.top/2020/08/16/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E5%A4%A7%E5%AD%A6/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="luyilin">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="引而不发，跃如也">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/08/16/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E5%A4%A7%E5%AD%A6/" class="post-title-link" itemprop="url">读书笔记/大学</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2020-08-16 19:26:47" itemprop="dateCreated datePublished" datetime="2020-08-16T19:26:47+08:00">2020-08-16</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-08-19 08:41:52" itemprop="dateModified" datetime="2020-08-19T08:41:52+08:00">2020-08-19</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">读书笔记</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>在多样性中追寻普遍性，在普遍性中尊重多样性</p>
-<p>真理的死亡就意味着道德的死亡，而道德的死亡就以为着</p>
-<p>《哲学的故事》<br>《人性七论》</p>
-<h1 id="多样性"><a href="#多样性" class="headerlink" title="多样性"></a>多样性</h1><p>对立立场有相对的合理性</p>
-<h1 id="培养责任"><a href="#培养责任" class="headerlink" title="培养责任"></a>培养责任</h1><p>自律的自由</p>
-<p>从知道到做到</p>
-<p>自由的目的是责任，一个越自由的人越懂得服务大众</p>
-
       
     </div>
 
@@ -1357,6 +1295,127 @@ $$w_i = m_i/m,\ m为值的个数$$
   
   
 
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://luyilin.top/2020/08/11/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E5%A4%9A%E5%8F%98%E9%87%8F%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%20%E6%AD%A3%E8%A7%84%E6%96%B9%E7%A8%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="luyilin">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="引而不发，跃如也">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/08/11/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E5%A4%9A%E5%8F%98%E9%87%8F%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%20%E6%AD%A3%E8%A7%84%E6%96%B9%E7%A8%8B/" class="post-title-link" itemprop="url">机器学习/多变量线性回归 正规方程</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-08-11 09:11:34 / Modified: 11:03:55" itemprop="dateCreated datePublished" datetime="2020-08-11T09:11:34+08:00">2020-08-11</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">机器学习</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="符号"><a href="#符号" class="headerlink" title="符号"></a>符号</h1><p>n：特征的数量</p>
+<p>$x^{(i)} = \begin{bmatrix}<br>1416<br>\3<br>\2<br>\40<br>\end{bmatrix}$  表示第$i$个训练实例</p>
+<p>$x^{(i)}_2 = 3$</p>
+<p>代表特征矩阵中第$i$行的第$j$个特征，也就是第$i$个训练实例的第$j$个特征。</p>
+<h1 id="多元线性回归"><a href="#多元线性回归" class="headerlink" title="多元线性回归"></a>多元线性回归</h1><h2 id="假设函数"><a href="#假设函数" class="headerlink" title="假设函数"></a>假设函数</h2><p>$$h_{\theta}(x)=\theta_{0}+\theta_{1} x_{1}+\theta_{2} x_{2}+\ldots+\theta_{n} x_{n}$$</p>
+<p>引入$x_0 = 1$,则<br>$$h_{\theta}(x)=\theta_{0}x_0+\theta_{1} x_{1}+\theta_{2} x_{2}+\ldots+\theta_{n} x_{n}$$</p>
+<p>x成为一个n+1维的向量<br>$x = \begin{bmatrix}<br>x_0<br>\x_1<br>\…<br>\x_n<br>\end{bmatrix}$ </p>
+<p>从而<br>$$h_\theta(x) = \theta^Tx$$</p>
+<h2 id="代价函数"><a href="#代价函数" class="headerlink" title="代价函数"></a>代价函数</h2><p>$$J\left(\theta\right)=\frac{1}{2 m} \sum_{i=1}^{m}\left(h_{\theta}\left(x^{(i)}\right)-y^{(i)}\right)^{2}$$</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">computeCost</span><span class="params">(X, y, theta)</span>:</span></span><br><span class="line">    inner = np.power(((X * theta.T) - y), <span class="number">2</span>)</span><br><span class="line">    <span class="keyword">return</span> np.sum(inner) / (<span class="number">2</span> * len(X))</span><br></pre></td></tr></table></figure>
+<h2 id="梯度下降"><a href="#梯度下降" class="headerlink" title="梯度下降"></a>梯度下降</h2><p>$$\theta_{j}:=\theta_{j}-a \frac{1}{m} \sum_{i=1}^{m}\left(\left(h_{\theta}\left(x^{(i)}\right)-y^{(i)}\right) \cdot x^{(i)}_j\right) $$</p>
+<p>$\alpha = 0.001, 0.003, 0.01, 0.03, 0.1, 0.3, 1, 3, 10…$</p>
+<h1 id="特征缩放-Feature-Scaling"><a href="#特征缩放-Feature-Scaling" class="headerlink" title="特征缩放 (Feature Scaling)"></a>特征缩放 (Feature Scaling)</h1><p>目的：使梯度下降更快收敛</p>
+<ul>
+<li>均值归一化</li>
+</ul>
+<p>将所有特征的尺度都尽量缩放到-1到1之间。</p>
+<p>$$x_n = \frac{x_n - \mu_n}{s_n}$$<br>其中$\mu_n$是平均值，$s_n$是标准差（max-min）</p>
+<h1 id="特征和多项式回归"><a href="#特征和多项式回归" class="headerlink" title="特征和多项式回归"></a>特征和多项式回归</h1><p>$$h(\theta) = \theta_0 + \theta_1x + \theta_2x^2 + \dots + \theta_nx^n$$</p>
+<p>可用$x_2 = x_2^2,x_3 = x_3^3\dots$ 将模型转化为线性回归模型</p>
+<ul>
+<li>注：这种方法要注意对变量进行特征缩放</li>
+</ul>
+<h1 id="正规方程"><a href="#正规方程" class="headerlink" title="正规方程"></a>正规方程</h1><p>不通过迭代，直接求出$\theta$的最优值</p>
+<p>假设我们的训练集特征矩阵为$X$(包含了$x_0 = 1$)并且我们的训练集结果为向量$y$，则利用正规方程解出向量</p>
+<p>$$\theta = (X^TX)^{-1}X^Ty$$</p>
+<p>其中$X$为$m *(n+1)$维,$y$为$m$列</p>
+<p>例</p>
+<p>$$\begin{aligned}<br>&amp;\begin{array}{c|c|c|c|c|c}<br>x_{0} &amp; x_{1} &amp; x_{2} &amp; x_{3} &amp; x_{4} &amp; y \<br>\hline 1 &amp; 2104 &amp; 5 &amp; 1 &amp; 45 &amp; 460 \<br>1 &amp; 1416 &amp; 3 &amp; 2 &amp; 40 &amp; 232 \<br>1 &amp; 1534 &amp; 3 &amp; 2 &amp; 30 &amp; 315 \<br>1 &amp; 852 &amp; 2 &amp; 1 &amp; 36 &amp; 178<br>\end{array}\<br>则X可写成\\<br>&amp;X=\left[\begin{array}{ccccc}<br>1 &amp; 2104 &amp; 5 &amp; 1 &amp; 45 \<br>1 &amp; 1416 &amp; 3 &amp; 2 &amp; 40 \<br>1 &amp; 1534 &amp; 3 &amp; 2 &amp; 30 \<br>1 &amp; 852 &amp; 2 &amp; 1 &amp; 36<br>\end{array}\right]<br>\end{aligned}$$</p>
+<p>此方法不需要提前对变量进行特征缩放，且不需要学习率$\alpha$</p>
+<table>
+<thead>
+<tr>
+<th>梯度下降</th>
+<th>正规方程</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>需要选择学习率</td>
+<td>不需要</td>
+</tr>
+<tr>
+<td>需要多次迭代</td>
+<td>一次运算得出</td>
+</tr>
+<tr>
+<td>当特征数量n大时也能较好适用</td>
+<td>需要计算$(X^TX)^{-1}$如果特征数量n较大则运算代价大，因为矩阵逆的计算时间复杂度为$O(n^3)$，通常来说当小于10000 时还是可以接受的</td>
+</tr>
+<tr>
+<td>适用于各种类型的模型</td>
+<td>只适用于线性模型，不适合逻辑回归模型等其他模型</td>
+</tr>
+</tbody></table>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
 
   
   <nav class="pagination">
@@ -1426,7 +1485,7 @@ $$w_i = m_i/m,\ m为值的个数$$
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">47</span>
+          <span class="site-state-item-count">46</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

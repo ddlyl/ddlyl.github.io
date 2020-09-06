@@ -29,7 +29,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://luyilin.top/2020/08/25/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%97%A0%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0/1.JPG">
 <meta property="article:published_time" content="2020-08-25T06:20:18.369Z">
-<meta property="article:modified_time" content="2020-08-25T07:35:10.218Z">
+<meta property="article:modified_time" content="2020-09-06T08:05:18.897Z">
 <meta property="article:author" content="luyilin">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://luyilin.top/2020/08/25/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%97%A0%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0/1.JPG">
@@ -179,10 +179,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2020-08-25 14:20:18 / Modified: 15:35:10" itemprop="dateCreated datePublished" datetime="2020-08-25T14:20:18+08:00">2020-08-25</time>
+              <time title="Created: 2020-08-25 14:20:18" itemprop="dateCreated datePublished" datetime="2020-08-25T14:20:18+08:00">2020-08-25</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-09-06 16:05:18" itemprop="dateModified" datetime="2020-09-06T16:05:18+08:00">2020-09-06</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -240,8 +246,9 @@
 <ol>
 <li>均值归一化：如果特征是在不同的数量级上，我们还需要将其除以标准差$\sigma^2$。</li>
 <li>第二步是计算协方差矩阵（covariance matrix）<br>$$\Sigma=\frac{1}{m} \sum_{i=1}^{n}\left(x^{(i)}\right)\left(x^{(i)}\right)^{T}$$</li>
-<li>奇异值分解<br><code>[U,S,V] = svd(sigma)</code><br>对于一个  $n \times n$  维度的矩阵, 上式中的U是一个具有与数据之间最小投射误差的方向向量构成的矩阵。如果我们希望将数据从$n$维降至  $k$  维，我们只需要从U中选取前k个向量，获得一个$n\times k$维度的矩阵，我们用  $U_{\text {reduce}}$  表示，然后通过如下计算获得要求的新特征向量  $z^{(i)}$  :<br>$$z^{(i)}=U_{r e d u c e}^{T} * x^{(i)}$$<br>其中  $x$  是  $n \times 1$  维的，因此结果为  $k \times 1$  维度。<h2 id="主成分数量"><a href="#主成分数量" class="headerlink" title="主成分数量"></a>主成分数量</h2>我们获得三个参数：<code>[U, S, V] = svd(sigma)</code>。<br>其中的S是一个$n\times n$的矩阵，只有对角线上有值，而其它单元都是0</li>
+<li>奇异值分解<br><code>[U,S,V] = svd(sigma)</code><br>对于一个  $n \times n$  维度的矩阵, 上式中的U是一个具有与数据之间最小投射误差的方向向量构成的矩阵。如果我们希望将数据从$n$维降至  $k$  维，我们只需要从U中选取前k个向量，获得一个$n\times k$维度的矩阵，我们用  $U_{\text {reduce}}$  表示，然后通过如下计算获得要求的新特征向量  $z^{(i)}$  :<br>$$z^{(i)}=U_{r e d u c e}^{T} * x^{(i)}$$<br>其中  $x$  是  $n \times 1$  维的，因此结果为  $k \times 1$  维度。</li>
 </ol>
+<h2 id="主成分数量"><a href="#主成分数量" class="headerlink" title="主成分数量"></a>主成分数量</h2><p>我们获得三个参数：<code>[U, S, V] = svd(sigma)</code>。<br>其中的S是一个$n\times n$的矩阵，只有对角线上有值，而其它单元都是0</p>
 <p>我们可以使用这个矩阵来计算平均均方误差与训练集方差的比例 :<br>$$<br>\frac{\frac{1}{m} \sum_{i=1}^{m}\left|x^{(i)}-x_{a p p r o x}^{(i)}\right|^{2}}{\frac{1}{m} \sum_{i=1}^{m}\left|x^{(i)}\right|^{2}}=1-\frac{\Sigma_{i=1}^{k} S_{i i}}{\Sigma_{i=1}^{m} S_{i i}} \leq 1 %<br>$$<br>也就是：<br>$$\quad \frac{\Sigma_{i=1}^{k} s_{i i}}{\Sigma_{i=1}^{n} s_{i i}} \geq 0.99$$<br>在压缩过数据后，我们可以采用如下方法来近似地获得原有的特征:<br> $$x_{a p p r o x}^{(i)}=U_{r e d u c e} z^{(i)}$$ </p>
 <h2 id="压缩的还原"><a href="#压缩的还原" class="headerlink" title="压缩的还原"></a>压缩的还原</h2><p>$$z=U_{\text {reduce}}^{T} x$$<br>相反的方程为：<br>$$x_{a p p o x}=U_{r e d u c e} \cdot z_{1}$$<br>$$x_{a p p o x} \approx x $$</p>
 <h2 id="应用建议"><a href="#应用建议" class="headerlink" title="应用建议"></a>应用建议</h2><ol>
@@ -342,7 +349,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">47</span>
+          <span class="site-state-item-count">46</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
