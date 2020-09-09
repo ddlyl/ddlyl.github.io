@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"luyilin.top","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="估计器的关键参数：  fit():输入训练样本数据集以及样本对应的类别。 predict():仅以测试集类别为输入  最邻近算法距离： 欧几里得距离，曼哈顿距离，余弦距离 123456import numpy as npimport csvimport pandas as pddata_name &#x3D; &quot;ionosphere.data&quot;X &#x3D; np.zeros((351,34),dtype &#x3D; &#39;f">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据挖掘&#x2F;sklearn-分类问题与简单预处理">
+<meta property="og:url" content="http://luyilin.top/2020/09/09/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/sklearn-%E5%88%86%E7%B1%BB%E9%97%AE%E9%A2%98%E4%B8%8E%E7%AE%80%E5%8D%95%E9%A2%84%E5%A4%84%E7%90%86/index.html">
+<meta property="og:site_name" content="引而不发，跃如也">
+<meta property="og:description" content="估计器的关键参数：  fit():输入训练样本数据集以及样本对应的类别。 predict():仅以测试集类别为输入  最邻近算法距离： 欧几里得距离，曼哈顿距离，余弦距离 123456import numpy as npimport csvimport pandas as pddata_name &#x3D; &quot;ionosphere.data&quot;X &#x3D; np.zeros((351,34),dtype &#x3D; &#39;f">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://luyilin.top/2020/09/09/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/sklearn-%E5%88%86%E7%B1%BB%E9%97%AE%E9%A2%98%E4%B8%8E%E7%AE%80%E5%8D%95%E9%A2%84%E5%A4%84%E7%90%86/output_14_1.png">
+<meta property="article:published_time" content="2020-09-09T01:33:47.386Z">
+<meta property="article:modified_time" content="2020-09-09T01:37:33.934Z">
+<meta property="article:author" content="luyilin">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://luyilin.top/2020/09/09/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/sklearn-%E5%88%86%E7%B1%BB%E9%97%AE%E9%A2%98%E4%B8%8E%E7%AE%80%E5%8D%95%E9%A2%84%E5%A4%84%E7%90%86/output_14_1.png">
+
+<link rel="canonical" href="http://luyilin.top/2020/09/09/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/sklearn-%E5%88%86%E7%B1%BB%E9%97%AE%E9%A2%98%E4%B8%8E%E7%AE%80%E5%8D%95%E9%A2%84%E5%A4%84%E7%90%86/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>数据挖掘/sklearn-分类问题与简单预处理 | 引而不发，跃如也</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">引而不发，跃如也</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://luyilin.top/2020/09/09/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/sklearn-%E5%88%86%E7%B1%BB%E9%97%AE%E9%A2%98%E4%B8%8E%E7%AE%80%E5%8D%95%E9%A2%84%E5%A4%84%E7%90%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="luyilin">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="引而不发，跃如也">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          数据挖掘/sklearn-分类问题与简单预处理
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-09-09 09:33:47 / Modified: 09:37:33" itemprop="dateCreated datePublished" datetime="2020-09-09T09:33:47+08:00">2020-09-09</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/sklearn/" itemprop="url" rel="index"><span itemprop="name">sklearn</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>估计器的关键参数：</p>
+<ol>
+<li><code>fit()</code>:输入训练样本数据集以及样本对应的类别。</li>
+<li><code>predict()</code>:仅以测试集类别为输入</li>
+</ol>
+<h1 id="最邻近算法"><a href="#最邻近算法" class="headerlink" title="最邻近算法"></a>最邻近算法</h1><p>距离： 欧几里得距离，曼哈顿距离，余弦距离</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> csv</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line">data_name = <span class="string">"ionosphere.data"</span></span><br><span class="line">X = np.zeros((<span class="number">351</span>,<span class="number">34</span>),dtype = <span class="string">'float'</span>)</span><br><span class="line">y = np.zeros((<span class="number">351</span>,),dtype = <span class="string">'bool'</span>)</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> open(data_name, <span class="string">'r'</span>) <span class="keyword">as</span> input_file:</span><br><span class="line">    reader = csv.reader(input_file)</span><br><span class="line">    <span class="keyword">for</span> i, row <span class="keyword">in</span> enumerate(reader):</span><br><span class="line">        <span class="comment"># 取出数据，转换为浮点类型</span></span><br><span class="line">        data = [float(datum) <span class="keyword">for</span> datum <span class="keyword">in</span> row[:<span class="number">-1</span>]]</span><br><span class="line">        <span class="comment"># 向 X 中填入合适的行</span></span><br><span class="line">        X[i] = data</span><br><span class="line">        <span class="comment"># 如果类别是'g'则为 1，否则为 0</span></span><br><span class="line">        y[i] = row[<span class="number">-1</span>] == <span class="string">'g'</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 分割训练集与测试集</span></span><br><span class="line"><span class="keyword">from</span> sklearn.cross_validation <span class="keyword">import</span> train_test_split</span><br><span class="line">X_train, X_test, y_train, y_test = train_test_split(X,y,random_state = <span class="number">14</span>)</span><br></pre></td></tr></table></figure>
+
+<pre><code>C:\Users\25827\Anaconda3\lib\site-packages\sklearn\cross_validation.py:41: DeprecationWarning: This module was deprecated in version 0.18 in favor of the model_selection module into which all the refactored classes and functions are moved. Also note that the interface of the new CV iterators are different from that of this module. This module will be removed in 0.20.
+  &quot;This module will be removed in 0.20.&quot;, DeprecationWarning)</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#创建估计器</span></span><br><span class="line"><span class="keyword">from</span> sklearn.neighbors <span class="keyword">import</span> KNeighborsClassifier</span><br><span class="line">estimator = KNeighborsClassifier()</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">estimator.fit(X_train, y_train)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>KNeighborsClassifier(algorithm=&apos;auto&apos;, leaf_size=30, metric=&apos;minkowski&apos;,
+           metric_params=None, n_jobs=1, n_neighbors=5, p=2,
+           weights=&apos;uniform&apos;)</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#  评估效果</span></span><br><span class="line">y_predicted = estimator.predict(X_test)</span><br><span class="line">accuracy = np.mean(y_test == y_predicted) * <span class="number">100</span></span><br><span class="line">print(accuracy)</span><br></pre></td></tr></table></figure>
+
+<pre><code>86.36363636363636</code></pre><h2 id="交叉验证"><a href="#交叉验证" class="headerlink" title="交叉验证"></a>交叉验证</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.cross_validation <span class="keyword">import</span> cross_val_score</span><br><span class="line">scores = cross_val_score(estimator, X ,y ,scoring = <span class="string">'accuracy'</span>)</span><br><span class="line">average_accuracy = np.mean(scores)* <span class="number">100</span></span><br><span class="line">print(average_accuracy)</span><br></pre></td></tr></table></figure>
+
+<pre><code>82.33618233618233</code></pre><h2 id="参数选择"><a href="#参数选择" class="headerlink" title="参数选择"></a>参数选择</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">avg_scores = []</span><br><span class="line">all_scores = []</span><br><span class="line">parameter_values = list(range(<span class="number">1</span>,<span class="number">21</span>))</span><br><span class="line"><span class="keyword">for</span> n_neighbors <span class="keyword">in</span> parameter_values:</span><br><span class="line">    estimator = KNeighborsClassifier(n_neighbors=n_neighbors)</span><br><span class="line">    scores = cross_val_score(estimator, X, y, scoring=<span class="string">'accuracy'</span>)</span><br><span class="line">    avg_scores.append(np.mean(scores))</span><br><span class="line">    all_scores.append(scores)</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">%matplotlib inline</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line">plt.plot(parameter_values, avg_scores, <span class="string">'-o'</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>[&lt;matplotlib.lines.Line2D at 0x16ac2bdac50&gt;]</code></pre><p><img src="/2020/09/09/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/sklearn-%E5%88%86%E7%B1%BB%E9%97%AE%E9%A2%98%E4%B8%8E%E7%AE%80%E5%8D%95%E9%A2%84%E5%A4%84%E7%90%86/output_14_1.png" alt="png"></p>
+<p>选取的近邻数量越多，算法的准确率越低</p>
+<h1 id="预处理"><a href="#预处理" class="headerlink" title="预处理"></a>预处理</h1><h2 id="归一化"><a href="#归一化" class="headerlink" title="归一化"></a>归一化</h2><p>使所有值落在[0,1]之间</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> MinMaxScaler</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">X_transformed = MinMaxScaler().fit_transform(X)</span><br><span class="line">X_transformed</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>array([[1.      , 0.      , 0.997695, ..., 0.227565, 0.593205, 0.2735  ],
+       [1.      , 0.      , 1.      , ..., 0.46856 , 0.43131 , 0.487765],
+       [1.      , 0.      , 1.      , ..., 0.3791  , 0.780225, 0.30881 ],
+       ...,
+       [1.      , 0.      , 0.973505, ..., 0.50221 , 0.963485, 0.497115],
+       [1.      , 0.      , 0.95304 , ..., 0.481215, 0.937015, 0.418785],
+       [1.      , 0.      , 0.92355 , ..., 0.46661 , 0.92882 , 0.469245]])</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sklearn.preprocessing.Normalizer  <span class="comment">#让样本的各特征值之和为 1。</span></span><br><span class="line">sklearn.preprocessing.StandardScaler  <span class="comment">#让特征值均值为 0，方差为 1。这通常是归一化处理的第一步。</span></span><br><span class="line">sklearn.preprocessing.Binarizer  <span class="comment">#把数值特征转换成二值特征，数值在阈值之上取 1，反之则取 0。</span></span><br></pre></td></tr></table></figure>
+
+
+<h1 id="流水线"><a href="#流水线" class="headerlink" title="流水线"></a>流水线</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.pipeline <span class="keyword">import</span> Pipeline</span><br></pre></td></tr></table></figure>
+
+<p>我们用(‘name’, step)形式的元组表示步骤，并创建流水线。</p>
+<p>转换器 -&gt; 估计器 </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">scaling_pipeline = Pipeline([(<span class="string">'scale'</span>,MinMaxScaler()),</span><br><span class="line">                             (<span class="string">'predict'</span>,KNeighborsClassifier())])</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">scores = cross_val_score(scaling_pipeline, X, y, scoring=<span class="string">'accuracy'</span>)</span><br><span class="line">print(accuracy)</span><br></pre></td></tr></table></figure>
+
+<pre><code>86.36363636363636</code></pre>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/09/08/C%E5%92%8C%E6%8C%87%E9%92%88/C%E8%AF%AD%E8%A8%80%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/" rel="prev" title="C和指针/C语言程序设计">
+      <i class="fa fa-chevron-left"></i> C和指针/C语言程序设计
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#最邻近算法"><span class="nav-number">1.</span> <span class="nav-text">最邻近算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#交叉验证"><span class="nav-number">1.1.</span> <span class="nav-text">交叉验证</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参数选择"><span class="nav-number">1.2.</span> <span class="nav-text">参数选择</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#预处理"><span class="nav-number">2.</span> <span class="nav-text">预处理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#归一化"><span class="nav-number">2.1.</span> <span class="nav-text">归一化</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#流水线"><span class="nav-number">3.</span> <span class="nav-text">流水线</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">luyilin</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">48</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">luyilin</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+</body>
+</html>
