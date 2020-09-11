@@ -150,6 +150,478 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://luyilin.top/2020/09/11/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/sklearn-%E5%86%B3%E7%AD%96%E6%A0%91/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="luyilin">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="引而不发，跃如也">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/09/11/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/sklearn-%E5%86%B3%E7%AD%96%E6%A0%91/" class="post-title-link" itemprop="url">数据挖掘/sklearn-决策树</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-09-11 15:20:23 / Modified: 15:24:01" itemprop="dateCreated datePublished" datetime="2020-09-11T15:20:23+08:00">2020-09-11</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/sklearn/" itemprop="url" rel="index"><span itemprop="name">sklearn</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="加载数据集"><a href="#加载数据集" class="headerlink" title="加载数据集"></a>加载数据集</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line">data_name = <span class="string">'basketball.csv'</span></span><br><span class="line">dataset = pd.read_csv(data_name)</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dataset.head()</span><br></pre></td></tr></table></figure>
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}</code></pre><p></style><p></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Date</th>
+      <th>Start (ET)</th>
+      <th>Visitor/Neutral</th>
+      <th>PTS</th>
+      <th>Home/Neutral</th>
+      <th>PTS.1</th>
+      <th>Unnamed: 6</th>
+      <th>Unnamed: 7</th>
+      <th>Attend.</th>
+      <th>Notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Tue Oct 27 2015</td>
+      <td>8:00p</td>
+      <td>Cleveland Cavaliers</td>
+      <td>95</td>
+      <td>Chicago Bulls</td>
+      <td>97</td>
+      <td>Box Score</td>
+      <td>NaN</td>
+      <td>21957</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Tue Oct 27 2015</td>
+      <td>8:00p</td>
+      <td>Detroit Pistons</td>
+      <td>106</td>
+      <td>Atlanta Hawks</td>
+      <td>94</td>
+      <td>Box Score</td>
+      <td>NaN</td>
+      <td>19187</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Tue Oct 27 2015</td>
+      <td>10:30p</td>
+      <td>New Orleans Pelicans</td>
+      <td>95</td>
+      <td>Golden State Warriors</td>
+      <td>111</td>
+      <td>Box Score</td>
+      <td>NaN</td>
+      <td>19596</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Wed Oct 28 2015</td>
+      <td>7:00p</td>
+      <td>Washington Wizards</td>
+      <td>88</td>
+      <td>Orlando Magic</td>
+      <td>87</td>
+      <td>Box Score</td>
+      <td>NaN</td>
+      <td>18846</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Wed Oct 28 2015</td>
+      <td>7:30p</td>
+      <td>Philadelphia 76ers</td>
+      <td>95</td>
+      <td>Boston Celtics</td>
+      <td>112</td>
+      <td>Box Score</td>
+      <td>NaN</td>
+      <td>18624</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+<h1 id="数据清洗"><a href="#数据清洗" class="headerlink" title="数据清洗"></a>数据清洗</h1><ol>
+<li>日期内容是字符串而不是日期对象</li>
+<li>表头不完整或不正确</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">dataset = pd.read_csv(data_name, parse_dates=[<span class="string">"Date"</span>])</span><br><span class="line">dataset.columns = [<span class="string">"Date"</span>, <span class="string">"Start (ET)"</span>, <span class="string">"Visitor Team"</span>, <span class="string">"VisitorPts"</span>,</span><br><span class="line">                    <span class="string">"Home Team"</span>, <span class="string">"HomePts"</span>, <span class="string">"OT?"</span>, <span class="string">"Score Type"</span>,<span class="string">"Attend"</span>,<span class="string">"Notes"</span>]</span><br><span class="line">dataset.head()</span><br></pre></td></tr></table></figure>
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}</code></pre><p></style><p></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Date</th>
+      <th>Start (ET)</th>
+      <th>Visitor Team</th>
+      <th>VisitorPts</th>
+      <th>Home Team</th>
+      <th>HomePts</th>
+      <th>OT?</th>
+      <th>Score Type</th>
+      <th>Attend</th>
+      <th>Notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2015-10-27</td>
+      <td>8:00p</td>
+      <td>Cleveland Cavaliers</td>
+      <td>95</td>
+      <td>Chicago Bulls</td>
+      <td>97</td>
+      <td>Box Score</td>
+      <td>NaN</td>
+      <td>21957</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2015-10-27</td>
+      <td>8:00p</td>
+      <td>Detroit Pistons</td>
+      <td>106</td>
+      <td>Atlanta Hawks</td>
+      <td>94</td>
+      <td>Box Score</td>
+      <td>NaN</td>
+      <td>19187</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2015-10-27</td>
+      <td>10:30p</td>
+      <td>New Orleans Pelicans</td>
+      <td>95</td>
+      <td>Golden State Warriors</td>
+      <td>111</td>
+      <td>Box Score</td>
+      <td>NaN</td>
+      <td>19596</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2015-10-28</td>
+      <td>7:00p</td>
+      <td>Washington Wizards</td>
+      <td>88</td>
+      <td>Orlando Magic</td>
+      <td>87</td>
+      <td>Box Score</td>
+      <td>NaN</td>
+      <td>18846</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2015-10-28</td>
+      <td>7:30p</td>
+      <td>Philadelphia 76ers</td>
+      <td>95</td>
+      <td>Boston Celtics</td>
+      <td>112</td>
+      <td>Box Score</td>
+      <td>NaN</td>
+      <td>18624</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+<h1 id="提取新特征"><a href="#提取新特征" class="headerlink" title="提取新特征"></a>提取新特征</h1><p>将主队获胜的情况编码为 1，将客队获胜的情况编码为 0</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dataset[<span class="string">"HomeWin"</span>] = dataset[<span class="string">"VisitorPts"</span>] &lt; dataset[<span class="string">"HomePts"</span>]</span><br></pre></td></tr></table></figure>
+
+<p>切换成numpy格式</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">y_true = dataset[<span class="string">"HomeWin"</span>].values</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">y_true</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>array([ True, False,  True, ..., False,  True, False])</code></pre><p>计算新特征，方法是按顺序迭代各行，并记录获胜队伍。每迭代到一行新数据，<br>就去查找当前两支队伍上一次交手的结果</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> defaultdict</span><br><span class="line">won_last = defaultdict(int)</span><br><span class="line">dataset[<span class="string">"HomeLastWin"</span>] = <span class="number">0</span></span><br><span class="line">dataset[<span class="string">"VisitorLastWin"</span>] = <span class="number">0</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> index,row <span class="keyword">in</span> dataset.iterrows():</span><br><span class="line">    home_team = row[<span class="string">"Home Team"</span>]</span><br><span class="line">    visitor_team = row[<span class="string">"Visitor Team"</span>]</span><br><span class="line">    row[<span class="string">"HomeLastWin"</span>] = won_last[home_team]</span><br><span class="line">    dataset.set_value(index, <span class="string">"HomeLastWin"</span>, won_last[home_team])</span><br><span class="line">    dataset.set_value(index, <span class="string">"VisitorLastWin"</span>, won_last[visitor_team])</span><br><span class="line">    won_last[home_team] = int(row[<span class="string">"HomeWin"</span>])</span><br><span class="line">    won_last[visitor_team] = <span class="number">1</span> - int(row[<span class="string">"HomeWin"</span>])</span><br></pre></td></tr></table></figure>
+
+
+
+
+<p>​    </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dataset.head(<span class="number">6</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}</code></pre><p></style><p></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Date</th>
+      <th>Start (ET)</th>
+      <th>Visitor Team</th>
+      <th>VisitorPts</th>
+      <th>Home Team</th>
+      <th>HomePts</th>
+      <th>OT?</th>
+      <th>Score Type</th>
+      <th>Attend</th>
+      <th>Notes</th>
+      <th>HomeWin</th>
+      <th>HomeLastWin</th>
+      <th>VisitorLastWin</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2015-10-27</td>
+      <td>8:00p</td>
+      <td>Cleveland Cavaliers</td>
+      <td>95</td>
+      <td>Chicago Bulls</td>
+      <td>97</td>
+      <td>Box Score</td>
+      <td>NaN</td>
+      <td>21957</td>
+      <td>NaN</td>
+      <td>True</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2015-10-27</td>
+      <td>8:00p</td>
+      <td>Detroit Pistons</td>
+      <td>106</td>
+      <td>Atlanta Hawks</td>
+      <td>94</td>
+      <td>Box Score</td>
+      <td>NaN</td>
+      <td>19187</td>
+      <td>NaN</td>
+      <td>False</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2015-10-27</td>
+      <td>10:30p</td>
+      <td>New Orleans Pelicans</td>
+      <td>95</td>
+      <td>Golden State Warriors</td>
+      <td>111</td>
+      <td>Box Score</td>
+      <td>NaN</td>
+      <td>19596</td>
+      <td>NaN</td>
+      <td>True</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2015-10-28</td>
+      <td>7:00p</td>
+      <td>Washington Wizards</td>
+      <td>88</td>
+      <td>Orlando Magic</td>
+      <td>87</td>
+      <td>Box Score</td>
+      <td>NaN</td>
+      <td>18846</td>
+      <td>NaN</td>
+      <td>False</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2015-10-28</td>
+      <td>7:30p</td>
+      <td>Philadelphia 76ers</td>
+      <td>95</td>
+      <td>Boston Celtics</td>
+      <td>112</td>
+      <td>Box Score</td>
+      <td>NaN</td>
+      <td>18624</td>
+      <td>NaN</td>
+      <td>True</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>2015-10-28</td>
+      <td>7:30p</td>
+      <td>Chicago Bulls</td>
+      <td>115</td>
+      <td>Brooklyn Nets</td>
+      <td>100</td>
+      <td>Box Score</td>
+      <td>NaN</td>
+      <td>17732</td>
+      <td>NaN</td>
+      <td>False</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+<h1 id="决策树"><a href="#决策树" class="headerlink" title="决策树"></a>决策树</h1><h2 id="决策树参数"><a href="#决策树参数" class="headerlink" title="决策树参数"></a>决策树参数</h2><figure class="highlight plain"><figcaption><span>指定创建决策新节点所需的最低样本数量。</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&#96;&#96;&#96;min_samples_leaf&#96;&#96;&#96; 指定保留节点所需的最低返回样本数量。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">第一个参数决定是否创建决策节点，而第二个参数决定是否保留决策节点。</span><br><span class="line"></span><br><span class="line">指定决策创建条件的参数:</span><br><span class="line"></span><br><span class="line">1. 基尼不纯度 关注决策树节点错误预测样本分类的概率。</span><br><span class="line">2. 信息增益 用计算信息论熵的方式来衡量决策节点带来的额外信息量。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;python</span><br><span class="line">from sklearn.tree import DecisionTreeClassifier</span><br><span class="line">clf &#x3D; DecisionTreeClassifier(random_state &#x3D; 14)</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">X_previouswins = dataset[[<span class="string">"HomeLastWin"</span>, <span class="string">"VisitorLastWin"</span>]].values</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.cross_validation <span class="keyword">import</span> cross_val_score</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">scores = cross_val_score(clf, X_previouswins, y_true,</span><br><span class="line">                            scoring=<span class="string">'accuracy'</span>)</span><br><span class="line">print(<span class="string">"Accuracy: &#123;0:.1f&#125;%"</span>.format(np.mean(scores) * <span class="number">100</span>))</span><br></pre></td></tr></table></figure>
+
+<pre><code>Accuracy: 58.1%</code></pre><h1 id="随机森林"><a href="#随机森林" class="headerlink" title="随机森林"></a>随机森林</h1><p>限制决策树要学习的规则的数量，并创建多颗决策树</p>
+<p>问题：</p>
+<ol>
+<li>决策树的生成过程是确定的</li>
+<li>用相似数据生成决策树是，前几个决策结点的特征也会差不多</li>
+</ol>
+<p>解决：</p>
+<ol>
+<li>在数据中随机采样，生成多份新的数据集</li>
+<li>在分割数据时随机选取特征子集，以避免在不同决策树中出现相同特征</li>
+</ol>
+<p>通过对大量决策树的结果取平均，可以大大减小方差。这样得到的模型通常有更高的总体准<br>确率和更强的预测能力，但也增加了计算时间，并给算法带来了更高的偏差。</p>
+<h2 id="随机森林参数"><a href="#随机森林参数" class="headerlink" title="随机森林参数"></a>随机森林参数</h2><p>随机森林会生成多个 DecisionTreeClassifier 实例，这些实例共用像 criterion（基<br>尼不纯度/熵增/信息增益）、 max_features、 min_samples_split 这样的参数。</p>
+<p>一些新参数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">也越准确。</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;oob_score&#96;&#96;&#96;：如果结果为 True，那么该方法会在其他样本上进行测试，而不用训练决策</span><br><span class="line">树时所使用的那部分数据集。</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;n_jobs&#96;&#96;&#96;：指定参与并行计算生成决策树的 CPU 核心数量。</span><br><span class="line"></span><br><span class="line">## 应用</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;python</span><br><span class="line">from sklearn.ensemble import RandomForestClassifier</span><br><span class="line">clf &#x3D; RandomForestClassifier(random_state&#x3D;14)</span><br><span class="line">scores &#x3D; cross_val_score(clf, X_previouswins, y_true, scoring&#x3D;&#39;accuracy&#39;)</span><br><span class="line">print(&quot;Accuracy: &#123;0:.1f&#125;%&quot;.format(np.mean(scores) * 100))</span><br></pre></td></tr></table></figure>
+
+<pre><code>Accuracy: 58.1%</code></pre>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://luyilin.top/2020/09/09/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/sklearn-%E5%88%86%E7%B1%BB%E9%97%AE%E9%A2%98%E4%B8%8E%E7%AE%80%E5%8D%95%E9%A2%84%E5%A4%84%E7%90%86/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1274,108 +1746,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://luyilin.top/2020/08/14/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="luyilin">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="引而不发，跃如也">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/08/14/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/" class="post-title-link" itemprop="url">机器学习/神经网络</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2020-08-14 09:03:29" itemprop="dateCreated datePublished" datetime="2020-08-14T09:03:29+08:00">2020-08-14</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-08-19 21:10:53" itemprop="dateModified" datetime="2020-08-19T21:10:53+08:00">2020-08-19</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">机器学习</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="非线性假设"><a href="#非线性假设" class="headerlink" title="非线性假设"></a>非线性假设</h1><ul>
-<li>线性回归和逻辑回归的缺点：当特征过多时，计算会过于复杂</li>
-</ul>
-<h1 id="模型表示"><a href="#模型表示" class="headerlink" title="模型表示"></a>模型表示</h1><p><img src="/2020/08/14/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/1.png" alt="1"></p>
-<p>其中$x_1,x_2,x_3$是输入单元，$a_1,a_2,a_3$是中间单元，负责数据处理，最后是输出单元。</p>
-<p>神经网络模型是许多逻辑单元按照不同层级组织起来的网络，每一层的输出变量都是下一层的输入变量。</p>
-<p>第一层成为输入层（Input Layer），最后一层称为输出层（Output Layer），中间一层成为隐藏层（Hidden Layers）。我们为每一层都增加一个偏差单位（bias unit）</p>
-<ul>
-<li>符号表示：<br>$a_i^{(j)}代表第j层的第i个激活单元,\theta^{(j)}代表从第j层映射到第j + 1层时的权重的矩阵$</li>
-</ul>
-<p>对于上图所示的模型，激活单元和输出分别表达为：</p>
-<p>$$<br>a_{1}^{(2)}=g\left(\Theta_{10}^{(1)} x_{0}+\Theta_{11}^{(1)} x_{1}+\Theta_{12}^{(1)} x_{2}+\Theta_{13}^{(1)} x_{3}\right)<br>$$</p>
-<p>$$<br>a_{2}^{(2)}=g\left(\Theta_{20}^{(1)} x_{0}+\Theta_{21}^{(1)} x_{1}+\Theta_{22}^{(1)} x_{2}+\Theta_{23}^{(1)} x_{3}\right)<br>$$</p>
-<p>$$<br>a_{3}^{(2)}=g\left(\Theta_{30}^{(1)} x_{0}+\Theta_{31}^{(1)} x_{1}+\Theta_{32}^{(1)} x_{2}+\Theta_{33}^{(1)} x_{3}\right)<br>$$</p>
-<p>$$<br>h_{\Theta}(x)=a_1^{(3)} = g\left(\Theta_{10}^{(2)} a_{0}^{(2)}+\Theta_{11}^{(2)} a_{1}^{(2)}+\Theta_{12}^{(2)} a_{2}^{(2)}+\Theta_{13}^{(2)} a_{3}^{(2)}\right)<br>$$</p>
-<p>如果一个网络在$j$层有$s_j$个神经元，$j + 1$层有$s_{j+1}$个神经元，那么$\Theta^{(j)}$的维数是$s_{j + 1}\times(s_j + 1)$</p>
-<h1 id="多类分类"><a href="#多类分类" class="headerlink" title="多类分类"></a>多类分类</h1><p>输出层多个输出，分别表示每一项的是或者非</p>
-<h1 id="符号表示"><a href="#符号表示" class="headerlink" title="符号表示"></a>符号表示</h1><p>$m$:样本数量</p>
-<p>$L$:神经网络层数</p>
-<p>$S_i$:每层的神经元数目</p>
-<p>二分类：$S_L = 1, y = 0,1$表示哪一类</p>
-<p>$K$分类($L &gt; 2$) : $S_L = K$, $y_i = 1$表示分到第$i$类</p>
-<h1 id="代价函数"><a href="#代价函数" class="headerlink" title="代价函数"></a>代价函数</h1><ul>
-<li><p>逻辑回归<br>$$J(\theta)=-\frac{1}{m} \sum_{i=1}^{m}\left[y^{(i)} \log \left(h_{\theta}\left(x^{(i)}\right)\right)+\left(1-y^{(i)}\right) \log \left(1-h_{\theta}\left(x^{(i)}\right)\right)\right]$$</p>
-</li>
-<li><p>神经网络<br>在神经网络中，我们可以有很多输出变量，我们的$h_\theta(x)$是一个维度为$K$的向量，并且我们训练集中的因变量也是同样维度的一个向量，因此我们的代价函数会比逻辑回归更加复杂一些</p>
-</li>
-</ul>
-<p>$$J(\Theta)=-\frac{1}{m}\sum_{i=1}^{m}\sum_{k=1}^{k}\left[y_{k}^{(i)}\log\left(h_{\Theta}\left(x^{(i)}\right)\right)<em>{k}+\left(1-y</em>{k}^{(i)}\right)\log\left(1-\left(h_{\Theta}\left(x^{(i)}\right)\right)<em>{k}\right)\right]+\frac{\lambda}{2m}\sum</em>{l=1}^{L-1}\sum_{i=1}^{s_{l}}\sum_{j=1}^{s_{l}+1}\left(\Theta_{ji}^{(l)}\right)^{2}$$</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1445,7 +1815,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">48</span>
+          <span class="site-state-item-count">49</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

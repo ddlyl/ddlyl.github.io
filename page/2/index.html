@@ -150,6 +150,108 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://luyilin.top/2020/08/14/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="luyilin">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="引而不发，跃如也">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/08/14/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/" class="post-title-link" itemprop="url">机器学习/神经网络</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-08-14 09:03:29" itemprop="dateCreated datePublished" datetime="2020-08-14T09:03:29+08:00">2020-08-14</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-08-19 21:10:53" itemprop="dateModified" datetime="2020-08-19T21:10:53+08:00">2020-08-19</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">机器学习</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="非线性假设"><a href="#非线性假设" class="headerlink" title="非线性假设"></a>非线性假设</h1><ul>
+<li>线性回归和逻辑回归的缺点：当特征过多时，计算会过于复杂</li>
+</ul>
+<h1 id="模型表示"><a href="#模型表示" class="headerlink" title="模型表示"></a>模型表示</h1><p><img src="/2020/08/14/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/1.png" alt="1"></p>
+<p>其中$x_1,x_2,x_3$是输入单元，$a_1,a_2,a_3$是中间单元，负责数据处理，最后是输出单元。</p>
+<p>神经网络模型是许多逻辑单元按照不同层级组织起来的网络，每一层的输出变量都是下一层的输入变量。</p>
+<p>第一层成为输入层（Input Layer），最后一层称为输出层（Output Layer），中间一层成为隐藏层（Hidden Layers）。我们为每一层都增加一个偏差单位（bias unit）</p>
+<ul>
+<li>符号表示：<br>$a_i^{(j)}代表第j层的第i个激活单元,\theta^{(j)}代表从第j层映射到第j + 1层时的权重的矩阵$</li>
+</ul>
+<p>对于上图所示的模型，激活单元和输出分别表达为：</p>
+<p>$$<br>a_{1}^{(2)}=g\left(\Theta_{10}^{(1)} x_{0}+\Theta_{11}^{(1)} x_{1}+\Theta_{12}^{(1)} x_{2}+\Theta_{13}^{(1)} x_{3}\right)<br>$$</p>
+<p>$$<br>a_{2}^{(2)}=g\left(\Theta_{20}^{(1)} x_{0}+\Theta_{21}^{(1)} x_{1}+\Theta_{22}^{(1)} x_{2}+\Theta_{23}^{(1)} x_{3}\right)<br>$$</p>
+<p>$$<br>a_{3}^{(2)}=g\left(\Theta_{30}^{(1)} x_{0}+\Theta_{31}^{(1)} x_{1}+\Theta_{32}^{(1)} x_{2}+\Theta_{33}^{(1)} x_{3}\right)<br>$$</p>
+<p>$$<br>h_{\Theta}(x)=a_1^{(3)} = g\left(\Theta_{10}^{(2)} a_{0}^{(2)}+\Theta_{11}^{(2)} a_{1}^{(2)}+\Theta_{12}^{(2)} a_{2}^{(2)}+\Theta_{13}^{(2)} a_{3}^{(2)}\right)<br>$$</p>
+<p>如果一个网络在$j$层有$s_j$个神经元，$j + 1$层有$s_{j+1}$个神经元，那么$\Theta^{(j)}$的维数是$s_{j + 1}\times(s_j + 1)$</p>
+<h1 id="多类分类"><a href="#多类分类" class="headerlink" title="多类分类"></a>多类分类</h1><p>输出层多个输出，分别表示每一项的是或者非</p>
+<h1 id="符号表示"><a href="#符号表示" class="headerlink" title="符号表示"></a>符号表示</h1><p>$m$:样本数量</p>
+<p>$L$:神经网络层数</p>
+<p>$S_i$:每层的神经元数目</p>
+<p>二分类：$S_L = 1, y = 0,1$表示哪一类</p>
+<p>$K$分类($L &gt; 2$) : $S_L = K$, $y_i = 1$表示分到第$i$类</p>
+<h1 id="代价函数"><a href="#代价函数" class="headerlink" title="代价函数"></a>代价函数</h1><ul>
+<li><p>逻辑回归<br>$$J(\theta)=-\frac{1}{m} \sum_{i=1}^{m}\left[y^{(i)} \log \left(h_{\theta}\left(x^{(i)}\right)\right)+\left(1-y^{(i)}\right) \log \left(1-h_{\theta}\left(x^{(i)}\right)\right)\right]$$</p>
+</li>
+<li><p>神经网络<br>在神经网络中，我们可以有很多输出变量，我们的$h_\theta(x)$是一个维度为$K$的向量，并且我们训练集中的因变量也是同样维度的一个向量，因此我们的代价函数会比逻辑回归更加复杂一些</p>
+</li>
+</ul>
+<p>$$J(\Theta)=-\frac{1}{m}\sum_{i=1}^{m}\sum_{k=1}^{k}\left[y_{k}^{(i)}\log\left(h_{\Theta}\left(x^{(i)}\right)\right)<em>{k}+\left(1-y</em>{k}^{(i)}\right)\log\left(1-\left(h_{\Theta}\left(x^{(i)}\right)\right)<em>{k}\right)\right]+\frac{\lambda}{2m}\sum</em>{l=1}^{L-1}\sum_{i=1}^{s_{l}}\sum_{j=1}^{s_{l}+1}\left(\Theta_{ji}^{(l)}\right)^{2}$$</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://luyilin.top/2020/08/12/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2151,128 +2253,6 @@ log10(x) = [0.         0.30103    0.47712125]</code></pre><p>对于非常小的�
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://luyilin.top/2020/07/29/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E5%9B%BE/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="luyilin">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="引而不发，跃如也">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/07/29/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E5%9B%BE/" class="post-title-link" itemprop="url">数据结构/图</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2020-07-29 15:02:32" itemprop="dateCreated datePublished" datetime="2020-07-29T15:02:32+08:00">2020-07-29</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-07-30 14:15:22" itemprop="dateModified" datetime="2020-07-30T14:15:22+08:00">2020-07-30</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h1><ul>
-<li><p>出度 OD</p>
-</li>
-<li><p>入度 ID</p>
-</li>
-<li><p>顶点的度 TD<br>TD= OD + ID </p>
-</li>
-<li><p>对于有n个顶点，e条边的图<br>$$e = \sum_{i = 1}^nTD(v_i)*\frac{1}{2}$$</p>
-</li>
-<li><p>对于n个结点的无向图最多有n（n-1）/2条边</p>
-</li>
-<li><p>对于n个结点的有向图最多有n（n-1）条边</p>
-</li>
-<li><p>边的数目达到最大————完全图，接近最大————稠密图，否则称为稀疏图</p>
-</li>
-<li><p>图的连通</p>
-<ul>
-<li>无向图的连通： 任意两点都有路径</li>
-<li>有向图的连通： 任意两点可以相互到达，称为有向图强联通</li>
-<li>连通分量: 无向图中的极大连通子图（可以有多个）</li>
-<li>强联通分量：有向图中的极大强连通子图</li>
-</ul>
-</li>
-<li><p>生成树：包含具有n个顶点的连通图G的全部n个顶点,仅包含其n-1条边的极小连通子图称为G的一个生成树。</p>
-<ul>
-<li>联通，n-1条边 $\leftrightarrow$无回路且仅有n-1条边$\leftrightarrow$无回路且连通$\leftrightarrow$是一棵树</li>
-<li>不唯一</li>
-</ul>
-</li>
-</ul>
-<h1 id="储存"><a href="#储存" class="headerlink" title="储存"></a>储存</h1><h2 id="邻接矩阵"><a href="#邻接矩阵" class="headerlink" title="邻接矩阵"></a>邻接矩阵</h2><ul>
-<li>两个数组存储一个图</li>
-</ul>
-<ol>
-<li><p>一个一维数组存放数据信息（可忽略）</p>
-</li>
-<li><p>一个二维数组存放顶点间关系信息</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">a[i][j] = <span class="number">1</span>;<span class="comment">//有边</span></span><br><span class="line">a[i][j] = <span class="number">0</span>;<span class="comment">//无边</span></span><br><span class="line"></span><br><span class="line">a[i][j] = wij<span class="comment">//有权</span></span><br><span class="line">a[i][j] = <span class="number">100010</span>;<span class="comment">//无权</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>无向图的邻接矩阵的第i行(或第i列)非0或非∞元素的个数为第i个顶点的度数。</li>
-<li>有向图的邻接矩阵的第i 行非0或非∞元素的  个数为第i 个顶点的出度;第i 列非0或非∞元素的个数为第i 个顶点的入度。  </li>
-<li><em>行出列入*</em><br>可以用三元组(i,j,value)存储稀疏矩阵<h2 id="邻接表存储"><a href="#邻接表存储" class="headerlink" title="邻接表存储"></a>邻接表存储</h2></li>
-</ul>
-</li>
-<li><p>头结点： 数据信息,link</p>
-</li>
-<li><p>边结点: (adjvex, weight, next)<br>next 域为指针域;weight 域为权值域(若图不带权,则无此域);adjvex 域存放以第i个顶点为出发点的一条边的另一端点在头结点数组中的位置。</p>
-</li>
-</ol>
-<ul>
-<li>无向图的第i个链表中边结点个数是第i个顶点度数。</li>
-<li>有向图的第i个链表中边结点个数是第i个顶点的出度。</li>
-<li>无向图的边结点个数一定为偶数；边结点个数为奇数的图一定是有向图。</li>
-</ul>
-<h2 id="逆链接表"><a href="#逆链接表" class="headerlink" title="逆链接表"></a>逆链接表</h2><p>纪录以某个点为终点的点的关系</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//头结点</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">ver</span>&#123;</span></span><br><span class="line">   vertype  vertex;</span><br><span class="line">   ELink  *link;</span><br><span class="line">&#125;VLink; </span><br><span class="line"></span><br><span class="line"><span class="comment">//边结点</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">edge</span>&#123;</span></span><br><span class="line">   <span class="keyword">int</span>  adjvex;</span><br><span class="line">   <span class="keyword">int</span>  weight;</span><br><span class="line">   <span class="class"><span class="keyword">struct</span> <span class="title">edge</span>  *<span class="title">next</span>;</span></span><br><span class="line"> &#125;ELink;</span><br><span class="line"></span><br><span class="line">VLink G[MaxV]</span><br></pre></td></tr></table></figure>
-
-<h1 id="遍历"><a href="#遍历" class="headerlink" title="遍历"></a>遍历</h1>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -2342,7 +2322,7 @@ log10(x) = [0.         0.30103    0.47712125]</code></pre><p>对于非常小的�
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">48</span>
+          <span class="site-state-item-count">49</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
