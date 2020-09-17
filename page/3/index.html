@@ -150,6 +150,75 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://luyilin.top/2020/07/30/acwing/DFS%E4%B8%8EBFS/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="luyilin">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="引而不发，跃如也">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/07/30/acwing/DFS%E4%B8%8EBFS/" class="post-title-link" itemprop="url">acwing/DFS与BFS</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-07-30 14:15:39 / Modified: 21:59:25" itemprop="dateCreated datePublished" datetime="2020-07-30T14:15:39+08:00">2020-07-30</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="DFS"><a href="#DFS" class="headerlink" title="DFS"></a>DFS</h1><ul>
+<li>回溯与剪枝</li>
+<li>从搜索树的角度考虑<h2 id="全排列"><a href="#全排列" class="headerlink" title="全排列"></a>全排列</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> k)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(k == n)  </span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i= <span class="number">0</span>;i&lt;n;i++)   <span class="built_in">cout</span>&lt;&lt;ans[i]&lt;&lt;<span class="string">' '</span>;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i&lt;= n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(vis[i] == <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            vis[i] = <span class="number">1</span>;</span><br><span class="line">            ans[k] = i;</span><br><span class="line">            dfs(k + <span class="number">1</span>);</span><br><span class="line">            vis[k] = <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="n-皇后"><a href="#n-皇后" class="headerlink" title="n-皇后"></a>n-皇后</h2><p>dfs枚举每一行皇后应该放在那一列，关键在于对每一位的合法性的判断</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(col[i] == <span class="number">0</span>  &amp;&amp; maink[i+k] == <span class="number">0</span> &amp;&amp; mk[i - k + n] == <span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">&#96;&#96;&#96;cpp</span><br><span class="line">#include&lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">const int N &#x3D; 20;</span><br><span class="line">char m[N][N];</span><br><span class="line">int col[N],n,maink[N],mk[N];</span><br><span class="line">void dfs(int k)</span><br><span class="line">&#123;</span><br><span class="line">    if(k &#x3D;&#x3D; n + 1)</span><br><span class="line">    &#123;</span><br><span class="line">        for(int i &#x3D; 1; i&lt;&#x3D; n;i++)&#123;</span><br><span class="line">            for (int j &#x3D; 1;j&lt;&#x3D; n;j++)</span><br><span class="line">                cout&lt;&lt;m[i][j];</span><br><span class="line">            cout&lt;&lt;endl;</span><br><span class="line">        &#125;</span><br><span class="line">        cout&lt;&lt;endl;</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">    for(int i &#x3D;1; i&lt;&#x3D; n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        if(col[i] &#x3D;&#x3D; 0  &amp;&amp; maink[i+k] &#x3D;&#x3D; 0 &amp;&amp; mk[i - k + n] &#x3D;&#x3D; 0)</span><br><span class="line">        &#123;</span><br><span class="line">            col[i] &#x3D; maink[i+k] &#x3D; mk[i-k+n] &#x3D; 1;</span><br><span class="line">            m[k][i] &#x3D; &#39;Q&#39;;</span><br><span class="line">            dfs(k+1);</span><br><span class="line">            col[i] &#x3D; maink[i+k] &#x3D; mk[i-k+n] &#x3D; 0;</span><br><span class="line">            m[k][i] &#x3D; &#39;.&#39;;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    cin&gt;&gt;n;</span><br><span class="line">    &#x2F;&#x2F;初始化</span><br><span class="line">    for(int i &#x3D; 1; i&lt;&#x3D; n;i++)</span><br><span class="line">        for(int j &#x3D; 1; j&lt;&#x3D;n;j++)</span><br><span class="line">            m[i][j] &#x3D; &#39;.&#39;;</span><br><span class="line">    dfs(1);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="BFS"><a href="#BFS" class="headerlink" title="BFS"></a>BFS</h1><p>边权都是1的最短路</p>
+<h2 id="走迷宫"><a href="#走迷宫" class="headerlink" title="走迷宫"></a>走迷宫</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N=<span class="number">1000000</span>;</span><br><span class="line"><span class="keyword">typedef</span> pair&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt; p;</span><br><span class="line">p pp;</span><br><span class="line"><span class="keyword">int</span> maze[<span class="number">105</span>][<span class="number">105</span>];</span><br><span class="line"><span class="keyword">int</span> m,n,ans;</span><br><span class="line"><span class="keyword">int</span> d[<span class="number">105</span>][<span class="number">105</span>];</span><br><span class="line"><span class="keyword">int</span> dx[<span class="number">4</span>]=&#123;<span class="number">-1</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>&#125;;</span><br><span class="line"><span class="keyword">int</span> dy[<span class="number">4</span>]=&#123;<span class="number">0</span>,<span class="number">-1</span>,<span class="number">0</span>,<span class="number">1</span>&#125;;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">bfs</span><span class="params">()</span></span>; </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;n&gt;&gt;m;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n ;i++)</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; m;j++)</span><br><span class="line">			<span class="built_in">cin</span>&gt;&gt;maze[i][j];</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;m;j++)</span><br><span class="line">			d[i][j]=<span class="number">-1</span>;</span><br><span class="line">	d[<span class="number">0</span>][<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">	bfs(); </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">bfs</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">queue</span> &lt;p&gt; que;</span><br><span class="line">	</span><br><span class="line">	que.push(p(<span class="number">0</span>,<span class="number">0</span>));</span><br><span class="line">	<span class="keyword">while</span>(que.size())</span><br><span class="line">	&#123;</span><br><span class="line">		ans ++;</span><br><span class="line">		pp=que.front();</span><br><span class="line">		que.pop();</span><br><span class="line">		<span class="keyword">if</span>(pp.first == n - <span class="number">1</span> &amp;&amp; pp.second == m <span class="number">-1</span>)	</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">cout</span>&lt;&lt;d[n<span class="number">-1</span>][m<span class="number">-1</span>];</span><br><span class="line">			<span class="keyword">return</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">4</span>;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">int</span> nx = pp.first+dx[i];</span><br><span class="line">			<span class="keyword">int</span> ny = pp.second+dy[i];</span><br><span class="line">			<span class="keyword">if</span>(<span class="number">0</span> &lt;= nx &amp;&amp; nx &lt; n &amp;&amp; <span class="number">0</span> &lt;= ny &amp;&amp; ny &lt; m &amp;&amp; maze[nx][ny] == <span class="number">0</span> &amp;&amp; d[nx][ny] == <span class="number">-1</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				que.push(p(nx,ny));</span><br><span class="line">				d[nx][ny] = d[pp.first][pp.second]+<span class="number">1</span>;</span><br><span class="line">			&#125;		</span><br><span class="line">			</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//return d[n-1][m-1];</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://luyilin.top/2020/07/29/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E5%9B%BE/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -909,101 +978,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://luyilin.top/2020/07/14/TOEFL/%E9%98%85%E8%AF%BB/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="luyilin">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="引而不发，跃如也">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/07/14/TOEFL/%E9%98%85%E8%AF%BB/" class="post-title-link" itemprop="url">TOEFL/阅读</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2020-07-14 13:44:41" itemprop="dateCreated datePublished" datetime="2020-07-14T13:44:41+08:00">2020-07-14</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-07-21 11:12:24" itemprop="dateModified" datetime="2020-07-21T11:12:24+08:00">2020-07-21</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%8B%B1%E8%AF%AD/" itemprop="url" rel="index"><span itemprop="name">英语</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="句子简化题"><a href="#句子简化题" class="headerlink" title="句子简化题"></a>句子简化题</h1><ul>
-<li>罗列<ul>
-<li>并列： and, not only…but also…,both…and</li>
-<li>选择： or,either…or,nether…nor</li>
-</ul>
-</li>
-<li>对比<ul>
-<li>转折: but,however</li>
-<li>让步: although, even though,while</li>
-<li>对比: like, as, while, whereas, but, unlike,than, as..as.., have advantage over</li>
-</ul>
-</li>
-<li>链式<ul>
-<li>原因: beacuse,for, given that,result from</li>
-<li>结果: so, thus,cause, lead to</li>
-<li>条件: if, unless,as long as</li>
-<li>目的: so that, in order that</li>
-<li>方式: by, through</li>
-<li>改变: turn into, convert, procude</li>
-</ul>
-</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1073,14 +1047,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">49</span>
+          <span class="site-state-item-count">50</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-count">12</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
   </nav>

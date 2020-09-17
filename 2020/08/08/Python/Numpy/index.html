@@ -30,7 +30,7 @@
 <meta property="og:image" content="http://luyilin.top/2020/08/08/Python/Numpy/output_149_0.png">
 <meta property="og:image" content="http://luyilin.top/2020/08/08/Python/Numpy/output_151_0.png">
 <meta property="article:published_time" content="2020-08-08T07:03:28.012Z">
-<meta property="article:modified_time" content="2020-09-13T11:19:12.846Z">
+<meta property="article:modified_time" content="2020-09-14T12:56:42.421Z">
 <meta property="article:author" content="luyilin">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://luyilin.top/2020/08/08/Python/Numpy/output_149_0.png">
@@ -188,7 +188,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-09-13 19:19:12" itemprop="dateModified" datetime="2020-09-13T19:19:12+08:00">2020-09-13</time>
+                <time title="Modified: 2020-09-14 20:56:42" itemprop="dateModified" datetime="2020-09-14T20:56:42+08:00">2020-09-14</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -260,11 +260,14 @@
 
 <pre><code>array([[2, 3, 4],
        [4, 5, 6],
-       [6, 7, 8]])</code></pre><h2 id="从头创建数组"><a href="#从头创建数组" class="headerlink" title="从头创建数组"></a>从头创建数组</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建一个长度为10的数组，数组的值都是0</span></span><br><span class="line">np.zeros(<span class="number">10</span>, dtype=int)</span><br></pre></td></tr></table></figure>
+       [6, 7, 8]])</code></pre><h2 id="从头创建数组"><a href="#从头创建数组" class="headerlink" title="从头创建数组"></a>从头创建数组</h2><ol>
+<li>zeros, ones, full<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建一个长度为10的数组，数组的值都是0</span></span><br><span class="line">np.zeros(<span class="number">10</span>, dtype=int)</span><br></pre></td></tr></table></figure>
 
 
 
 
+</li>
+</ol>
 <pre><code>array([0, 0, 0, 0, 0, 0, 0, 0, 0, 0])</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建一个3×5的浮点型数组，数组的值都是1</span></span><br><span class="line">np.ones((<span class="number">3</span>, <span class="number">5</span>), dtype=float)</span><br></pre></td></tr></table></figure>
 
 
@@ -279,24 +282,39 @@
 
 <pre><code>array([[3.14, 3.14, 3.14, 3.14, 3.14],
        [3.14, 3.14, 3.14, 3.14, 3.14],
-       [3.14, 3.14, 3.14, 3.14, 3.14]])</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建一个线性序列数组</span></span><br><span class="line"><span class="comment"># 从0开始，到20结束，步长为2</span></span><br><span class="line"><span class="comment"># （它和内置的range()函数类似）</span></span><br><span class="line">np.arange(<span class="number">0</span>, <span class="number">20</span>, <span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+       [3.14, 3.14, 3.14, 3.14, 3.14]])</code></pre><ol start="2">
+<li>生成函数</li>
+</ol>
+<ul>
+<li>arange<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建一个线性序列数组</span></span><br><span class="line"><span class="comment"># 从0开始，到20结束，步长为2</span></span><br><span class="line"><span class="comment"># （它和内置的range()函数类似）</span></span><br><span class="line">np.arange(<span class="number">0</span>, <span class="number">20</span>, <span class="number">2</span>)</span><br></pre></td></tr></table></figure>
 
 
 
 
-<pre><code>array([ 0,  2,  4,  6,  8, 10, 12, 14, 16, 18])</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建一个5个元素的数组，这5个数均匀地分配到0~1</span></span><br><span class="line">np.linspace(<span class="number">0</span>, <span class="number">1</span>, <span class="number">5</span>)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<pre><code>array([ 0,  2,  4,  6,  8, 10, 12, 14, 16, 18])</code></pre><ul>
+<li>linspace<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建一个5个元素的数组，这5个数均匀地分配到0~1</span></span><br><span class="line">np.linspace(<span class="number">0</span>, <span class="number">1</span>, <span class="number">5</span>)</span><br></pre></td></tr></table></figure>
 
 
 
 
-<pre><code>array([0.  , 0.25, 0.5 , 0.75, 1.  ])</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建一个3×3的、在0~1均匀分布的随机数组成的数组</span></span><br><span class="line">np.random.random((<span class="number">3</span>, <span class="number">3</span>))</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<pre><code>array([0.  , 0.25, 0.5 , 0.75, 1.  ])</code></pre><ul>
+<li>random</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建一个3×3的、在0~1均匀分布的随机数组成的数组</span></span><br><span class="line">np.random.random((<span class="number">3</span>, <span class="number">3</span>))</span><br></pre></td></tr></table></figure>
 
 
 
 
 <pre><code>array([[0.49386296, 0.03091395, 0.63736667],
        [0.26917584, 0.75625911, 0.63322542],
-       [0.49350228, 0.7378019 , 0.05978184]])</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建一个3×3的、均值为0、标准差为1的</span></span><br><span class="line"><span class="comment"># 正态分布的随机数数组</span></span><br><span class="line">np.random.normal(<span class="number">0</span>, <span class="number">1</span>, (<span class="number">3</span>, <span class="number">3</span>))</span><br></pre></td></tr></table></figure>
+       [0.49350228, 0.7378019 , 0.05978184]])</code></pre><ul>
+<li>正态分布</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建一个3×3的、均值为0、标准差为1的</span></span><br><span class="line"><span class="comment"># 正态分布的随机数数组</span></span><br><span class="line">np.random.normal(<span class="number">0</span>, <span class="number">1</span>, (<span class="number">3</span>, <span class="number">3</span>))</span><br></pre></td></tr></table></figure>
 
 
 
@@ -310,11 +328,14 @@
 
 <pre><code>array([[8, 1, 2],
        [8, 9, 5],
-       [2, 2, 7]])</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建一个3×3的单位矩阵</span></span><br><span class="line">np.eye(<span class="number">3</span>)</span><br></pre></td></tr></table></figure>
+       [2, 2, 7]])</code></pre><ul>
+<li>矩阵<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建一个3×3的单位矩阵</span></span><br><span class="line">np.eye(<span class="number">3</span>)</span><br></pre></td></tr></table></figure>
 
 
 
 
+</li>
+</ul>
 <pre><code>array([[1., 0., 0.],
        [0., 1., 0.],
        [0., 0., 1.]])</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建一个由3个整型数组成的未初始化的数组</span></span><br><span class="line"><span class="comment"># 数组的值是内存空间中的任意值</span></span><br><span class="line">np.empty(<span class="number">3</span>)</span><br></pre></td></tr></table></figure>
@@ -431,13 +452,14 @@
 
 <pre><code>array([[1, 2, 3, 1, 2, 3],
        [4, 5, 6, 4, 5, 6]])</code></pre><ul>
-<li>np.vstack(垂直栈)</li>
+<li><p>注：</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">    &#96;&#96;&#96;axis &#x3D; 1&#96;&#96;&#96; 横轴</span><br><span class="line">* np.vstack(垂直栈)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;python</span><br><span class="line">x &#x3D; np.array([1, 2, 3])</span><br><span class="line">grid &#x3D; np.array([[9, 8, 7],</span><br><span class="line">                 [6, 5, 4]])</span><br><span class="line"></span><br><span class="line"># 垂直栈数组</span><br><span class="line">np.vstack([x, grid])</span><br></pre></td></tr></table></figure>
+
+
+
+
+</li>
 </ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">x = np.array([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>])</span><br><span class="line">grid = np.array([[<span class="number">9</span>, <span class="number">8</span>, <span class="number">7</span>],</span><br><span class="line">                 [<span class="number">6</span>, <span class="number">5</span>, <span class="number">4</span>]])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 垂直栈数组</span></span><br><span class="line">np.vstack([x, grid])</span><br></pre></td></tr></table></figure>
-
-
-
-
 <pre><code>array([[1, 2, 3],
        [9, 8, 7],
        [6, 5, 4]])</code></pre><ul>
@@ -545,7 +567,7 @@ log10(x) = [0.         0.30103    0.47712125]</code></pre><p>对于非常小的�
 
 <pre><code>[[0.73186364 0.81219213 0.99000414 0.72825554]
  [0.94816677 0.82588605 0.24290017 0.8000844 ]
- [0.95091721 0.49839234 0.32700048 0.12345992]]</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">M.min(axis = <span class="number">0</span>) <span class="comment"># 每列最小值 axis=1 行最小资</span></span><br></pre></td></tr></table></figure>
+ [0.95091721 0.49839234 0.32700048 0.12345992]]</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">M.min(axis = <span class="number">0</span>) <span class="comment"># axis = 0每列最小值 axis=1 行最小值</span></span><br></pre></td></tr></table></figure>
 
 
 
@@ -1111,14 +1133,14 @@ log10(x) = [0.         0.30103    0.47712125]</code></pre><p>对于非常小的�
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">49</span>
+          <span class="site-state-item-count">50</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-count">12</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
   </nav>
