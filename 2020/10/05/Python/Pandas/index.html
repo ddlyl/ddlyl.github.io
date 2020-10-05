@@ -23,16 +23,16 @@
   <meta name="description" content="123import pandas as pdimport numpy as nppd.__version__     &amp;apos;0.23.4&amp;apos;Pandas 基本数据结构Series 对象Pandas 的 Series 对象是一个带索引数据构成的一维数组。可以用一个数组创建 Series 对象 12data &#x3D; pd.Series([0.25, 0.5, 0.75, 1.0])data">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python&#x2F;Pandas">
-<meta property="og:url" content="http://luyilin.top/2020/09/18/Python/Pandas/index.html">
+<meta property="og:url" content="http://luyilin.top/2020/10/05/Python/Pandas/index.html">
 <meta property="og:site_name" content="引而不发，跃如也">
 <meta property="og:description" content="123import pandas as pdimport numpy as nppd.__version__     &amp;apos;0.23.4&amp;apos;Pandas 基本数据结构Series 对象Pandas 的 Series 对象是一个带索引数据构成的一维数组。可以用一个数组创建 Series 对象 12data &#x3D; pd.Series([0.25, 0.5, 0.75, 1.0])data">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-09-18T09:21:55.088Z">
-<meta property="article:modified_time" content="2020-09-18T09:22:32.937Z">
+<meta property="article:published_time" content="2020-10-05T01:36:51.681Z">
+<meta property="article:modified_time" content="2020-10-05T01:36:51.681Z">
 <meta property="article:author" content="luyilin">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://luyilin.top/2020/09/18/Python/Pandas/">
+<link rel="canonical" href="http://luyilin.top/2020/10/05/Python/Pandas/">
 
 
 <script id="page-configurations">
@@ -155,7 +155,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://luyilin.top/2020/09/18/Python/Pandas/">
+    <link itemprop="mainEntityOfPage" href="http://luyilin.top/2020/10/05/Python/Pandas/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -177,18 +177,8 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2020-09-18 17:21:55 / Modified: 17:22:32" itemprop="dateCreated datePublished" datetime="2020-09-18T17:21:55+08:00">2020-09-18</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a>
-                </span>
+              <time title="Created: 2020-10-05 09:36:51" itemprop="dateCreated datePublished" datetime="2020-10-05T09:36:51+08:00">2020-10-05</time>
             </span>
 
           
@@ -619,18 +609,18 @@ Name: Area, dtype: int64</code></pre><h3 id="创建DataFrame对象"><a href="#�
   <tbody>
     <tr>
       <th>a</th>
-      <td>0.266475</td>
-      <td>0.446555</td>
+      <td>0.215461</td>
+      <td>0.118366</td>
     </tr>
     <tr>
       <th>b</th>
-      <td>0.343573</td>
-      <td>0.323659</td>
+      <td>0.827856</td>
+      <td>0.921682</td>
     </tr>
     <tr>
       <th>c</th>
-      <td>0.369059</td>
-      <td>0.243293</td>
+      <td>0.266586</td>
+      <td>0.255357</td>
     </tr>
   </tbody>
 </table>
@@ -738,35 +728,70 @@ TypeError: Index does not support mutable operations</code></pre><h3 id="将Inde
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">indA &amp; indB  <span class="comment"># 交集</span></span><br></pre></td></tr></table></figure>
 
 
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">indA | indB  <span class="comment"># 并集</span></span><br></pre></td></tr></table></figure>
 
 
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">indA ^ indB  <span class="comment"># 异或</span></span><br></pre></td></tr></table></figure>
+<pre><code>Int64Index([3, 5, 7], dtype=&apos;int64&apos;)</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">indA | indB  <span class="comment"># 并集</span></span><br></pre></td></tr></table></figure>
 
-<h1 id="数据取值与选择"><a href="#数据取值与选择" class="headerlink" title="数据取值与选择"></a>数据取值与选择</h1><h2 id="Series-数据选择方法"><a href="#Series-数据选择方法" class="headerlink" title="Series 数据选择方法"></a>Series 数据选择方法</h2><p>Series 对象与一维 NumPy 数组和标准 Python 字典在许多方面都一样</p>
+
+
+
+<pre><code>Int64Index([1, 2, 3, 5, 7, 9, 11], dtype=&apos;int64&apos;)</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">indA ^ indB  <span class="comment"># 异或</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>Int64Index([1, 2, 9, 11], dtype=&apos;int64&apos;)</code></pre><h1 id="数据取值与选择"><a href="#数据取值与选择" class="headerlink" title="数据取值与选择"></a>数据取值与选择</h1><h2 id="Series-数据选择方法"><a href="#Series-数据选择方法" class="headerlink" title="Series 数据选择方法"></a>Series 数据选择方法</h2><p>Series 对象与一维 NumPy 数组和标准 Python 字典在许多方面都一样</p>
 <ol>
 <li>将Series看做字典</li>
 </ol>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">data = pd.Series([<span class="number">0.25</span>, <span class="number">0.5</span>, <span class="number">0.75</span>, <span class="number">1.0</span>],</span><br><span class="line">                 index=[<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>, <span class="string">'d'</span>])</span><br><span class="line">data[<span class="string">'a'</span>]</span><br></pre></td></tr></table></figure>
 
 
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">data[<span class="string">'e'</span>] = <span class="number">1.25</span></span><br><span class="line">data</span><br></pre></td></tr></table></figure>
 
-<ol start="2">
+
+<pre><code>0.25</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">data[<span class="string">'e'</span>] = <span class="number">1.25</span></span><br><span class="line">data</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>a    0.25
+b    0.50
+c    0.75
+d    1.00
+e    1.25
+dtype: float64</code></pre><ol start="2">
 <li>将Series看作一维数组</li>
 </ol>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 将显式索引作为切片</span></span><br><span class="line">data[<span class="string">'a'</span>:<span class="string">'c'</span>]</span><br></pre></td></tr></table></figure>
 
 
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 将隐式整数索引作为切片</span></span><br><span class="line">data[<span class="number">0</span>:<span class="number">2</span>]</span><br></pre></td></tr></table></figure>
 
 
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 掩码</span></span><br><span class="line">data[(data &gt; <span class="number">0.3</span>) &amp; (data &lt; <span class="number">0.8</span>)]</span><br></pre></td></tr></table></figure>
+<pre><code>a    0.25
+b    0.50
+c    0.75
+dtype: float64</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 将隐式整数索引作为切片</span></span><br><span class="line">data[<span class="number">0</span>:<span class="number">2</span>]</span><br></pre></td></tr></table></figure>
 
 
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 花哨的索引</span></span><br><span class="line">data[[<span class="string">'a'</span>, <span class="string">'e'</span>]]</span><br></pre></td></tr></table></figure>
 
-<ul>
+
+<pre><code>a    0.25
+b    0.50
+dtype: float64</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 掩码</span></span><br><span class="line">data[(data &gt; <span class="number">0.3</span>) &amp; (data &lt; <span class="number">0.8</span>)]</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>b    0.50
+c    0.75
+dtype: float64</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 花哨的索引</span></span><br><span class="line">data[[<span class="string">'a'</span>, <span class="string">'e'</span>]]</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>a    0.25
+e    1.25
+dtype: float64</code></pre><ul>
 <li>注： 当使用显式索引（即 data[‘a’:’c’]）作切片时，结果包含最后一个索引；而当使用隐式索引（即 data[0:2]）作切片时，结果不包含最后一个索引。</li>
 </ul>
 <ol start="3">
@@ -776,26 +801,185 @@ TypeError: Index does not support mutable operations</code></pre><h3 id="将Inde
 <pre><code>1. loc属性，表示取值和切片都是显式的</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">data = pd.Series([<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>], index=[<span class="number">1</span>, <span class="number">3</span>, <span class="number">5</span>])</span><br><span class="line">data</span><br></pre></td></tr></table></figure>
 
 
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data[<span class="number">1</span>:<span class="number">3</span>]</span><br></pre></td></tr></table></figure>
 
 
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data.loc[<span class="number">1</span>:<span class="number">3</span>]</span><br></pre></td></tr></table></figure>
+<pre><code>1    a
+3    b
+5    c
+dtype: object</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data[<span class="number">1</span>:<span class="number">3</span>]</span><br></pre></td></tr></table></figure>
 
-<pre><code>2. iloc,表示取值和切片都是 Python 形式的隐式索引</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data.iloc[<span class="number">1</span>:<span class="number">3</span>]</span><br></pre></td></tr></table></figure>
 
-<pre><code>3.ix, 它是前两种索引器的混合形式，在 Series 对象中 ix 等价于标准的 []（Python 列表）取值方式。ix 索引器主要用于 DataFrame 对象</code></pre><h2 id="DataFrame数据选择方法"><a href="#DataFrame数据选择方法" class="headerlink" title="DataFrame数据选择方法"></a>DataFrame数据选择方法</h2><ol>
+
+
+<pre><code>3    b
+5    c
+dtype: object</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data.loc[<span class="number">1</span>:<span class="number">3</span>]</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>1    a
+3    b
+dtype: object
+
+
+
+ 2. iloc,表示取值和切片都是 Python 形式的隐式索引</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data.iloc[<span class="number">1</span>:<span class="number">3</span>]</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>3    b
+5    c
+dtype: object
+
+
+
+3.ix, 它是前两种索引器的混合形式，在 Series 对象中 ix 等价于标准的 []（Python 列表）取值方式。ix 索引器主要用于 DataFrame 对象</code></pre><h2 id="DataFrame数据选择方法"><a href="#DataFrame数据选择方法" class="headerlink" title="DataFrame数据选择方法"></a>DataFrame数据选择方法</h2><ol>
 <li>将DataFrame看作字典</li>
 </ol>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">area = pd.Series(&#123;<span class="string">'California'</span>: <span class="number">423967</span>, <span class="string">'Texas'</span>: <span class="number">695662</span>,</span><br><span class="line">                          <span class="string">'New York'</span>: <span class="number">141297</span>, <span class="string">'Florida'</span>: <span class="number">170312</span>,</span><br><span class="line">                          <span class="string">'Illinois'</span>: <span class="number">149995</span>&#125;)</span><br><span class="line">pop = pd.Series(&#123;<span class="string">'California'</span>: <span class="number">38332521</span>, <span class="string">'Texas'</span>: <span class="number">26448193</span>,</span><br><span class="line">                         <span class="string">'New York'</span>: <span class="number">19651127</span>, <span class="string">'Florida'</span>: <span class="number">19552860</span>,</span><br><span class="line">                         <span class="string">'Illinois'</span>: <span class="number">12882135</span>&#125;)</span><br><span class="line">data = pd.DataFrame(&#123;<span class="string">'area'</span>:area, <span class="string">'pop'</span>:pop&#125;)</span><br><span class="line">data</span><br></pre></td></tr></table></figure>
 
 
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}</code></pre><p></style><p></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>area</th>
+      <th>pop</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>California</th>
+      <td>423967</td>
+      <td>38332521</td>
+    </tr>
+    <tr>
+      <th>Texas</th>
+      <td>695662</td>
+      <td>26448193</td>
+    </tr>
+    <tr>
+      <th>New York</th>
+      <td>141297</td>
+      <td>19651127</td>
+    </tr>
+    <tr>
+      <th>Florida</th>
+      <td>170312</td>
+      <td>19552860</td>
+    </tr>
+    <tr>
+      <th>Illinois</th>
+      <td>149995</td>
+      <td>12882135</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data[<span class="string">'area'</span>]</span><br></pre></td></tr></table></figure>
 
 
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data.area</span><br></pre></td></tr></table></figure>
 
 
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">data[<span class="string">'density'</span>] = data[<span class="string">'pop'</span>] / data[<span class="string">'area'</span>]</span><br><span class="line">data</span><br></pre></td></tr></table></figure>
+<pre><code>California    423967
+Texas         695662
+New York      141297
+Florida       170312
+Illinois      149995
+Name: area, dtype: int64</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data.area</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>California    423967
+Texas         695662
+New York      141297
+Florida       170312
+Illinois      149995
+Name: area, dtype: int64</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">data[<span class="string">'density'</span>] = data[<span class="string">'pop'</span>] / data[<span class="string">'area'</span>]</span><br><span class="line">data</span><br></pre></td></tr></table></figure>
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}</code></pre><p></style><p></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>area</th>
+      <th>pop</th>
+      <th>density</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>California</th>
+      <td>423967</td>
+      <td>38332521</td>
+      <td>90.413926</td>
+    </tr>
+    <tr>
+      <th>Texas</th>
+      <td>695662</td>
+      <td>26448193</td>
+      <td>38.018740</td>
+    </tr>
+    <tr>
+      <th>New York</th>
+      <td>141297</td>
+      <td>19651127</td>
+      <td>139.076746</td>
+    </tr>
+    <tr>
+      <th>Florida</th>
+      <td>170312</td>
+      <td>19552860</td>
+      <td>114.806121</td>
+    </tr>
+    <tr>
+      <th>Illinois</th>
+      <td>149995</td>
+      <td>12882135</td>
+      <td>85.883763</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
 
 <ol start="2">
 <li>将DataFrame看作二维数组</li>
@@ -803,28 +987,356 @@ TypeError: Index does not support mutable operations</code></pre><h3 id="将Inde
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data.values</span><br></pre></td></tr></table></figure>
 
 
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 转置</span></span><br><span class="line">data.T</span><br></pre></td></tr></table></figure>
+
+
+<pre><code>array([[4.23967000e+05, 3.83325210e+07, 9.04139261e+01],
+       [6.95662000e+05, 2.64481930e+07, 3.80187404e+01],
+       [1.41297000e+05, 1.96511270e+07, 1.39076746e+02],
+       [1.70312000e+05, 1.95528600e+07, 1.14806121e+02],
+       [1.49995000e+05, 1.28821350e+07, 8.58837628e+01]])</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 转置</span></span><br><span class="line">data.T</span><br></pre></td></tr></table></figure>
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}</code></pre><p></style><p></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>California</th>
+      <th>Texas</th>
+      <th>New York</th>
+      <th>Florida</th>
+      <th>Illinois</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>area</th>
+      <td>4.239670e+05</td>
+      <td>6.956620e+05</td>
+      <td>1.412970e+05</td>
+      <td>1.703120e+05</td>
+      <td>1.499950e+05</td>
+    </tr>
+    <tr>
+      <th>pop</th>
+      <td>3.833252e+07</td>
+      <td>2.644819e+07</td>
+      <td>1.965113e+07</td>
+      <td>1.955286e+07</td>
+      <td>1.288214e+07</td>
+    </tr>
+    <tr>
+      <th>density</th>
+      <td>9.041393e+01</td>
+      <td>3.801874e+01</td>
+      <td>1.390767e+02</td>
+      <td>1.148061e+02</td>
+      <td>8.588376e+01</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
 
 
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data.values[<span class="number">0</span>]<span class="comment">#第一行</span></span><br></pre></td></tr></table></figure>
 
 
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data[<span class="string">'area'</span>]</span><br></pre></td></tr></table></figure>
 
 
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data</span><br></pre></td></tr></table></figure>
+<pre><code>array([4.23967000e+05, 3.83325210e+07, 9.04139261e+01])</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data[<span class="string">'area'</span>]</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>California    423967
+Texas         695662
+New York      141297
+Florida       170312
+Illinois      149995
+Name: area, dtype: int64</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data</span><br></pre></td></tr></table></figure>
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}</code></pre><p></style><p></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>area</th>
+      <th>pop</th>
+      <th>density</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>California</th>
+      <td>423967</td>
+      <td>38332521</td>
+      <td>90.413926</td>
+    </tr>
+    <tr>
+      <th>Texas</th>
+      <td>695662</td>
+      <td>26448193</td>
+      <td>38.018740</td>
+    </tr>
+    <tr>
+      <th>New York</th>
+      <td>141297</td>
+      <td>19651127</td>
+      <td>139.076746</td>
+    </tr>
+    <tr>
+      <th>Florida</th>
+      <td>170312</td>
+      <td>19552860</td>
+      <td>114.806121</td>
+    </tr>
+    <tr>
+      <th>Illinois</th>
+      <td>149995</td>
+      <td>12882135</td>
+      <td>85.883763</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
 
 
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data.iloc[:<span class="number">3</span>,:<span class="number">2</span>] <span class="comment">#三行两列</span></span><br></pre></td></tr></table></figure>
 
 
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}</code></pre><p></style><p></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>area</th>
+      <th>pop</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>California</th>
+      <td>423967</td>
+      <td>38332521</td>
+    </tr>
+    <tr>
+      <th>Texas</th>
+      <td>695662</td>
+      <td>26448193</td>
+    </tr>
+    <tr>
+      <th>New York</th>
+      <td>141297</td>
+      <td>19651127</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data.loc[:<span class="string">'Illinois'</span>, :<span class="string">'pop'</span>]</span><br></pre></td></tr></table></figure>
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}</code></pre><p></style><p></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>area</th>
+      <th>pop</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>California</th>
+      <td>423967</td>
+      <td>38332521</td>
+    </tr>
+    <tr>
+      <th>Texas</th>
+      <td>695662</td>
+      <td>26448193</td>
+    </tr>
+    <tr>
+      <th>New York</th>
+      <td>141297</td>
+      <td>19651127</td>
+    </tr>
+    <tr>
+      <th>Florida</th>
+      <td>170312</td>
+      <td>19552860</td>
+    </tr>
+    <tr>
+      <th>Illinois</th>
+      <td>149995</td>
+      <td>12882135</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
 
 
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data.ix[:<span class="number">3</span>, :<span class="string">'pop'</span>]</span><br></pre></td></tr></table></figure>
 
+<pre><code>C:\Users\25827\AppData\Roaming\Python\Python37\site-packages\ipykernel_launcher.py:1: DeprecationWarning: 
+.ix is deprecated. Please use
+.loc for label based indexing or
+.iloc for positional indexing
+
+See the documentation here:
+http://pandas.pydata.org/pandas-docs/stable/indexing.html#ix-indexer-is-deprecated
+  &quot;&quot;&quot;Entry point for launching an IPython kernel.</code></pre><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}</code></pre><p></style><p></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>area</th>
+      <th>pop</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>California</th>
+      <td>423967</td>
+      <td>38332521</td>
+    </tr>
+    <tr>
+      <th>Texas</th>
+      <td>695662</td>
+      <td>26448193</td>
+    </tr>
+    <tr>
+      <th>New York</th>
+      <td>141297</td>
+      <td>19651127</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
 
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># loc与花哨索引组合</span></span><br><span class="line">data.loc[data.density &gt; <span class="number">100</span>, [<span class="string">'pop'</span>, <span class="string">'density'</span>]]</span><br></pre></td></tr></table></figure>
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}</code></pre><p></style><p></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>pop</th>
+      <th>density</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>New York</th>
+      <td>19651127</td>
+      <td>139.076746</td>
+    </tr>
+    <tr>
+      <th>Florida</th>
+      <td>19552860</td>
+      <td>114.806121</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
 
 <ol start="3">
 <li>其他取值方法</li>
@@ -832,25 +1344,279 @@ TypeError: Index does not support mutable operations</code></pre><h3 id="将Inde
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data[<span class="string">'Florida'</span>:<span class="string">'Illinois'</span>]</span><br></pre></td></tr></table></figure>
 
 
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}</code></pre><p></style><p></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>area</th>
+      <th>pop</th>
+      <th>density</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Florida</th>
+      <td>170312</td>
+      <td>19552860</td>
+      <td>114.806121</td>
+    </tr>
+    <tr>
+      <th>Illinois</th>
+      <td>149995</td>
+      <td>12882135</td>
+      <td>85.883763</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data[<span class="number">1</span>:<span class="number">3</span>]</span><br></pre></td></tr></table></figure>
 
 
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}</code></pre><p></style><p></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>area</th>
+      <th>pop</th>
+      <th>density</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Texas</th>
+      <td>695662</td>
+      <td>26448193</td>
+      <td>38.018740</td>
+    </tr>
+    <tr>
+      <th>New York</th>
+      <td>141297</td>
+      <td>19651127</td>
+      <td>139.076746</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data[data.density &gt; <span class="number">100</span>]</span><br></pre></td></tr></table></figure>
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}</code></pre><p></style><p></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>area</th>
+      <th>pop</th>
+      <th>density</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>New York</th>
+      <td>141297</td>
+      <td>19651127</td>
+      <td>139.076746</td>
+    </tr>
+    <tr>
+      <th>Florida</th>
+      <td>170312</td>
+      <td>19552860</td>
+      <td>114.806121</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
 
 <h1 id="Pandas数值运算方法"><a href="#Pandas数值运算方法" class="headerlink" title="Pandas数值运算方法"></a>Pandas数值运算方法</h1><p>对于一元运算（像函数与三角函数），这些通用函数将在输出结果中保留索引和列标签；而对于二元运算（如加法和乘法），Pandas 在传递通用函数时会自动对齐索引进行计算。这就意味着，保存数据内容与组合不同来源的数据——两处在 NumPy 数组中都容易出错的地方——变成了 Pandas 的杀手锏</p>
 <h2 id="通用函数：保留索引"><a href="#通用函数：保留索引" class="headerlink" title="通用函数：保留索引"></a>通用函数：保留索引</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">rng = np.random.RandomState(<span class="number">42</span>)</span><br><span class="line">ser = pd.Series(rng.randint(<span class="number">0</span>, <span class="number">10</span>, <span class="number">4</span>))</span><br><span class="line">rng</span><br></pre></td></tr></table></figure>
 
 
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ser</span><br></pre></td></tr></table></figure>
 
 
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">df = pd.DataFrame(rng.randint(<span class="number">0</span>, <span class="number">10</span>, (<span class="number">3</span>, <span class="number">4</span>)),</span><br><span class="line">                         columns=[<span class="string">'A'</span>, <span class="string">'B'</span>, <span class="string">'C'</span>, <span class="string">'D'</span>])</span><br><span class="line">df</span><br></pre></td></tr></table></figure>
+<pre><code>&lt;mtrand.RandomState at 0x1f8795d46c0&gt;</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ser</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>0    6
+1    3
+2    7
+3    4
+dtype: int32</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">df = pd.DataFrame(rng.randint(<span class="number">0</span>, <span class="number">10</span>, (<span class="number">3</span>, <span class="number">4</span>)),</span><br><span class="line">                         columns=[<span class="string">'A'</span>, <span class="string">'B'</span>, <span class="string">'C'</span>, <span class="string">'D'</span>])</span><br><span class="line">df</span><br></pre></td></tr></table></figure>
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}</code></pre><p></style><p></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+      <th>D</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>6</td>
+      <td>9</td>
+      <td>2</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>7</td>
+      <td>4</td>
+      <td>3</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>7</td>
+      <td>2</td>
+      <td>5</td>
+      <td>4</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
 
 
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np.exp(ser)</span><br></pre></td></tr></table></figure>
 
 
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np.sin(df * np.pi / <span class="number">4</span>)</span><br></pre></td></tr></table></figure>
+
+
+<pre><code>0     403.428793
+1      20.085537
+2    1096.633158
+3      54.598150
+dtype: float64</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np.sin(df * np.pi / <span class="number">4</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}</code></pre><p></style><p></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+      <th>D</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>-1.000000</td>
+      <td>7.071068e-01</td>
+      <td>1.000000</td>
+      <td>-1.000000e+00</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>-0.707107</td>
+      <td>1.224647e-16</td>
+      <td>0.707107</td>
+      <td>-7.071068e-01</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>-0.707107</td>
+      <td>1.000000e+00</td>
+      <td>-0.707107</td>
+      <td>1.224647e-16</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
 
 <h2 id="通用函数：索引对齐"><a href="#通用函数：索引对齐" class="headerlink" title="通用函数：索引对齐"></a>通用函数：索引对齐</h2><ol>
 <li>Series索引对齐</li>
@@ -860,19 +1626,217 @@ TypeError: Index does not support mutable operations</code></pre><h3 id="将Inde
 
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">population / area</span><br></pre></td></tr></table></figure>
 
-<ol start="2">
+
+
+
+<pre><code>Alaska              NaN
+California    90.413926
+New York            NaN
+Texas         38.018740
+dtype: float64</code></pre><ol start="2">
 <li>DataFrame索引对齐</li>
 </ol>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">A = pd.DataFrame(rng.randint(<span class="number">0</span>, <span class="number">20</span>, (<span class="number">2</span>, <span class="number">2</span>)),</span><br><span class="line">                         columns=list(<span class="string">'AB'</span>))</span><br><span class="line">A</span><br></pre></td></tr></table></figure>
 
 
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}</code></pre><p></style><p></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>A</th>
+      <th>B</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>5</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">B = pd.DataFrame(rng.randint(<span class="number">0</span>, <span class="number">10</span>, (<span class="number">3</span>, <span class="number">3</span>)),</span><br><span class="line">                         columns=list(<span class="string">'BAC'</span>))</span><br><span class="line">B</span><br></pre></td></tr></table></figure>
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}</code></pre><p></style><p></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>B</th>
+      <th>A</th>
+      <th>C</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>4</td>
+      <td>0</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>5</td>
+      <td>8</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>9</td>
+      <td>2</td>
+      <td>6</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
 
 
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">A+B</span><br></pre></td></tr></table></figure>
 
 
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}</code></pre><p></style><p></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1.0</td>
+      <td>15.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>13.0</td>
+      <td>6.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#我们将用 A 中所有值的均值来填充缺失值</span></span><br><span class="line"><span class="comment">#（计算 A 的均值需要用 stack 将二维数组压缩成一维数组）：</span></span><br><span class="line">fill = A.stack().mean()</span><br><span class="line">A.add(B, fill_value=fill)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}</code></pre><p></style><p></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1.0</td>
+      <td>15.0</td>
+      <td>13.5</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>13.0</td>
+      <td>6.0</td>
+      <td>4.5</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>6.5</td>
+      <td>13.5</td>
+      <td>10.5</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
 
 <table>
 <thead>
@@ -913,64 +1877,357 @@ TypeError: Index does not support mutable operations</code></pre><h3 id="将Inde
 <h2 id="通用函数：DataFrame与Series的运算"><a href="#通用函数：DataFrame与Series的运算" class="headerlink" title="通用函数：DataFrame与Series的运算"></a>通用函数：DataFrame与Series的运算</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">A = rng.randint(<span class="number">10</span>, size=(<span class="number">3</span>, <span class="number">4</span>))</span><br><span class="line">A</span><br></pre></td></tr></table></figure>
 
 
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">A - A[<span class="number">0</span>]</span><br></pre></td></tr></table></figure>
 
-<h1 id="处理缺失值"><a href="#处理缺失值" class="headerlink" title="处理缺失值"></a>处理缺失值</h1><ol>
+
+<pre><code>array([[3, 8, 2, 4],
+       [2, 6, 4, 8],
+       [6, 1, 3, 8]])</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">A - A[<span class="number">0</span>]</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>array([[ 0,  0,  0,  0],
+       [-1, -2,  2,  4],
+       [ 3, -7,  1,  4]])</code></pre><h1 id="处理缺失值"><a href="#处理缺失值" class="headerlink" title="处理缺失值"></a>处理缺失值</h1><ol>
 <li>None</li>
 </ol>
 <p>None 是一个 Python 对象，所以不能作为任何 NumPy / Pandas 数组类型的缺失值，只能用于 ‘object’ 数组类型</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vals1 = np.array([<span class="number">1</span>, <span class="literal">None</span>, <span class="number">3</span>, <span class="number">4</span>])</span><br><span class="line">vals1</span><br></pre></td></tr></table></figure>
 
-<ul>
+
+
+
+<pre><code>array([1, None, 3, 4], dtype=object)</code></pre><ul>
 <li>注：如 sum() 或者 min()，那么通常会出现类型错误</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vals1.sum()</span><br></pre></td></tr></table></figure>
 
-<ol start="2">
+
+<pre><code>---------------------------------------------------------------------------
+
+TypeError                                 Traceback (most recent call last)
+
+&lt;ipython-input-72-30a3fc8c6726&gt; in &lt;module&gt;
+----&gt; 1 vals1.sum()
+
+
+~\Anaconda3\lib\site-packages\numpy\core\_methods.py in _sum(a, axis, dtype, out, keepdims, initial)
+     34 def _sum(a, axis=None, dtype=None, out=None, keepdims=False,
+     35          initial=_NoValue):
+---&gt; 36     return umr_sum(a, axis, dtype, out, keepdims, initial)
+     37 
+     38 def _prod(a, axis=None, dtype=None, out=None, keepdims=False,
+
+
+TypeError: unsupported operand type(s) for +: &apos;int&apos; and &apos;NoneType&apos;</code></pre><ol start="2">
 <li>NaN:数值类型的缺失值</li>
 </ol>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vals2 = np.array([<span class="number">1</span>, np.nan, <span class="number">3</span>, <span class="number">4</span>])</span><br><span class="line">vals2.dtype</span><br></pre></td></tr></table></figure>
 
 
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span> + np.nan</span><br></pre></td></tr></table></figure>
 
 
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">0</span> * np.nan</span><br></pre></td></tr></table></figure>
+<pre><code>dtype(&apos;float64&apos;)</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span> + np.nan</span><br></pre></td></tr></table></figure>
 
 
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vals2.sum(), vals2.min(), vals2.max()</span><br></pre></td></tr></table></figure>
 
 
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 忽略缺失值</span></span><br><span class="line">np.nansum(vals2), np.nanmin(vals2), np.nanmax(vals2)</span><br></pre></td></tr></table></figure>
+<pre><code>nan</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">0</span> * np.nan</span><br></pre></td></tr></table></figure>
 
-<h2 id="处理缺失值-1"><a href="#处理缺失值-1" class="headerlink" title="处理缺失值"></a>处理缺失值</h2><ol>
+
+
+
+<pre><code>nan</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vals2.sum(), vals2.min(), vals2.max()</span><br></pre></td></tr></table></figure>
+
+<pre><code>C:\Users\25827\Anaconda3\lib\site-packages\numpy\core\_methods.py:32: RuntimeWarning: invalid value encountered in reduce
+  return umr_minimum(a, axis, None, out, keepdims, initial)
+C:\Users\25827\Anaconda3\lib\site-packages\numpy\core\_methods.py:28: RuntimeWarning: invalid value encountered in reduce
+  return umr_maximum(a, axis, None, out, keepdims, initial)
+
+
+
+
+
+(nan, nan, nan)</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 忽略缺失值</span></span><br><span class="line">np.nansum(vals2), np.nanmin(vals2), np.nanmax(vals2)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>(8.0, 1.0, 4.0)</code></pre><h2 id="处理缺失值-1"><a href="#处理缺失值-1" class="headerlink" title="处理缺失值"></a>处理缺失值</h2><ol>
 <li>发现缺失值</li>
 </ol>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">data = pd.Series([<span class="number">1</span>, np.nan, <span class="string">'hello'</span>, <span class="literal">None</span>])</span><br><span class="line">data.isnull()</span><br></pre></td></tr></table></figure>
 
 
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data[data.notnull()]</span><br></pre></td></tr></table></figure>
 
-<ol start="2">
+
+<pre><code>0    False
+1     True
+2    False
+3     True
+dtype: bool</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data[data.notnull()]</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>0        1
+2    hello
+dtype: object</code></pre><ol start="2">
 <li>剔除缺失值</li>
 </ol>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data.dropna()</span><br></pre></td></tr></table></figure>
 
 
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># DataFrame 情形</span></span><br><span class="line">df = pd.DataFrame([[<span class="number">1</span>,      np.nan, <span class="number">2</span>],</span><br><span class="line">                           [<span class="number">2</span>,      <span class="number">3</span>,      <span class="number">5</span>],</span><br><span class="line">                           [np.nan, <span class="number">4</span>,      <span class="number">6</span>]])</span><br><span class="line">df</span><br></pre></td></tr></table></figure>
+
+
+<pre><code>0        1
+2    hello
+dtype: object</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># DataFrame 情形</span></span><br><span class="line">df = pd.DataFrame([[<span class="number">1</span>,      np.nan, <span class="number">2</span>],</span><br><span class="line">                           [<span class="number">2</span>,      <span class="number">3</span>,      <span class="number">5</span>],</span><br><span class="line">                           [np.nan, <span class="number">4</span>,      <span class="number">6</span>]])</span><br><span class="line">df</span><br></pre></td></tr></table></figure>
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}</code></pre><p></style><p></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1.0</td>
+      <td>NaN</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2.0</td>
+      <td>3.0</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>NaN</td>
+      <td>4.0</td>
+      <td>6</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
 
 <p>我们没法从 DataFrame 中单独剔除一个值，要么是剔除缺失值所在的整行，要么是整列。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.dropna()<span class="comment">#默认情况下，dropna() 会剔除任何包含缺失值的整行数据</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}</code></pre><p></style><p></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>2.0</td>
+      <td>3.0</td>
+      <td>5</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
 
 <p>通过设置 how 或 thresh 参数来满足，它们可以设置剔除行或列缺失值的数量阈值。</p>
 <p>默认设置是 how=’any’，也就是说只要有缺失值就剔除整行或整列（通过 axis 设置坐标轴）。你还可以设置 how=’all’，这样就只会剔除全部是缺失值的行或列了：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">df[<span class="number">3</span>] = np.nan</span><br><span class="line">df</span><br></pre></td></tr></table></figure>
 
 
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}</code></pre><p></style><p></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1.0</td>
+      <td>NaN</td>
+      <td>2</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2.0</td>
+      <td>3.0</td>
+      <td>5</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>NaN</td>
+      <td>4.0</td>
+      <td>6</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.dropna(axis=<span class="string">'columns'</span>, how=<span class="string">'all'</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}</code></pre><p></style><p></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1.0</td>
+      <td>NaN</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2.0</td>
+      <td>3.0</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>NaN</td>
+      <td>4.0</td>
+      <td>6</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
 
 <p>还可以通过 thresh 参数设置行或列中非缺失值的最小数量，从而实现更加个性化的配置</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.dropna(axis=<span class="string">'rows'</span>, thresh=<span class="number">3</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}</code></pre><p></style><p></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>2.0</td>
+      <td>3.0</td>
+      <td>5</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
 
 <ol start="3">
 <li>填充缺失值</li>
@@ -978,15 +2235,44 @@ TypeError: Index does not support mutable operations</code></pre><h3 id="将Inde
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">data = pd.Series([<span class="number">1</span>, np.nan, <span class="number">2</span>, <span class="literal">None</span>, <span class="number">3</span>], index=list(<span class="string">'abcde'</span>))</span><br><span class="line">data</span><br></pre></td></tr></table></figure>
 
 
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data.fillna(<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
 
 
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 可以用缺失值前面的有效值来从前往后填充（forward-fill）</span></span><br><span class="line">data.fillna(method=<span class="string">'ffill'</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>a    1.0
+b    NaN
+c    2.0
+d    NaN
+e    3.0
+dtype: float64</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data.fillna(<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
 
 
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 从后往前填充back-fill</span></span><br><span class="line">data.fillna(method=<span class="string">'bfill'</span>)</span><br></pre></td></tr></table></figure>
 
-<p>DataFrame 的操作方法与 Series 类似，只是在填充时需要设置坐标轴参数 axis</p>
+
+<pre><code>a    1.0
+b    0.0
+c    2.0
+d    0.0
+e    3.0
+dtype: float64</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 可以用缺失值前面的有效值来从前往后填充（forward-fill）</span></span><br><span class="line">data.fillna(method=<span class="string">'ffill'</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>a    1.0
+b    1.0
+c    2.0
+d    2.0
+e    3.0
+dtype: float64</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 从后往前填充back-fill</span></span><br><span class="line">data.fillna(method=<span class="string">'bfill'</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>a    1.0
+b    2.0
+c    2.0
+d    3.0
+e    3.0
+dtype: float64</code></pre><p>DataFrame 的操作方法与 Series 类似，只是在填充时需要设置坐标轴参数 axis</p>
 <h1 id="多级索引"><a href="#多级索引" class="headerlink" title="多级索引"></a>多级索引</h1><p>将高维数组转换成类似一维 Series 和二维 DataFrame 对象的形式。</p>
 <h2 id="多级索引Series"><a href="#多级索引Series" class="headerlink" title="多级索引Series"></a>多级索引Series</h2><ol>
 <li>一维情形</li>
@@ -994,32 +2280,277 @@ TypeError: Index does not support mutable operations</code></pre><h3 id="将Inde
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">index = [(<span class="string">'California'</span>, <span class="number">2000</span>), (<span class="string">'California'</span>, <span class="number">2010</span>),</span><br><span class="line">                (<span class="string">'New York'</span>, <span class="number">2000</span>), (<span class="string">'New York'</span>, <span class="number">2010</span>),</span><br><span class="line">                (<span class="string">'Texas'</span>, <span class="number">2000</span>), (<span class="string">'Texas'</span>, <span class="number">2010</span>)]</span><br><span class="line">populations = [<span class="number">33871648</span>, <span class="number">37253956</span>,</span><br><span class="line">              <span class="number">18976457</span>, <span class="number">19378102</span>,</span><br><span class="line">              <span class="number">20851820</span>, <span class="number">25145561</span>]</span><br><span class="line"></span><br><span class="line">index = pd.MultiIndex.from_tuples(index)</span><br><span class="line">index</span><br></pre></td></tr></table></figure>
 
 
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pop = pd.Series(populations, index=index)</span><br><span class="line">pop</span><br></pre></td></tr></table></figure>
 
 
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pop[:, <span class="number">2010</span>]</span><br></pre></td></tr></table></figure>
+<pre><code>MultiIndex(levels=[[&apos;California&apos;, &apos;New York&apos;, &apos;Texas&apos;], [2000, 2010]],
+           labels=[[0, 0, 1, 1, 2, 2], [0, 1, 0, 1, 0, 1]])</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pop = pd.Series(populations, index=index)</span><br><span class="line">pop</span><br></pre></td></tr></table></figure>
 
-<ol start="2">
+
+
+
+<pre><code>California  2000    33871648
+            2010    37253956
+New York    2000    18976457
+            2010    19378102
+Texas       2000    20851820
+            2010    25145561
+dtype: int64</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pop[:, <span class="number">2010</span>]</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>California    37253956
+New York      19378102
+Texas         25145561
+dtype: int64</code></pre><ol start="2">
 <li>多维情形</li>
 </ol>
 <figure class="highlight plain"><figcaption><span>方法可以快速将一个多级索引的``` Series ```转化为普通索引的 ```DataFrame```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;python</span><br><span class="line">pop_df &#x3D; pop.unstack()</span><br><span class="line">pop_df</span><br></pre></td></tr></table></figure>
 
 
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}</code></pre><p></style><p></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>2000</th>
+      <th>2010</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>California</th>
+      <td>33871648</td>
+      <td>37253956</td>
+    </tr>
+    <tr>
+      <th>New York</th>
+      <td>18976457</td>
+      <td>19378102</td>
+    </tr>
+    <tr>
+      <th>Texas</th>
+      <td>20851820</td>
+      <td>25145561</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pop_df.stack()</span><br></pre></td></tr></table></figure>
 
 
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">pop_df = pd.DataFrame(&#123;<span class="string">'total'</span>: pop,</span><br><span class="line">                       <span class="string">'under18'</span>: [<span class="number">9267089</span>, <span class="number">9284094</span>,</span><br><span class="line">                                   <span class="number">4687374</span>, <span class="number">4318033</span>,</span><br><span class="line">                                   <span class="number">5906301</span>, <span class="number">6879014</span>]&#125;)</span><br><span class="line">pop_df</span><br></pre></td></tr></table></figure>
+
+
+<pre><code>California  2000    33871648
+            2010    37253956
+New York    2000    18976457
+            2010    19378102
+Texas       2000    20851820
+            2010    25145561
+dtype: int64</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">pop_df = pd.DataFrame(&#123;<span class="string">'total'</span>: pop,</span><br><span class="line">                       <span class="string">'under18'</span>: [<span class="number">9267089</span>, <span class="number">9284094</span>,</span><br><span class="line">                                   <span class="number">4687374</span>, <span class="number">4318033</span>,</span><br><span class="line">                                   <span class="number">5906301</span>, <span class="number">6879014</span>]&#125;)</span><br><span class="line">pop_df</span><br></pre></td></tr></table></figure>
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}</code></pre><p></style><p></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th>total</th>
+      <th>under18</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="2" valign="top">California</th>
+      <th>2000</th>
+      <td>33871648</td>
+      <td>9267089</td>
+    </tr>
+    <tr>
+      <th>2010</th>
+      <td>37253956</td>
+      <td>9284094</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">New York</th>
+      <th>2000</th>
+      <td>18976457</td>
+      <td>4687374</td>
+    </tr>
+    <tr>
+      <th>2010</th>
+      <td>19378102</td>
+      <td>4318033</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">Texas</th>
+      <th>2000</th>
+      <td>20851820</td>
+      <td>5906301</td>
+    </tr>
+    <tr>
+      <th>2010</th>
+      <td>25145561</td>
+      <td>6879014</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
 
 
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">f_u18 = pop_df[<span class="string">'under18'</span>] / pop_df[<span class="string">'total'</span>]</span><br><span class="line">f_u18.unstack()</span><br></pre></td></tr></table></figure>
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}</code></pre><p></style><p></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>2000</th>
+      <th>2010</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>California</th>
+      <td>0.273594</td>
+      <td>0.249211</td>
+    </tr>
+    <tr>
+      <th>New York</th>
+      <td>0.247010</td>
+      <td>0.222831</td>
+    </tr>
+    <tr>
+      <th>Texas</th>
+      <td>0.283251</td>
+      <td>0.273568</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
 
 <h2 id="多级索引的创建方法"><a href="#多级索引的创建方法" class="headerlink" title="多级索引的创建方法"></a>多级索引的创建方法</h2><p>为 Series 或 DataFrame 创建多级索引最直接的办法就是将 index 参数设置为至少二维的索引数组</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">df = pd.DataFrame(np.random.rand(<span class="number">4</span>, <span class="number">2</span>),</span><br><span class="line">                index=[[<span class="string">'a'</span>, <span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'b'</span>], [<span class="number">1</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="number">2</span>]],</span><br><span class="line">                columns=[<span class="string">'data1'</span>, <span class="string">'data2'</span>])</span><br><span class="line">df</span><br></pre></td></tr></table></figure>
 
 
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}</code></pre><p></style><p></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th>data1</th>
+      <th>data2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="2" valign="top">a</th>
+      <th>1</th>
+      <td>0.943314</td>
+      <td>0.342374</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.515741</td>
+      <td>0.252327</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">b</th>
+      <th>1</th>
+      <td>0.416946</td>
+      <td>0.988272</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.062888</td>
+      <td>0.222184</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 字典</span></span><br><span class="line">data = &#123;(<span class="string">'California'</span>, <span class="number">2000</span>): <span class="number">33871648</span>,</span><br><span class="line">        (<span class="string">'California'</span>, <span class="number">2010</span>): <span class="number">37253956</span>,</span><br><span class="line">        (<span class="string">'Texas'</span>, <span class="number">2000</span>): <span class="number">20851820</span>,</span><br><span class="line">        (<span class="string">'Texas'</span>, <span class="number">2010</span>): <span class="number">25145561</span>,</span><br><span class="line">        (<span class="string">'New York'</span>, <span class="number">2000</span>): <span class="number">18976457</span>,</span><br><span class="line">        (<span class="string">'New York'</span>, <span class="number">2010</span>): <span class="number">19378102</span>&#125;</span><br><span class="line">pd.Series(data)</span><br></pre></td></tr></table></figure>
 
-<ul>
+
+
+
+<pre><code>California  2000    33871648
+            2010    37253956
+Texas       2000    20851820
+            2010    25145561
+New York    2000    18976457
+            2010    19378102
+dtype: int64</code></pre><ul>
 <li><code>MultiIndex</code> 方法</li>
 </ul>
 <ol>
@@ -1028,29 +2559,215 @@ TypeError: Index does not support mutable operations</code></pre><h3 id="将Inde
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pd.MultiIndex.from_arrays(</span><br><span class="line">    [[<span class="string">'a'</span>, <span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'b'</span>], [<span class="number">1</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="number">2</span>]])</span><br></pre></td></tr></table></figure>
 
 
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pd.MultiIndex.from_tuples(</span><br><span class="line">    [(<span class="string">'a'</span>, <span class="number">1</span>), (<span class="string">'a'</span>, <span class="number">2</span>), (<span class="string">'b'</span>, <span class="number">1</span>), (<span class="string">'b'</span>, <span class="number">2</span>)])</span><br></pre></td></tr></table></figure>
 
 
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 笛卡尔积（Cartesian product）</span></span><br><span class="line">pd.MultiIndex.from_product(</span><br><span class="line">    [[<span class="string">'a'</span>, <span class="string">'b'</span>], [<span class="number">1</span>, <span class="number">2</span>]])</span><br></pre></td></tr></table></figure>
+<pre><code>MultiIndex(levels=[[&apos;a&apos;, &apos;b&apos;], [1, 2]],
+           labels=[[0, 0, 1, 1], [0, 1, 0, 1]])</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pd.MultiIndex.from_tuples(</span><br><span class="line">    [(<span class="string">'a'</span>, <span class="number">1</span>), (<span class="string">'a'</span>, <span class="number">2</span>), (<span class="string">'b'</span>, <span class="number">1</span>), (<span class="string">'b'</span>, <span class="number">2</span>)])</span><br></pre></td></tr></table></figure>
 
 
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pd.MultiIndex(levels=[[<span class="string">'a'</span>, <span class="string">'b'</span>], [<span class="number">1</span>, <span class="number">2</span>]],</span><br><span class="line">            labels=[[<span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>], [<span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>]])</span><br></pre></td></tr></table></figure>
 
-<ol start="2">
+
+<pre><code>MultiIndex(levels=[[&apos;a&apos;, &apos;b&apos;], [1, 2]],
+           labels=[[0, 0, 1, 1], [0, 1, 0, 1]])</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 笛卡尔积（Cartesian product）</span></span><br><span class="line">pd.MultiIndex.from_product(</span><br><span class="line">    [[<span class="string">'a'</span>, <span class="string">'b'</span>], [<span class="number">1</span>, <span class="number">2</span>]])</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>MultiIndex(levels=[[&apos;a&apos;, &apos;b&apos;], [1, 2]],
+           labels=[[0, 0, 1, 1], [0, 1, 0, 1]])</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pd.MultiIndex(levels=[[<span class="string">'a'</span>, <span class="string">'b'</span>], [<span class="number">1</span>, <span class="number">2</span>]],</span><br><span class="line">            labels=[[<span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>], [<span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>]])</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>MultiIndex(levels=[[&apos;a&apos;, &apos;b&apos;], [1, 2]],
+           labels=[[0, 0, 1, 1], [0, 1, 0, 1]])</code></pre><ol start="2">
 <li>多级索引的等级名称</li>
 </ol>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pop</span><br></pre></td></tr></table></figure>
 
 
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pop.index.names = [<span class="string">'state'</span>, <span class="string">'year'</span>]</span><br><span class="line">pop</span><br></pre></td></tr></table></figure>
 
-<ol start="3">
+
+<pre><code>California  2000    33871648
+            2010    37253956
+New York    2000    18976457
+            2010    19378102
+Texas       2000    20851820
+            2010    25145561
+dtype: int64</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pop.index.names = [<span class="string">'state'</span>, <span class="string">'year'</span>]</span><br><span class="line">pop</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>state       year
+California  2000    33871648
+            2010    37253956
+New York    2000    18976457
+            2010    19378102
+Texas       2000    20851820
+            2010    25145561
+dtype: int64</code></pre><ol start="3">
 <li>多级列索引</li>
 </ol>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 多级行列索引</span></span><br><span class="line">index = pd.MultiIndex.from_product([[<span class="number">2013</span>, <span class="number">2014</span>], [<span class="number">1</span>, <span class="number">2</span>]],</span><br><span class="line">            names=[<span class="string">'year'</span>, <span class="string">'visit'</span>])</span><br><span class="line">columns = pd.MultiIndex.from_product([[<span class="string">'Bob'</span>, <span class="string">'Guido'</span>, <span class="string">'Sue'</span>], [<span class="string">'HR'</span>, <span class="string">'Temp'</span>]],</span><br><span class="line">            names=[<span class="string">'subject'</span>, <span class="string">'type'</span>])</span><br><span class="line"></span><br><span class="line">data = np.round(np.random.randn(<span class="number">4</span>, <span class="number">6</span>), <span class="number">1</span>)</span><br><span class="line">data[:, ::<span class="number">2</span>] *= <span class="number">10</span></span><br><span class="line">data += <span class="number">37</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建DataFrame</span></span><br><span class="line">health_data = pd.DataFrame(data, index=index, columns=columns)</span><br><span class="line">health_data</span><br></pre></td></tr></table></figure>
 
 
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead tr th {
+    text-align: left;
+}
+
+.dataframe thead tr:last-of-type th {
+    text-align: right;
+}</code></pre><p></style><p></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr>
+      <th></th>
+      <th>subject</th>
+      <th colspan="2" halign="left">Bob</th>
+      <th colspan="2" halign="left">Guido</th>
+      <th colspan="2" halign="left">Sue</th>
+    </tr>
+    <tr>
+      <th></th>
+      <th>type</th>
+      <th>HR</th>
+      <th>Temp</th>
+      <th>HR</th>
+      <th>Temp</th>
+      <th>HR</th>
+      <th>Temp</th>
+    </tr>
+    <tr>
+      <th>year</th>
+      <th>visit</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="2" valign="top">2013</th>
+      <th>1</th>
+      <td>26.0</td>
+      <td>39.0</td>
+      <td>26.0</td>
+      <td>35.5</td>
+      <td>30.0</td>
+      <td>37.6</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>37.0</td>
+      <td>36.8</td>
+      <td>39.0</td>
+      <td>37.5</td>
+      <td>32.0</td>
+      <td>37.7</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">2014</th>
+      <th>1</th>
+      <td>43.0</td>
+      <td>38.0</td>
+      <td>59.0</td>
+      <td>35.2</td>
+      <td>32.0</td>
+      <td>35.8</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>34.0</td>
+      <td>36.1</td>
+      <td>25.0</td>
+      <td>36.4</td>
+      <td>39.0</td>
+      <td>36.0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">health_data[<span class="string">'Guido'</span>]</span><br></pre></td></tr></table></figure>
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}</code></pre><p></style><p></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>type</th>
+      <th>HR</th>
+      <th>Temp</th>
+    </tr>
+    <tr>
+      <th>year</th>
+      <th>visit</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="2" valign="top">2013</th>
+      <th>1</th>
+      <td>26.0</td>
+      <td>35.5</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>39.0</td>
+      <td>37.5</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">2014</th>
+      <th>1</th>
+      <td>59.0</td>
+      <td>35.2</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>25.0</td>
+      <td>36.4</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
 
 <h2 id="多级索引的取值与切片"><a href="#多级索引的取值与切片" class="headerlink" title="多级索引的取值与切片"></a>多级索引的取值与切片</h2><ol>
 <li>Series多级索引</li>
@@ -1058,52 +2775,388 @@ TypeError: Index does not support mutable operations</code></pre><h3 id="将Inde
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pop</span><br></pre></td></tr></table></figure>
 
 
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pop[<span class="string">'California'</span>, <span class="number">2000</span>]</span><br></pre></td></tr></table></figure>
 
 
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pop[<span class="string">'California'</span>]</span><br></pre></td></tr></table></figure>
+<pre><code>state       year
+California  2000    33871648
+            2010    37253956
+New York    2000    18976457
+            2010    19378102
+Texas       2000    20851820
+            2010    25145561
+dtype: int64</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pop[<span class="string">'California'</span>, <span class="number">2000</span>]</span><br></pre></td></tr></table></figure>
 
 
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pop.loc[<span class="string">'California'</span>:<span class="string">'New York'</span>]</span><br></pre></td></tr></table></figure>
 
 
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pop[[<span class="string">'California'</span>, <span class="string">'Texas'</span>]]</span><br></pre></td></tr></table></figure>
+<pre><code>33871648</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pop[<span class="string">'California'</span>]</span><br></pre></td></tr></table></figure>
 
-<ol start="2">
+
+
+
+<pre><code>year
+2000    33871648
+2010    37253956
+dtype: int64</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pop.loc[<span class="string">'California'</span>:<span class="string">'New York'</span>]</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>state       year
+California  2000    33871648
+            2010    37253956
+New York    2000    18976457
+            2010    19378102
+dtype: int64</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pop[[<span class="string">'California'</span>, <span class="string">'Texas'</span>]]</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>state       year
+California  2000    33871648
+            2010    37253956
+Texas       2000    20851820
+            2010    25145561
+dtype: int64</code></pre><ol start="2">
 <li>DataFrame多级索引</li>
 </ol>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">health_data</span><br></pre></td></tr></table></figure>
 
 
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead tr th {
+    text-align: left;
+}
+
+.dataframe thead tr:last-of-type th {
+    text-align: right;
+}</code></pre><p></style><p></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr>
+      <th></th>
+      <th>subject</th>
+      <th colspan="2" halign="left">Bob</th>
+      <th colspan="2" halign="left">Guido</th>
+      <th colspan="2" halign="left">Sue</th>
+    </tr>
+    <tr>
+      <th></th>
+      <th>type</th>
+      <th>HR</th>
+      <th>Temp</th>
+      <th>HR</th>
+      <th>Temp</th>
+      <th>HR</th>
+      <th>Temp</th>
+    </tr>
+    <tr>
+      <th>year</th>
+      <th>visit</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="2" valign="top">2013</th>
+      <th>1</th>
+      <td>26.0</td>
+      <td>39.0</td>
+      <td>26.0</td>
+      <td>35.5</td>
+      <td>30.0</td>
+      <td>37.6</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>37.0</td>
+      <td>36.8</td>
+      <td>39.0</td>
+      <td>37.5</td>
+      <td>32.0</td>
+      <td>37.7</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">2014</th>
+      <th>1</th>
+      <td>43.0</td>
+      <td>38.0</td>
+      <td>59.0</td>
+      <td>35.2</td>
+      <td>32.0</td>
+      <td>35.8</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>34.0</td>
+      <td>36.1</td>
+      <td>25.0</td>
+      <td>36.4</td>
+      <td>39.0</td>
+      <td>36.0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">health_data[<span class="string">'Guido'</span>, <span class="string">'HR'</span>]</span><br></pre></td></tr></table></figure>
 
 
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">health_data.iloc[:<span class="number">2</span>, :<span class="number">2</span>]</span><br></pre></td></tr></table></figure>
+
+
+<pre><code>year  visit
+2013  1        26.0
+      2        39.0
+2014  1        59.0
+      2        25.0
+Name: (Guido, HR), dtype: float64</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">health_data.iloc[:<span class="number">2</span>, :<span class="number">2</span>]</span><br></pre></td></tr></table></figure>
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead tr th {
+    text-align: left;
+}
+
+.dataframe thead tr:last-of-type th {
+    text-align: right;
+}</code></pre><p></style><p></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr>
+      <th></th>
+      <th>subject</th>
+      <th colspan="2" halign="left">Bob</th>
+    </tr>
+    <tr>
+      <th></th>
+      <th>type</th>
+      <th>HR</th>
+      <th>Temp</th>
+    </tr>
+    <tr>
+      <th>year</th>
+      <th>visit</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="2" valign="top">2013</th>
+      <th>1</th>
+      <td>26.0</td>
+      <td>39.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>37.0</td>
+      <td>36.8</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
 
 
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">health_data.loc[:, (<span class="string">'Bob'</span>, <span class="string">'HR'</span>)]</span><br></pre></td></tr></table></figure>
 
-<h2 id="多级索引行列转换"><a href="#多级索引行列转换" class="headerlink" title="多级索引行列转换"></a>多级索引行列转换</h2><ol>
+
+
+
+<pre><code>year  visit
+2013  1        26.0
+      2        37.0
+2014  1        43.0
+      2        34.0
+Name: (Bob, HR), dtype: float64</code></pre><h2 id="多级索引行列转换"><a href="#多级索引行列转换" class="headerlink" title="多级索引行列转换"></a>多级索引行列转换</h2><ol>
 <li>排序</li>
 </ol>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">index = pd.MultiIndex.from_product([[<span class="string">'a'</span>, <span class="string">'c'</span>, <span class="string">'b'</span>], [<span class="number">1</span>, <span class="number">2</span>]])</span><br><span class="line">data = pd.Series(np.random.rand(<span class="number">6</span>), index=index)</span><br><span class="line">data.index.names = [<span class="string">'char'</span>, <span class="string">'int'</span>]</span><br><span class="line">data</span><br></pre></td></tr></table></figure>
 
-<p>此时不能切片（无序）</p>
+
+
+
+<pre><code>char  int
+a     1      0.127081
+      2      0.597234
+c     1      0.193054
+      2      0.812927
+b     1      0.418498
+      2      0.396058
+dtype: float64</code></pre><p>此时不能切片（无序）</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">data = data.sort_index()</span><br><span class="line">data</span><br></pre></td></tr></table></figure>
 
 
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data[<span class="string">'a'</span>:<span class="string">'b'</span>]</span><br></pre></td></tr></table></figure>
 
-<ol start="2">
+
+<pre><code>char  int
+a     1      0.127081
+      2      0.597234
+b     1      0.418498
+      2      0.396058
+c     1      0.193054
+      2      0.812927
+dtype: float64</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data[<span class="string">'a'</span>:<span class="string">'b'</span>]</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>char  int
+a     1      0.127081
+      2      0.597234
+b     1      0.418498
+      2      0.396058
+dtype: float64</code></pre><ol start="2">
 <li>索引stack与unstack</li>
 </ol>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pop</span><br></pre></td></tr></table></figure>
 
 
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pop.unstack(level=<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+
+
+<pre><code>state       year
+California  2000    33871648
+            2010    37253956
+New York    2000    18976457
+            2010    19378102
+Texas       2000    20851820
+            2010    25145561
+dtype: int64</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pop.unstack(level=<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}</code></pre><p></style><p></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>state</th>
+      <th>California</th>
+      <th>New York</th>
+      <th>Texas</th>
+    </tr>
+    <tr>
+      <th>year</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2000</th>
+      <td>33871648</td>
+      <td>18976457</td>
+      <td>20851820</td>
+    </tr>
+    <tr>
+      <th>2010</th>
+      <td>37253956</td>
+      <td>19378102</td>
+      <td>25145561</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
 
 
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pop.unstack(level=<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}</code></pre><p></style><p></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>year</th>
+      <th>2000</th>
+      <th>2010</th>
+    </tr>
+    <tr>
+      <th>state</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>California</th>
+      <td>33871648</td>
+      <td>37253956</td>
+    </tr>
+    <tr>
+      <th>New York</th>
+      <td>18976457</td>
+      <td>19378102</td>
+    </tr>
+    <tr>
+      <th>Texas</th>
+      <td>20851820</td>
+      <td>25145561</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
 
 <ol start="3">
 <li>索引的设置与重置</li>
@@ -1111,17 +3164,411 @@ TypeError: Index does not support mutable operations</code></pre><h3 id="将Inde
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pop_flat = pop.reset_index(name=<span class="string">'population'</span>)</span><br><span class="line">pop_flat</span><br></pre></td></tr></table></figure>
 
 
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}</code></pre><p></style><p></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>state</th>
+      <th>year</th>
+      <th>population</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>California</td>
+      <td>2000</td>
+      <td>33871648</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>California</td>
+      <td>2010</td>
+      <td>37253956</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>New York</td>
+      <td>2000</td>
+      <td>18976457</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>New York</td>
+      <td>2010</td>
+      <td>19378102</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Texas</td>
+      <td>2000</td>
+      <td>20851820</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Texas</td>
+      <td>2010</td>
+      <td>25145561</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pop_flat.set_index([<span class="string">'state'</span>, <span class="string">'year'</span>])</span><br></pre></td></tr></table></figure>
 
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}</code></pre><p></style><p></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th>population</th>
+    </tr>
+    <tr>
+      <th>state</th>
+      <th>year</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="2" valign="top">California</th>
+      <th>2000</th>
+      <td>33871648</td>
+    </tr>
+    <tr>
+      <th>2010</th>
+      <td>37253956</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">New York</th>
+      <th>2000</th>
+      <td>18976457</td>
+    </tr>
+    <tr>
+      <th>2010</th>
+      <td>19378102</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">Texas</th>
+      <th>2000</th>
+      <td>20851820</td>
+    </tr>
+    <tr>
+      <th>2010</th>
+      <td>25145561</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
 <h2 id="多级索引的数据累计方法"><a href="#多级索引的数据累计方法" class="headerlink" title="多级索引的数据累计方法"></a>多级索引的数据累计方法</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">health_data</span><br></pre></td></tr></table></figure>
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead tr th {
+    text-align: left;
+}
+
+.dataframe thead tr:last-of-type th {
+    text-align: right;
+}</code></pre><p></style><p></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr>
+      <th></th>
+      <th>subject</th>
+      <th colspan="2" halign="left">Bob</th>
+      <th colspan="2" halign="left">Guido</th>
+      <th colspan="2" halign="left">Sue</th>
+    </tr>
+    <tr>
+      <th></th>
+      <th>type</th>
+      <th>HR</th>
+      <th>Temp</th>
+      <th>HR</th>
+      <th>Temp</th>
+      <th>HR</th>
+      <th>Temp</th>
+    </tr>
+    <tr>
+      <th>year</th>
+      <th>visit</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="2" valign="top">2013</th>
+      <th>1</th>
+      <td>26.0</td>
+      <td>39.0</td>
+      <td>26.0</td>
+      <td>35.5</td>
+      <td>30.0</td>
+      <td>37.6</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>37.0</td>
+      <td>36.8</td>
+      <td>39.0</td>
+      <td>37.5</td>
+      <td>32.0</td>
+      <td>37.7</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">2014</th>
+      <th>1</th>
+      <td>43.0</td>
+      <td>38.0</td>
+      <td>59.0</td>
+      <td>35.2</td>
+      <td>32.0</td>
+      <td>35.8</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>34.0</td>
+      <td>36.1</td>
+      <td>25.0</td>
+      <td>36.4</td>
+      <td>39.0</td>
+      <td>36.0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
 
 
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">data_mean = health_data.mean(level=<span class="string">'year'</span>)</span><br><span class="line">data_mean</span><br></pre></td></tr></table></figure>
 
 
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead tr th {
+    text-align: left;
+}
+
+.dataframe thead tr:last-of-type th {
+    text-align: right;
+}</code></pre><p></style><p></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr>
+      <th>subject</th>
+      <th colspan="2" halign="left">Bob</th>
+      <th colspan="2" halign="left">Guido</th>
+      <th colspan="2" halign="left">Sue</th>
+    </tr>
+    <tr>
+      <th>type</th>
+      <th>HR</th>
+      <th>Temp</th>
+      <th>HR</th>
+      <th>Temp</th>
+      <th>HR</th>
+      <th>Temp</th>
+    </tr>
+    <tr>
+      <th>year</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2013</th>
+      <td>31.5</td>
+      <td>37.90</td>
+      <td>32.5</td>
+      <td>36.5</td>
+      <td>31.0</td>
+      <td>37.65</td>
+    </tr>
+    <tr>
+      <th>2014</th>
+      <td>38.5</td>
+      <td>37.05</td>
+      <td>42.0</td>
+      <td>35.8</td>
+      <td>35.5</td>
+      <td>35.90</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data_mean.mean(axis=<span class="number">1</span>, level=<span class="string">'type'</span>)</span><br></pre></td></tr></table></figure>
 
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}</code></pre><p></style><p></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>type</th>
+      <th>HR</th>
+      <th>Temp</th>
+    </tr>
+    <tr>
+      <th>year</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2013</th>
+      <td>31.666667</td>
+      <td>37.35</td>
+    </tr>
+    <tr>
+      <th>2014</th>
+      <td>38.666667</td>
+      <td>36.25</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
 <h1 id="合并数据集：Concat与Append操作"><a href="#合并数据集：Concat与Append操作" class="headerlink" title="合并数据集：Concat与Append操作"></a>合并数据集：Concat与Append操作</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">make_df</span><span class="params">(cols, ind)</span>:</span></span><br><span class="line">   <span class="string">"""一个简单的DataFrame"""</span></span><br><span class="line">   data = &#123;c: [str(c) + str(i) <span class="keyword">for</span> i <span class="keyword">in</span> ind]</span><br><span class="line">           <span class="keyword">for</span> c <span class="keyword">in</span> cols&#125;</span><br><span class="line">   <span class="keyword">return</span> pd.DataFrame(data, ind)</span><br><span class="line"></span><br><span class="line"><span class="comment"># DataFrame示例</span></span><br><span class="line">make_df(<span class="string">'ABC'</span>, range(<span class="number">3</span>))</span><br></pre></td></tr></table></figure>
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}</code></pre><p></style><p></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>A0</td>
+      <td>B0</td>
+      <td>C0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>A1</td>
+      <td>B1</td>
+      <td>C1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>A2</td>
+      <td>B2</td>
+      <td>C2</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
 
 <h2 id="pd-concat方法"><a href="#pd-concat方法" class="headerlink" title="pd.concat方法"></a><code>pd.concat</code>方法</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Pandas 0.18版中的函数签名</span></span><br><span class="line">pd.concat(objs, axis=<span class="number">0</span>, join=<span class="string">'outer'</span>, join_axes=<span class="literal">None</span>, ignore_index=<span class="literal">False</span>,keys=<span class="literal">None</span>, levels=<span class="literal">None</span>, names=<span class="literal">None</span>, verify_integrity=<span class="literal">False</span>,copy=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
 
@@ -1129,64 +3576,134 @@ TypeError: Index does not support mutable operations</code></pre><h3 id="将Inde
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ser1 = pd.Series([<span class="string">'A'</span>, <span class="string">'B'</span>, <span class="string">'C'</span>], index=[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>])</span><br><span class="line">ser2 = pd.Series([<span class="string">'D'</span>, <span class="string">'E'</span>, <span class="string">'F'</span>], index=[<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>])</span><br><span class="line">pd.concat([ser1, ser2])</span><br></pre></td></tr></table></figure>
 
 
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">df1 = make_df(<span class="string">'AB'</span>, [<span class="number">1</span>, <span class="number">2</span>])</span><br><span class="line">df2 = make_df(<span class="string">'AB'</span>, [<span class="number">3</span>, <span class="number">4</span>])</span><br><span class="line">print(df1); print(df2); print(pd.concat([df1, df2]))</span><br></pre></td></tr></table></figure>
 
-<p>默认情况下，DataFrame 的合并都是逐行进行的（默认设置是 axis=0）。与 np.concatenate() 一样，pd.concat 也可以设置合并坐标轴</p>
+
+<pre><code>1    A
+2    B
+3    C
+4    D
+5    E
+6    F
+dtype: object</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">df1 = make_df(<span class="string">'AB'</span>, [<span class="number">1</span>, <span class="number">2</span>])</span><br><span class="line">df2 = make_df(<span class="string">'AB'</span>, [<span class="number">3</span>, <span class="number">4</span>])</span><br><span class="line">print(df1); print(df2); print(pd.concat([df1, df2]))</span><br></pre></td></tr></table></figure>
+
+<pre><code>    A   B
+1  A1  B1
+2  A2  B2
+    A   B
+3  A3  B3
+4  A4  B4
+    A   B
+1  A1  B1
+2  A2  B2
+3  A3  B3
+4  A4  B4</code></pre><p>默认情况下，DataFrame 的合并都是逐行进行的（默认设置是 axis=0）。与 np.concatenate() 一样，pd.concat 也可以设置合并坐标轴</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">df3 = make_df(<span class="string">'AB'</span>, [<span class="number">0</span>, <span class="number">1</span>])</span><br><span class="line">df4 = make_df(<span class="string">'CD'</span>, [<span class="number">0</span>, <span class="number">1</span>])</span><br><span class="line">print(df3); print(df4); print(pd.concat([df3, df4], axis=<span class="number">1</span>))<span class="comment"># axis = 'col(按列合并，按行延长)'</span></span><br></pre></td></tr></table></figure>
 
-<ol>
+<pre><code>    A   B
+0  A0  B0
+1  A1  B1
+    C   D
+0  C0  D0
+1  C1  D1
+    A   B   C   D
+0  A0  B0  C0  D0
+1  A1  B1  C1  D1</code></pre><ol>
 <li>索引重复</li>
 </ol>
 <p>np.concatenate 与 pd.concat 最主要的差异之一就是 Pandas 在合并时会保留索引</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">x = make_df(<span class="string">'AB'</span>, [<span class="number">0</span>, <span class="number">1</span>])</span><br><span class="line">y = make_df(<span class="string">'AB'</span>, [<span class="number">2</span>, <span class="number">3</span>])</span><br><span class="line">y.index = x.index  <span class="comment"># 复制索引</span></span><br><span class="line">print(x); print(y); print(pd.concat([x, y]))</span><br></pre></td></tr></table></figure>
 
-<ul>
+<pre><code>    A   B
+0  A0  B0
+1  A1  B1
+    A   B
+0  A2  B2
+1  A3  B3
+    A   B
+0  A0  B0
+1  A1  B1
+0  A2  B2
+1  A3  B3</code></pre><ul>
 <li>捕捉索引重复的错误</li>
 </ul>
 <p>设置 verify_integrity 参数。将参数设置为 True，合并时若有索引重复就会<br>触发异常。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    pd.concat([x, y], verify_integrity=<span class="literal">True</span>)</span><br><span class="line"><span class="keyword">except</span> ValueError <span class="keyword">as</span> e:</span><br><span class="line">    print(<span class="string">"ValueError:"</span>, e)</span><br></pre></td></tr></table></figure>
 
-<ul>
+<pre><code>ValueError: Indexes have overlapping values: Int64Index([0, 1], dtype=&apos;int64&apos;)</code></pre><ul>
 <li>忽略索引</li>
 </ul>
 <p>ignore_index</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(pd.concat([x, y], ignore_index=<span class="literal">True</span>))</span><br></pre></td></tr></table></figure>
 
-<ul>
+<pre><code>    A   B
+0  A0  B0
+1  A1  B1
+2  A2  B2
+3  A3  B3</code></pre><ul>
 <li>增加多级索引</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(pd.concat([x, y], keys=[<span class="string">'x'</span>, <span class="string">'y'</span>]))</span><br></pre></td></tr></table></figure>
 
-<ol start="2">
+<pre><code>      A   B
+x 0  A0  B0
+  1  A1  B1
+y 0  A2  B2
+  1  A3  B3</code></pre><ol start="2">
 <li>类似join的合并</li>
 </ol>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">df5 = make_df(<span class="string">'ABC'</span>, [<span class="number">1</span>, <span class="number">2</span>])</span><br><span class="line">df6 = make_df(<span class="string">'BCD'</span>, [<span class="number">3</span>, <span class="number">4</span>])</span><br><span class="line">print(df5); print(df6)</span><br><span class="line">print(pd.concat([df5,df6]))</span><br></pre></td></tr></table></figure>
 
+<pre><code>    A   B   C
+1  A1  B1  C1
+2  A2  B2  C2
+    B   C   D
+3  B3  C3  D3
+4  B4  C4  D4
+     A   B   C    D
+1   A1  B1  C1  NaN
+2   A2  B2  C2  NaN
+3  NaN  B3  C3   D3
+4  NaN  B4  C4   D4
 
-<pre><code>---------------------------------------------------------------------------
 
-NameError                                 Traceback (most recent call last)
+C:\Users\25827\AppData\Roaming\Python\Python37\site-packages\ipykernel_launcher.py:4: FutureWarning: Sorting because non-concatenation axis is not aligned. A future version
+of pandas will change to not sort by default.
 
-&lt;ipython-input-28-4310d251cd1d&gt; in &lt;module&gt;
-----&gt; 1 df5 = make_df(&apos;ABC&apos;, [1, 2])
-      2 df6 = make_df(&apos;BCD&apos;, [3, 4])
-      3 print(df5); print(df6)
-      4 print(pd.concat([df5,df6]))
+To accept the future behavior, pass &apos;sort=False&apos;.
 
+To retain the current behavior and silence the warning, pass &apos;sort=True&apos;.
 
-NameError: name &apos;make_df&apos; is not defined</code></pre><p>如果不想让缺失的值被NaN代替。可以用join 和join_axes参数设置合并方式</p>
+  after removing the cwd from sys.path.</code></pre><p>如果不想让缺失的值被NaN代替。可以用join 和join_axes参数设置合并方式</p>
 <p>默认： <code>join = &#39;outer&#39;</code>  </p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(pd.concat([df5, df6], join=<span class="string">'inner'</span>))</span><br></pre></td></tr></table></figure>
 
-<p>另一种合并方式是直接确定结果使用的列名，设置 join_axes 参数，里面是索引对象构成<br>的列表（是列表的列表）。</p>
+<pre><code>    B   C
+1  B1  C1
+2  B2  C2
+3  B3  C3
+4  B4  C4</code></pre><p>另一种合并方式是直接确定结果使用的列名，设置 join_axes 参数，里面是索引对象构成<br>的列表（是列表的列表）。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(pd.concat([df5,df6],join_axes = [df5.columns]))</span><br></pre></td></tr></table></figure>
 
-<ol start="3">
+<pre><code>     A   B   C
+1   A1  B1  C1
+2   A2  B2  C2
+3  NaN  B3  C3
+4  NaN  B4  C4</code></pre><ol start="3">
 <li>append()方法</li>
 </ol>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(df1);print(df2);print(df1.append(df2))</span><br></pre></td></tr></table></figure>
 
-<ul>
+<pre><code>    A   B
+1  A1  B1
+2  A2  B2
+    A   B
+3  A3  B3
+4  A4  B4
+    A   B
+1  A1  B1
+2  A2  B2
+3  A3  B3
+4  A4  B4</code></pre><ul>
 <li>注： pandas的append()不直接更新原有对象的值，而是为合并后的数据创建一个新对象，因此并不高效。</li>
 </ul>
 <h1 id="合并数据集：-合并与连接"><a href="#合并数据集：-合并与连接" class="headerlink" title="合并数据集： 合并与连接"></a>合并数据集： 合并与连接</h1><h2 id="数据连接"><a href="#数据连接" class="headerlink" title="数据连接"></a>数据连接</h2><ol>
@@ -1194,8 +3711,72 @@ NameError: name &apos;make_df&apos; is not defined</code></pre><p>如果不想�
 </ol>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">df1 = pd.DataFrame(&#123;<span class="string">'employee'</span>: [<span class="string">'Bob'</span>, <span class="string">'Jake'</span>, <span class="string">'Lisa'</span>, <span class="string">'Sue'</span>],</span><br><span class="line"><span class="string">'group'</span>: [<span class="string">'Accounting'</span>, <span class="string">'Engineering'</span>, <span class="string">'Engineering'</span>, <span class="string">'HR'</span>]&#125;)</span><br><span class="line">df2 = pd.DataFrame(&#123;<span class="string">'employee'</span>: [<span class="string">'Lisa'</span>, <span class="string">'Bob'</span>, <span class="string">'Jake'</span>, <span class="string">'Sue'</span>],</span><br><span class="line"><span class="string">'hire_date'</span>: [<span class="number">2004</span>, <span class="number">2008</span>, <span class="number">2012</span>, <span class="number">2014</span>]&#125;)</span><br><span class="line">print(df1); print(df2)</span><br></pre></td></tr></table></figure>
 
+<pre><code>  employee        group
+0      Bob   Accounting
+1     Jake  Engineering
+2     Lisa  Engineering
+3      Sue           HR
+  employee  hire_date
+0     Lisa       2004
+1      Bob       2008
+2     Jake       2012
+3      Sue       2014</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">df3 = pd.merge(df1,df2)</span><br><span class="line">df3</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">df3 = pd.merge(df1,df2)</span><br><span class="line">df3</span><br></pre></td></tr></table></figure>
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}</code></pre><p></style><p></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>employee</th>
+      <th>group</th>
+      <th>hire_date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Bob</td>
+      <td>Accounting</td>
+      <td>2008</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Jake</td>
+      <td>Engineering</td>
+      <td>2012</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Lisa</td>
+      <td>Engineering</td>
+      <td>2004</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Sue</td>
+      <td>HR</td>
+      <td>2014</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
 
 <ol start="2">
 <li>多对一</li>
@@ -1203,28 +3784,147 @@ NameError: name &apos;make_df&apos; is not defined</code></pre><p>如果不想�
 <p>在需要连接的两个列中，有一列的值有重复</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">df4 = pd.DataFrame(&#123;<span class="string">'group'</span>: [<span class="string">'Accounting'</span>, <span class="string">'Engineering'</span>, <span class="string">'HR'</span>],</span><br><span class="line"><span class="string">'supervisor'</span>: [<span class="string">'Carly'</span>, <span class="string">'Guido'</span>, <span class="string">'Steve'</span>]&#125;)</span><br><span class="line">print(df3); print(df4); print(pd.merge(df3, df4))</span><br></pre></td></tr></table></figure>
 
-<ol start="3">
+<pre><code>  employee        group  hire_date
+0      Bob   Accounting       2008
+1     Jake  Engineering       2012
+2     Lisa  Engineering       2004
+3      Sue           HR       2014
+         group supervisor
+0   Accounting      Carly
+1  Engineering      Guido
+2           HR      Steve
+  employee        group  hire_date supervisor
+0      Bob   Accounting       2008      Carly
+1     Jake  Engineering       2012      Guido
+2     Lisa  Engineering       2004      Guido
+3      Sue           HR       2014      Steve</code></pre><ol start="3">
 <li>多对多</li>
 </ol>
 <p>左右两个输入的同列都包含重复值</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">df5 = pd.DataFrame(&#123;<span class="string">'group'</span>: [<span class="string">'Accounting'</span>, <span class="string">'Accounting'</span>,</span><br><span class="line">                    <span class="string">'Engineering'</span>, <span class="string">'Engineering'</span>, <span class="string">'HR'</span>, <span class="string">'HR'</span>],</span><br><span class="line"><span class="string">'skills'</span>: [<span class="string">'math'</span>, <span class="string">'spreadsheets'</span>, <span class="string">'coding'</span>, <span class="string">'linux'</span>,</span><br><span class="line">           <span class="string">'spreadsheets'</span>, <span class="string">'organization'</span>]&#125;)</span><br><span class="line">print(df1); print(df5); print(pd.merge(df1, df5))</span><br></pre></td></tr></table></figure>
 
-<h2 id="设置数据合并的键"><a href="#设置数据合并的键" class="headerlink" title="设置数据合并的键"></a>设置数据合并的键</h2><ol>
+<pre><code>  employee        group
+0      Bob   Accounting
+1     Jake  Engineering
+2     Lisa  Engineering
+3      Sue           HR
+         group        skills
+0   Accounting          math
+1   Accounting  spreadsheets
+2  Engineering        coding
+3  Engineering         linux
+4           HR  spreadsheets
+5           HR  organization
+  employee        group        skills
+0      Bob   Accounting          math
+1      Bob   Accounting  spreadsheets
+2     Jake  Engineering        coding
+3     Jake  Engineering         linux
+4     Lisa  Engineering        coding
+5     Lisa  Engineering         linux
+6      Sue           HR  spreadsheets
+7      Sue           HR  organization</code></pre><h2 id="设置数据合并的键"><a href="#设置数据合并的键" class="headerlink" title="设置数据合并的键"></a>设置数据合并的键</h2><ol>
 <li>on参数：将on参数设置为一个列名字符串或者一个包含多列名称的列表</li>
 </ol>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">print(df1)</span><br><span class="line">print(df2)</span><br><span class="line">print(pd.merge(df1,df2))</span><br><span class="line">print(pd.merge(df1,df2,on = <span class="string">'employee'</span>))</span><br></pre></td></tr></table></figure>
 
-<p>这个参数只能在两个 DataFrame 有共同列名的时候才可以使用。</p>
+<pre><code>  employee        group
+0      Bob   Accounting
+1     Jake  Engineering
+2     Lisa  Engineering
+3      Sue           HR
+  employee  hire_date
+0     Lisa       2004
+1      Bob       2008
+2     Jake       2012
+3      Sue       2014
+  employee        group  hire_date
+0      Bob   Accounting       2008
+1     Jake  Engineering       2012
+2     Lisa  Engineering       2004
+3      Sue           HR       2014
+  employee        group  hire_date
+0      Bob   Accounting       2008
+1     Jake  Engineering       2012
+2     Lisa  Engineering       2004
+3      Sue           HR       2014</code></pre><p>这个参数只能在两个 DataFrame 有共同列名的时候才可以使用。</p>
 <ol start="2">
 <li>left_on 与right_on参数</li>
 </ol>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">df3 = pd.DataFrame(&#123;<span class="string">'name'</span>: [<span class="string">'Bob'</span>, <span class="string">'Jake'</span>, <span class="string">'Lisa'</span>, <span class="string">'Sue'</span>],</span><br><span class="line"><span class="string">'salary'</span>: [<span class="number">70000</span>, <span class="number">80000</span>, <span class="number">120000</span>, <span class="number">90000</span>]&#125;)</span><br><span class="line">print(df1);</span><br><span class="line">print(df3)</span><br></pre></td></tr></table></figure>
 
+<pre><code>  employee        group
+0      Bob   Accounting
+1     Jake  Engineering
+2     Lisa  Engineering
+3      Sue           HR
+   name  salary
+0   Bob   70000
+1  Jake   80000
+2  Lisa  120000
+3   Sue   90000</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(pd.merge(df1,df3,left_on = <span class="string">'employee'</span>,right_on = <span class="string">'name'</span>))</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(pd.merge(df1,df3,left_on = <span class="string">'employee'</span>,right_on = <span class="string">'name'</span>))</span><br></pre></td></tr></table></figure>
+<pre><code>  employee        group  name  salary
+0      Bob   Accounting   Bob   70000
+1     Jake  Engineering  Jake   80000
+2     Lisa  Engineering  Lisa  120000
+3      Sue           HR   Sue   90000</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pd.merge(df1, df3, left_on=<span class="string">"employee"</span>, right_on=<span class="string">"name"</span>).drop(<span class="string">'name'</span>, axis=<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
 
 
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pd.merge(df1, df3, left_on=<span class="string">"employee"</span>, right_on=<span class="string">"name"</span>).drop(<span class="string">'name'</span>, axis=<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}</code></pre><p></style><p></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>employee</th>
+      <th>group</th>
+      <th>salary</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Bob</td>
+      <td>Accounting</td>
+      <td>70000</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Jake</td>
+      <td>Engineering</td>
+      <td>80000</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Lisa</td>
+      <td>Engineering</td>
+      <td>120000</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Sue</td>
+      <td>HR</td>
+      <td>90000</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
 
 <ol start="3">
 <li>left_index 与 right_index 参数</li>
@@ -1232,34 +3932,152 @@ NameError: name &apos;make_df&apos; is not defined</code></pre><p>如果不想�
 <p>合并索引</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">df1a = df1.set_index(<span class="string">'employee'</span>)</span><br><span class="line">df2a = df2.set_index(<span class="string">'employee'</span>)</span><br><span class="line">print(df1a)</span><br><span class="line">print(df2a)</span><br></pre></td></tr></table></figure>
 
+<pre><code>                group
+employee             
+Bob        Accounting
+Jake      Engineering
+Lisa      Engineering
+Sue                HR
+          hire_date
+employee           
+Lisa           2004
+Bob            2008
+Jake           2012
+Sue            2014</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(pd.merge(df1a,df2a,left_index = <span class="literal">True</span>, right_index = <span class="literal">True</span>))</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(pd.merge(df1a,df2a,left_index = <span class="literal">True</span>, right_index = <span class="literal">True</span>))</span><br></pre></td></tr></table></figure>
+<pre><code>                group  hire_date
+employee                        
+Bob        Accounting       2008
+Jake      Engineering       2012
+Lisa      Engineering       2004
+Sue                HR       2014</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df1a.join(df2a)</span><br></pre></td></tr></table></figure>
 
 
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df1a.join(df2a)</span><br></pre></td></tr></table></figure>
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}</code></pre><p></style><p></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>group</th>
+      <th>hire_date</th>
+    </tr>
+    <tr>
+      <th>employee</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Bob</th>
+      <td>Accounting</td>
+      <td>2008</td>
+    </tr>
+    <tr>
+      <th>Jake</th>
+      <td>Engineering</td>
+      <td>2012</td>
+    </tr>
+    <tr>
+      <th>Lisa</th>
+      <td>Engineering</td>
+      <td>2004</td>
+    </tr>
+    <tr>
+      <th>Sue</th>
+      <td>HR</td>
+      <td>2014</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
 
 <p>索引与列混合使用</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(pd.merge(df1a, df3, left_index=<span class="literal">True</span>, right_on=<span class="string">'name'</span>))</span><br></pre></td></tr></table></figure>
 
-<h2 id="设置数据连接的集合操作规则"><a href="#设置数据连接的集合操作规则" class="headerlink" title="设置数据连接的集合操作规则"></a>设置数据连接的集合操作规则</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">df6 = pd.DataFrame(&#123;<span class="string">'name'</span>: [<span class="string">'Peter'</span>, <span class="string">'Paul'</span>, <span class="string">'Mary'</span>],</span><br><span class="line">                    <span class="string">'food'</span>: [<span class="string">'fish'</span>, <span class="string">'beans'</span>, <span class="string">'bread'</span>]&#125;,</span><br><span class="line">                    columns=[<span class="string">'name'</span>, <span class="string">'food'</span>])</span><br><span class="line">df7 = pd.DataFrame(&#123;<span class="string">'name'</span>: [<span class="string">'Mary'</span>, <span class="string">'Joseph'</span>],</span><br><span class="line">                    <span class="string">'drink'</span>: [<span class="string">'wine'</span>, <span class="string">'beer'</span>]&#125;,</span><br><span class="line">                    columns=[<span class="string">'name'</span>, <span class="string">'drink'</span>])</span><br><span class="line">print(df6);print(); print(df7); print();print(pd.merge(df6, df7))</span><br></pre></td></tr></table></figure>
+<pre><code>         group  name  salary
+0   Accounting   Bob   70000
+1  Engineering  Jake   80000
+2  Engineering  Lisa  120000
+3           HR   Sue   90000</code></pre><h2 id="设置数据连接的集合操作规则"><a href="#设置数据连接的集合操作规则" class="headerlink" title="设置数据连接的集合操作规则"></a>设置数据连接的集合操作规则</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">df6 = pd.DataFrame(&#123;<span class="string">'name'</span>: [<span class="string">'Peter'</span>, <span class="string">'Paul'</span>, <span class="string">'Mary'</span>],</span><br><span class="line">                    <span class="string">'food'</span>: [<span class="string">'fish'</span>, <span class="string">'beans'</span>, <span class="string">'bread'</span>]&#125;,</span><br><span class="line">                    columns=[<span class="string">'name'</span>, <span class="string">'food'</span>])</span><br><span class="line">df7 = pd.DataFrame(&#123;<span class="string">'name'</span>: [<span class="string">'Mary'</span>, <span class="string">'Joseph'</span>],</span><br><span class="line">                    <span class="string">'drink'</span>: [<span class="string">'wine'</span>, <span class="string">'beer'</span>]&#125;,</span><br><span class="line">                    columns=[<span class="string">'name'</span>, <span class="string">'drink'</span>])</span><br><span class="line">print(df6);print(); print(df7); print();print(pd.merge(df6, df7))</span><br></pre></td></tr></table></figure>
 
-<p>默认情况下，结果中只会包含两个输入集合的交集，这种连接方式被称为内连接（inner join）</p>
+<pre><code>    name   food
+0  Peter   fish
+1   Paul  beans
+2   Mary  bread
+
+     name drink
+0    Mary  wine
+1  Joseph  beer
+
+   name   food drink
+0  Mary  bread  wine</code></pre><p>默认情况下，结果中只会包含两个输入集合的交集，这种连接方式被称为内连接（inner join）</p>
 <p>改为外连接：how = ‘outer’</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(pd.merge(df6,df7,how = <span class="string">'outer'</span>))</span><br></pre></td></tr></table></figure>
 
+<pre><code>     name   food drink
+0   Peter   fish   NaN
+1    Paul  beans   NaN
+2    Mary  bread  wine
+3  Joseph    NaN  beer</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(pd.merge(df6, df7, how=<span class="string">'left'</span>))</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(pd.merge(df6, df7, how=<span class="string">'left'</span>))</span><br></pre></td></tr></table></figure>
+<pre><code>    name   food drink
+0  Peter   fish   NaN
+1   Paul  beans   NaN
+2   Mary  bread  wine</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(pd.merge(df6, df7, how=<span class="string">'right'</span>))</span><br></pre></td></tr></table></figure>
 
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(pd.merge(df6, df7, how=<span class="string">'right'</span>))</span><br></pre></td></tr></table></figure>
-
-<p>现在输出的行中只包含左边输入列的值。如果用 how=’right’ 的话，输出的行则只包含右<br>边输入列的值。</p>
+<pre><code>     name   food drink
+0    Mary  bread  wine
+1  Joseph    NaN  beer</code></pre><p>现在输出的行中只包含左边输入列的值。如果用 how=’right’ 的话，输出的行则只包含右<br>边输入列的值。</p>
 <h2 id="重复列名：suffixes"><a href="#重复列名：suffixes" class="headerlink" title="重复列名：suffixes"></a>重复列名：suffixes</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">df8 = pd.DataFrame(&#123;<span class="string">'name'</span>: [<span class="string">'Bob'</span>, <span class="string">'Jake'</span>, <span class="string">'Lisa'</span>, <span class="string">'Sue'</span>],</span><br><span class="line">                    <span class="string">'rank'</span>: [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]&#125;)</span><br><span class="line">df9 = pd.DataFrame(&#123;<span class="string">'name'</span>: [<span class="string">'Bob'</span>, <span class="string">'Jake'</span>, <span class="string">'Lisa'</span>, <span class="string">'Sue'</span>],</span><br><span class="line">                    <span class="string">'rank'</span>: [<span class="number">3</span>, <span class="number">1</span>, <span class="number">4</span>, <span class="number">2</span>]&#125;)</span><br><span class="line">print(df8); print(df9); print(pd.merge(df8, df9, on=<span class="string">"name"</span>))</span><br></pre></td></tr></table></figure>
 
+<pre><code>   name  rank
+0   Bob     1
+1  Jake     2
+2  Lisa     3
+3   Sue     4
+   name  rank
+0   Bob     3
+1  Jake     1
+2  Lisa     4
+3   Sue     2
+   name  rank_x  rank_y
+0   Bob       1       3
+1  Jake       2       1
+2  Lisa       3       4
+3   Sue       4       2</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 通过suffixes参数自定义后缀名</span></span><br><span class="line">print(df8); print(df9);</span><br><span class="line">print(pd.merge(df8, df9, on=<span class="string">"name"</span>, suffixes=[<span class="string">"_L"</span>, <span class="string">"_R"</span>]))</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 通过suffixes参数自定义后缀名</span></span><br><span class="line">print(df8); print(df9);</span><br><span class="line">print(pd.merge(df8, df9, on=<span class="string">"name"</span>, suffixes=[<span class="string">"_L"</span>, <span class="string">"_R"</span>]))</span><br></pre></td></tr></table></figure>
-
-<h1 id="分组与累计"><a href="#分组与累计" class="headerlink" title="分组与累计"></a>分组与累计</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rng = np.random.RandomState(<span class="number">42</span>)</span><br><span class="line">ser = pd.Series(rng.rand(<span class="number">5</span>))</span><br></pre></td></tr></table></figure>
+<pre><code>   name  rank
+0   Bob     1
+1  Jake     2
+2  Lisa     3
+3   Sue     4
+   name  rank
+0   Bob     3
+1  Jake     1
+2  Lisa     4
+3   Sue     2
+   name  rank_L  rank_R
+0   Bob       1       3
+1  Jake       2       1
+2  Lisa       3       4
+3   Sue       4       2</code></pre><h1 id="分组与累计"><a href="#分组与累计" class="headerlink" title="分组与累计"></a>分组与累计</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rng = np.random.RandomState(<span class="number">42</span>)</span><br><span class="line">ser = pd.Series(rng.rand(<span class="number">5</span>))</span><br></pre></td></tr></table></figure>
 
 
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ser</span><br></pre></td></tr></table></figure>
@@ -1422,7 +4240,7 @@ dtype: float64</code></pre><figure class="highlight plain"><table><tr><td class=
 
 
 
-<pre><code>&lt;pandas.core.groupby.groupby.DataFrameGroupBy object at 0x0000027627AED1D0&gt;</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.groupby(<span class="string">'key'</span>).sum()</span><br></pre></td></tr></table></figure>
+<pre><code>&lt;pandas.core.groupby.groupby.DataFrameGroupBy object at 0x000001F879667908&gt;</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.groupby(<span class="string">'key'</span>).sum()</span><br></pre></td></tr></table></figure>
 
 
 
@@ -1670,12 +4488,12 @@ dtype: float64</code></pre><figure class="highlight plain"><table><tr><td class=
 
 
 
-<pre><code>&lt;pandas.core.groupby.groupby.DataFrameGroupBy object at 0x0000027629029EF0&gt;</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">planets.groupby(<span class="string">'method'</span>)[<span class="string">'orbital_period'</span>]</span><br></pre></td></tr></table></figure>
+<pre><code>&lt;pandas.core.groupby.groupby.DataFrameGroupBy object at 0x000001F87BBF7F98&gt;</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">planets.groupby(<span class="string">'method'</span>)[<span class="string">'orbital_period'</span>]</span><br></pre></td></tr></table></figure>
 
 
 
 
-<pre><code>&lt;pandas.core.groupby.groupby.SeriesGroupBy object at 0x000002762A05A198&gt;</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">planets.groupby(<span class="string">'method'</span>)[<span class="string">'orbital_period'</span>].median()</span><br></pre></td></tr></table></figure>
+<pre><code>&lt;pandas.core.groupby.groupby.SeriesGroupBy object at 0x000001F87ABD3F28&gt;</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">planets.groupby(<span class="string">'method'</span>)[<span class="string">'orbital_period'</span>].median()</span><br></pre></td></tr></table></figure>
 
 
 
@@ -3338,13 +6156,10 @@ dtype: int64</code></pre><h2 id="Pandas时间序列数据结构"><a href="#Panda
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/09/16/%E4%BC%9A%E8%AE%A1%E5%AD%A6/%E6%80%BB%E8%AE%BA/" rel="prev" title="会计学/总论">
-      <i class="fa fa-chevron-left"></i> 会计学/总论
+    <a href="/2020/09/21/%E4%BC%9A%E8%AE%A1%E5%AD%A6/%E4%BC%9A%E8%AE%A1%E6%A0%B8%E7%AE%97%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" rel="prev" title="会计学/会计核算基础知识">
+      <i class="fa fa-chevron-left"></i> 会计学/会计核算基础知识
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2020/09/21/%E4%BC%9A%E8%AE%A1%E5%AD%A6/%E4%BC%9A%E8%AE%A1%E6%A0%B8%E7%AE%97%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" rel="next" title="会计学/会计核算基础知识">
-      会计学/会计核算基础知识 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -3510,59 +6325,6 @@ dtype: int64</code></pre><h2 id="Pandas时间序列数据结构"><a href="#Panda
   
 
   
-      
-
-<script>
-  if (typeof MathJax === 'undefined') {
-    window.MathJax = {
-      loader: {
-        source: {
-          '[tex]/amsCd': '[tex]/amscd',
-          '[tex]/AMScd': '[tex]/amscd'
-        }
-      },
-      tex: {
-        inlineMath: {'[+]': [['$', '$']]},
-        tags: 'ams'
-      },
-      options: {
-        renderActions: {
-          findScript: [10, doc => {
-            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
-              const display = !!node.type.match(/; *mode=display/);
-              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
-              const text = document.createTextNode('');
-              node.parentNode.replaceChild(text, node);
-              math.start = {node: text, delim: '', n: 0};
-              math.end = {node: text, delim: '', n: 0};
-              doc.math.push(math);
-            });
-          }, '', false],
-          insertedScript: [200, () => {
-            document.querySelectorAll('mjx-container').forEach(node => {
-              let target = node.parentNode;
-              if (target.nodeName.toLowerCase() === 'li') {
-                target.parentNode.classList.add('has-jax');
-              }
-            });
-          }, '', false]
-        }
-      }
-    };
-    (function () {
-      var script = document.createElement('script');
-      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
-      script.defer = true;
-      document.head.appendChild(script);
-    })();
-  } else {
-    MathJax.startup.document.state(0);
-    MathJax.texReset();
-    MathJax.typeset();
-  }
-</script>
-
-    
 
   
 
