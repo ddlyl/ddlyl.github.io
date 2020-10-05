@@ -28,7 +28,7 @@
 <meta property="og:description" content="123import pandas as pdimport numpy as nppd.__version__     &amp;apos;0.23.4&amp;apos;Pandas 基本数据结构Series 对象Pandas 的 Series 对象是一个带索引数据构成的一维数组。可以用一个数组创建 Series 对象 12data &#x3D; pd.Series([0.25, 0.5, 0.75, 1.0])data">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-10-05T01:36:51.681Z">
-<meta property="article:modified_time" content="2020-10-05T01:36:51.681Z">
+<meta property="article:modified_time" content="2020-10-05T01:40:01.007Z">
 <meta property="article:author" content="luyilin">
 <meta name="twitter:card" content="summary">
 
@@ -177,8 +177,18 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
+              
 
-              <time title="Created: 2020-10-05 09:36:51" itemprop="dateCreated datePublished" datetime="2020-10-05T09:36:51+08:00">2020-10-05</time>
+              <time title="Created: 2020-10-05 09:36:51 / Modified: 09:40:01" itemprop="dateCreated datePublished" datetime="2020-10-05T09:36:51+08:00">2020-10-05</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a>
+                </span>
             </span>
 
           
@@ -6325,6 +6335,59 @@ dtype: int64</code></pre><h2 id="Pandas时间序列数据结构"><a href="#Panda
   
 
   
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 
