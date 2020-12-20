@@ -150,6 +150,102 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://luyilin.top/2020/08/24/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA(Support%20Vector%20Machines)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="luyilin">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="引而不发，跃如也">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/08/24/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA(Support%20Vector%20Machines)/" class="post-title-link" itemprop="url">机器学习/支持向量机(Support Vector Machines)</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-08-24 09:06:01 / Modified: 21:18:49" itemprop="dateCreated datePublished" datetime="2020-08-24T09:06:01+08:00">2020-08-24</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">机器学习</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>在学习复杂的非线性方程时提供了一种更为清晰，更加强大的方式。</p>
+<h1 id="构建支持向量机"><a href="#构建支持向量机" class="headerlink" title="构建支持向量机"></a>构建支持向量机</h1><p><img src="/2020/08/24/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA(Support%20Vector%20Machines)/1.JPG" alt="1"></p>
+<ul>
+<li>修改了逻辑回归中的代价函数</li>
+</ul>
+<p>$$J(\theta)=\frac{1}{m} \sum_{i=1}^{m}\left[y^{(i)} (-\log \left(h_{\theta}\left(x^{(i)}\right)\right))+\left(1-y^{(i)}\right) (-\log \left(1-h_{\theta}\left(x^{(i)}\right)\right))\right]+ \frac{\lambda}{2m}\sum_{j = 1}^n\theta_j^2$$</p>
+<p>修改代价函数<br>$$J(\theta)=\sum_{i=1}^{m}\left[y^{(i)} cost_1(\theta^Tx^{(i)})+\left(1-y^{(i)}\right) cost_0(\theta^Tx^{(i)})\right]+ \frac{\lambda}{2}\sum_{j = 1}^n\theta_j^2$$</p>
+<p>$$min(A + \lambda B)\rightarrow min(CA + B), C = \frac{1}{\lambda}$$</p>
+<p>$$J(\theta)=C\sum_{i=1}^{m}\left[y^{(i)} cost_1(\theta^Tx^{(i)})+\left(1-y^{(i)}\right) cost_0(\theta^Tx^{(i)})\right]+ \frac{1}{2}\sum_{j = 1}^n\theta_j^2$$</p>
+<h1 id="大边界"><a href="#大边界" class="headerlink" title="大边界"></a>大边界</h1><p>希望$\theta^Tx&gt;=1$</p>
+<p>大间距分类器，C越大对异常点越敏感</p>
+<p>$C = \frac{1}{\lambda}$，因此：</p>
+<p>$C$较大时，相当于$\lambda$较小，可能会导致过拟合，高方差。</p>
+<p>$C$较小时，相当于$\lambda$较大，可能会导致低拟合，高偏差。</p>
+<h1 id="核函数"><a href="#核函数" class="headerlink" title="核函数"></a>核函数</h1><p><img src="/2020/08/24/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA(Support%20Vector%20Machines)/2.JPG" alt="2"></p>
+<p>高斯核函数</p>
+<p>$$f_i = exp(-\frac{||x - l^{(i)}||^2}{2\sigma^2})$$</p>
+<p>$$<br>h_{\theta}(x)=\theta_{0}+\theta_{1} f_{1}+\theta_{2} f_{2}+\theta_{1} f_{3}&gt;0, \text { 则预测 } y=1 .<br>$$</p>
+<p>$\sigma$较大时，可能会导致低方差, 高偏差;</p>
+<p>$\sigma$较小时，可能会导致低偏差, 高方差。</p>
+<ul>
+<li>如何选择特征点？将训练集作为特征点带入即可</li>
+</ul>
+<h1 id="算法选择"><a href="#算法选择" class="headerlink" title="算法选择"></a>算法选择</h1><p>$n &gt; m$ 逻辑回归</p>
+<p>$n &lt; m$   </p>
+<ul>
+<li>m较小，例如$n$在1-1000 之间，而$m$在10-10000之间，SVM高斯核函数</li>
+<li>m较大，例如$n$在1-1000之间，而$m$大于50000,SVM线性核函数/逻辑回归</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://luyilin.top/2020/08/23/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/04%20%E5%88%86%E7%B1%BB%E5%9F%BA%E7%A1%80/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2352,101 +2448,6 @@ log10(x) = [0.         0.30103    0.47712125]</code></pre><p>对于非常小的�
 <td>np.dtype(‘V’) == np.void</td>
 </tr>
 </tbody></table>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://luyilin.top/2020/08/06/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E5%8D%95%E5%8F%98%E9%87%8F%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="luyilin">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="引而不发，跃如也">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/08/06/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E5%8D%95%E5%8F%98%E9%87%8F%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/" class="post-title-link" itemprop="url">机器学习/单变量线性回归</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2020-08-06 19:36:49 / Modified: 21:36:01" itemprop="dateCreated datePublished" datetime="2020-08-06T19:36:49+08:00">2020-08-06</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">机器学习</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="符号"><a href="#符号" class="headerlink" title="符号"></a>符号</h1><p>m： 训练样本的数目</p>
-<p>$(x,y)$: 训练集中的实例</p>
-<p>$(x^{(i)}, y^{(i)})$: 第$i$个观察实例</p>
-<p>h:代表学习算法的解决方案或函数也称为假设函数</p>
-<h1 id="代价函数"><a href="#代价函数" class="headerlink" title="代价函数"></a>代价函数</h1><p>我们希望下列函数值最小</p>
-<p>平方误差代价函数：<br>$$J\left(\theta_{0}, \theta_{1}\right)=\frac{1}{2 m} \sum_{i=1}^{m}\left(h_{\theta}\left(x^{(i)}\right)-y^{(i)}\right)^{2}$$</p>
-<h1 id="梯度下降"><a href="#梯度下降" class="headerlink" title="梯度下降"></a>梯度下降</h1><p>repeat until  convergence {<br>$$ \theta_{j}:=\theta_{j}-\alpha \frac{\partial}{\partial \theta_{j}} J\left(\theta_{0}, \theta_{1}\right) \quad(\text { for } j=0 \text { and } j=1)$$</p>
-<p>}</p>
-<ul>
-<li>Correct: Simultaneous update</li>
-</ul>
-<p>$temp  0:=\theta_{0}-\alpha \frac{\partial}{\partial \theta_{0}} J\left(\theta_{0}, \theta_{1}\right)$</p>
-<p>$temp  1:=\theta_{1}-\alpha \frac{\partial}{\partial \theta_{1}} J\left(\theta_{0}, \theta_{1}\right)$</p>
-<p>$\theta_{0}:=\operatorname{temp} 0$</p>
-<p>$\theta_{1}:=  temp1$</p>
-<p>$\alpha:学习率（一步迈的距离）$</p>
-<p>当点接近局部最优值时，导数项会变小，因此每次更新的步长也会相应减小</p>
-<h1 id="梯度下降的线性回归"><a href="#梯度下降的线性回归" class="headerlink" title="梯度下降的线性回归"></a>梯度下降的线性回归</h1><p>$$\frac{\partial}{\partial \theta_{j}} J\left(\theta_{0}, \theta_{1}\right)=\frac{\partial}{\partial \theta_{j}} \frac{1}{2 m} \sum_{i=1}^{m}\left(h_{\theta}\left(x^{(i)}\right)-y^{(i)}\right)$$<br>j=0  时：</p>
-<p>$$ \frac{\partial}{\partial \theta_{0}} J\left(\theta_{0}, \theta_{1}\right)=\frac{1}{m} \sum_{i=1}^{m}\left(h_{\theta}\left(x^{(i)}\right)-y^{(i)}\right) $$<br>j=1  时：</p>
-<p>$$ \frac{\partial}{\partial \theta_{1}} J\left(\theta_{0}, \theta_{1}\right)=\frac{1}{m} \sum_{i=1}^{m}\left(\left(h_{\theta}\left(x^{(i)}\right)-y^{(i)}\right) \cdot x^{(i)}\right) $$</p>
-<p>于是上述算法可写成</p>
-<p>Repeat {</p>
-<p>$$\theta_{0}:=\theta_{0}-a \frac{1}{m} \sum_{i=1}^{m}\left(h_{\theta}\left(x^{(i)}\right)-y^{(i)}\right) $$</p>
-<p>$$\theta_{1}:=\theta_{1}-a \frac{1}{m} \sum_{i=1}^{m}\left(\left(h_{\theta}\left(x^{(i)}\right)-y^{(i)}\right) \cdot x^{(i)}\right) $$</p>
-<p>}</p>
-<ul>
-<li>注： $\theta_0,\ \theta_1要同时更新，否则会相互影响$</li>
-</ul>
 
       
     </div>
